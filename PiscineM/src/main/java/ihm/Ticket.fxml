@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="439.0" prefWidth="546.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TicketController">
+   <children>
+      <ImageView fitHeight="441.0" fitWidth="553.0" layoutX="-1.0">
+         <image>
+            <Image url="@../../../../../Downloads/piscine.jpg" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="58.0" prefHeight="36.0" prefWidth="406.0" text="Bienvenue aux piscines Vannetaises">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="99.0" fitWidth="107.0" layoutX="-11.0" layoutY="-5.0">
+         <image>
+            <Image url="@../../../../../Downloads/logo_remi.png" />
+         </image>    
+      </ImageView>
+      <Button fx:id="retour" layoutX="17.0" layoutY="400.0" mnemonicParsing="false" onAction="#Retour" text="Retour" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="87.0" prefHeight="36.0" prefWidth="406.0" text="Sélectionnez le nombre d'entrées :">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <RadioButton layoutX="96.0" layoutY="190.0" mnemonicParsing="false" text="1 entrée (5€)" />
+      <RadioButton layoutX="96.0" layoutY="221.0" mnemonicParsing="false" text="2 entrées (9€)" />
+      <RadioButton layoutX="96.0" layoutY="252.0" mnemonicParsing="false" text="5 entrées" />
+      <RadioButton layoutX="96.0" layoutY="281.0" mnemonicParsing="false" text="10 entrées" />
+      <Button fx:id="ValideTkt" layoutX="231.0" layoutY="389.0" mnemonicParsing="false" onAction="#ValideTkt" prefHeight="46.0" prefWidth="122.0" text="Valider" />
+   </children>
+</AnchorPane>
