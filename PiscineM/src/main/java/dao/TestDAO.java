@@ -1,10 +1,8 @@
 package dao;
 
 import java.security.SecureRandom;
-import java.time.LocalDateTime;
-import java.time.Month;
 
-import piscine.Cours;
+import piscine.Adresse;
 
 public class TestDAO {
 	
@@ -30,43 +28,45 @@ public class TestDAO {
 			}
 			
 	public static void main(String[] args) {
-		
+		//////////////////////////////////////////////////////////TEST OFFRE
 		//Creation d'une entree catalogue(offre) :		
-	//		Catalogue offre = new Catalogue(10,100,20,"solo");
-	//		CatalogueDAO.getInstance().create(offre);
+//			Offre offre = new Offre(10,100,20,"solo");
+//			OffreDAO.getInstance().create(offre);
 		
 		//Read d'une offre du catalogue :
-	//		offre = CatalogueDAO.getInstance().read(1);
-	//		System.out.println(offre);
+//			offre = OffreDAO.getInstance().read(1);
+//			System.out.println(offre);
 		
 		//Update d'une offre du catalogue :
-	//		offre.setValidite(36);
-	//		offre.setTarif(260);
-	//		offre.setNbPlaces(40);
-	//		CatalogueDAO.getInstance().update(offre);
+//			offre.setValidite(36);
+//			offre.setTarif(260);
+//			offre.setNbPlaces(40);
+//			OffreDAO.getInstance().update(offre);
 		
 		//Delete d'une offre du catalogue :
-//			CatalogueDAO.getInstance().delete(offre);
+//			OffreDAO.getInstance().delete(offre);
 
 		
+//////////////////////////////////////////////////////////TEST ADRESSE
 		//Creation adresse :
-	//		Adresse adresse = new Adresse("15","rue Toto","Lorient", 56600);
-	//		AdresseDAO.getInstance().create(adresse);
+//			Adresse adresse = new Adresse("15","rue Toto","Lorient", 56600);
+//			AdresseDAO.getInstance().create(adresse);
 		
 		//Read d'une adresse :
-	//		Adresse adresse = AdresseDAO.getInstance().read(3);
-	//		System.out.println(adresse);
+//			Adresse adresse = AdresseDAO.getInstance().read(10);
+//			System.out.println("read : " + adresse);
 		
 		//Update d'une adresse :
-	//		adresse.setNumVoie("15");
-	//		adresse.setRue("rue Truc");
-	//		AdresseDAO.getInstance().update(adresse);
-	//		System.out.println(adresse);
+//			adresse.setNumVoie("15");
+//			adresse.setRue("rue Truc");
+//			AdresseDAO.getInstance().update(adresse);
+//			System.out.println("update : " + adresse);
 		
 		//Delete d'une adresse :
 //			AdresseDAO.getInstance().delete(adresse);
 		
 		
+//////////////////////////////////////////////////////////TEST COURS
 		//Creation cours :
 		
 	//		Cours cours = new Cours("Aquagym", null, null, 10, 10, EmployeDAO.getInstance().read(1), PiscineDAO.getInstance().read(2));

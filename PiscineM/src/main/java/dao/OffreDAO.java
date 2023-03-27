@@ -92,7 +92,7 @@ public class OffreDAO extends DAO<Offre> {
 			pst.setInt(2,tarif) ; 
 			pst.setInt(3, nbPlace) ;
 			pst.setString(4,modalite);
-			pst.setInt(4, id) ;
+			pst.setInt(5, id) ;
 
 			pst.executeUpdate() ;
 		} catch (SQLException e) {
