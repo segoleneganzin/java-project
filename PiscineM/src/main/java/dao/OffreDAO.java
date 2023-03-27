@@ -101,7 +101,6 @@ public class OffreDAO extends DAO<Offre> {
 		} 
 		return succes;    
 	}
-
 	
 	// DELETE
 	public boolean delete(Offre obj) {
