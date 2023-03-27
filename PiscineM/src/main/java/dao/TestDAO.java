@@ -2,7 +2,7 @@ package dao;
 
 import java.security.SecureRandom;
 
-import piscine.Adresse;
+import piscine.Administrateur;
 
 public class TestDAO {
 	
@@ -69,50 +69,52 @@ public class TestDAO {
 //////////////////////////////////////////////////////////TEST COURS
 		//Creation cours :
 		
-	//		Cours cours = new Cours("Aquagym", null, null, 10, 10, EmployeDAO.getInstance().read(1), PiscineDAO.getInstance().read(2));
-	//		cours.setHoraireDebut(LocalDateTime.of(2023, Month.SEPTEMBER, 29, 19, 30, 40));
-	//		cours.setHoraireFin(LocalDateTime.of(2023, Month.SEPTEMBER, 29, 20, 30, 40));
-	//		CoursDAO.getInstance().create(cours);
+//			Cours cours = new Cours("Aquaponey", null, null, 10, 10, EmployeDAO.getInstance().read(1), PiscineDAO.getInstance().read(2));
+//			cours.setHoraireDebut(LocalDateTime.of(2023, Month.SEPTEMBER, 29, 19, 30, 40));
+//			cours.setHoraireFin(LocalDateTime.of(2023, Month.SEPTEMBER, 29, 20, 30, 40));
+//			CoursDAO.getInstance().create(cours);
 	
 		//read d'un cours :
-	//		Cours cours = CoursDAO.getInstance().read(2);
-	//		System.out.println(cours);
+//			Cours cours = CoursDAO.getInstance().read(3);
+//			System.out.println(cours);
 		
 		//update d'un cours :
-	//		cours.setIntitule("aquaponey");
-	//		CoursDAO.getInstance().update(cours);
-	//		System.out.println(cours);
+//			cours.setIntitule("natation");
+//			CoursDAO.getInstance().update(cours);
+//			System.out.println(cours);
 		
 		//delete d'un cours :
 //			CoursDAO.getInstance().delete(cours);
 		
-		//Creation piscine :
-	//		Piscine p1 = new Piscine("p5", "9h00", "20h00", AdresseDAO.getInstance().read(1));
-	//		PiscineDAO.getInstance().create(p1);
 		
+//////////////////////////////////////////////////////////TEST PISCINE
+		//Creation piscine :
+//			Piscine p1 = new Piscine("p10", "9h00", "20h00", AdresseDAO.getInstance().read(1));
+//			PiscineDAO.getInstance().create(p1);
+
 		//read d'une piscine :
-//		Piscine p2 = PiscineDAO.getInstance().read(2);
-	//		System.out.println(p2);
+//			Piscine p2 = PiscineDAO.getInstance().read(6);
+//			System.out.println(p2);
 		
 		//update d'une piscine :
-	//		p2.setAdresse(AdresseDAO.getInstance().read(4));
-	//		p2.setNom("Plouf");
-	//		PiscineDAO.getInstance().update(p2);
-	//		System.out.println(p2);
+//			p2.setAdresse(AdresseDAO.getInstance().read(4));
+//			p2.setNom("Piscine");
+//			PiscineDAO.getInstance().update(p2);
+//			System.out.println(p2);
 		
 		//delete d'une piscine : 
-			//TODO
-	
+//			PiscineDAO.getInstance().delete(p2);
 		
-		
+//////////////////////////////////////////////////////////TEST EMPLOYE
 		//Creation d'un employe :
-		//		Employe employe = new Employe("Test", "Michel", "Admin", null, AdresseDAO.getInstance().read(1));
-		//		employe.setDateNaissance(LocalDate.parse("1980-01-12"));
-		//		EmployeDAO.getInstance().create(employe);
+//				Employe employe = new Employe("Test", "Michel", "Admin", null, AdresseDAO.getInstance().read(1));
+//				employe.setDateNaissance(LocalDate.parse("1980-01-12"));
+//				EmployeDAO.getInstance().create(employe);
 
 		//read d'un employe :
-//						Employe employe = EmployeDAO.getInstance().read(2);
-
+//						Employe employe = EmployeDAO.getInstance().read(4);
+//						System.out.println(employe);
+						
 		//update d'un employe :
 //						employe.setNom("Test2");
 //						employe.setPrenom("Bernard");
@@ -120,24 +122,26 @@ public class TestDAO {
 //						employe.setDateNaissance(LocalDate.parse("1990-12-30"));
 //						employe.setAdresse(AdresseDAO.getInstance().read(1));
 //						EmployeDAO.getInstance().update(employe);
+						
+//						System.out.println(employe);
 
 		//delete d'un employe :
-		//		EmployeDAO.getInstance().delete(employe);
+//				EmployeDAO.getInstance().delete(employe);
 
-//						System.out.println(employe);
+//						
 		
-		
+//////////////////////////////////////////////////////////TEST CODE
 //		Creation d'un code :
-		//		int len = 10;
-		//		Code code = new Code(null, null, null, 5, CatalogueDAO.getInstance().read(1));
-		//		code.setIdCode(generateRandomPassword(len));
-		//		code.setDateAchat(LocalDateTime.now());
-		//		//automatisation de la date d'echeance du code :
-		//		code.setDateEcheance(LocalDate.now().plusMonths(10).plusDays(1));
-		//		CodeDAO.getInstance().create(code);
+//				int len = 10;
+//				Code code = new Code(null, null, null, OffreDAO.getInstance().read(1));
+//				code.setIdCode(generateRandomPassword(len));
+//				code.setDateAchat(LocalDateTime.now());
+//				//automatisation de la date d'echeance du code :
+//				code.setDateEcheance(LocalDate.now().plusMonths(10).plusDays(1));
+//				CodeDAO.getInstance().create(code);
 		
 		//read d'un code
-		//		Code code = CodeDAO.getInstance().read("HGmMD3bd30");
+//				Code code = CodeDAO.getInstance().read("veAXdbAQiV");
 
 		//update d'un  code
 		//		code.setDateEcheance(LocalDateTime.of(2024, Month.AUGUST, 01, 12, 30, 00));
@@ -145,15 +149,16 @@ public class TestDAO {
 		//		CodeDAO.getInstance().update(code);
 
 		//delete d'un code
-		//		CodeDAO.getInstance().delete(code);
+//				CodeDAO.getInstance().delete(code);
 
-		//System.out.println(code);
+//		System.out.println(code);
 		
 		
+//////////////////////////////////////////////////////////TEST UTILISATION
 		//Creation d'une utilisation :
-	//		Utilisation utilisation = new Utilisation(LocalDateTime.now(), CodeDAO.getInstance().read("gvdkjqsnbukb"), PiscineDAO.getInstance().read(1));
-	//		UtilisationDAO.getInstance().create(utilisation);
-	//		System.out.println(utilisation);
+//			Utilisation utilisation = new Utilisation(LocalDateTime.now(), CodeDAO.getInstance().read("gvdkjqsnbukb"), PiscineDAO.getInstance().read(1));
+//			UtilisationDAO.getInstance().create(utilisation);
+//			System.out.println(utilisation);
 		
 		//read d'une utilisation
 //			Utilisation utilisation = UtilisationDAO.getInstance().read(LocalDateTime.parse("2023-01-17T10:16:50.450") , "gvdkjqsnbukb");
@@ -165,23 +170,24 @@ public class TestDAO {
 			//UtilisationDAO.getInstance().delete(utilisation);
 		
 		
+//////////////////////////////////////////////////////////TEST ADMINISTRATEUR
 		// Création d'un administrateur :
-		//		Administrateur administrateur = new Administrateur(EmployeDAO.getInstance().read(1), "Test", "TestMdp");
-		//		AdministrateurDAO.getInstance().create(administrateur);
+//				Administrateur administrateur = new Administrateur(EmployeDAO.getInstance().read(3), "Test", "TestMdp");
+//				AdministrateurDAO.getInstance().create(administrateur);
 
 		// Read d'un admin :
-		//		Administrateur administrateur = AdministrateurDAO.getInstance().read(1);
+//				Administrateur administrateur = AdministrateurDAO.getInstance().read(1);
 		
 		//		Update d'un admin :
-		//		administrateur.setEmploye(EmployeDAO.getInstance().read(2));
-		//		administrateur.setIdentifiant("TestID");
-		//		administrateur.setMdp("TestMdP2");
-		//		AdministrateurDAO.getInstance().update(administrateur);
+//				administrateur.setEmploye(EmployeDAO.getInstance().read(2));
+//				administrateur.setIdentifiant("TestID");
+//				administrateur.setMdp("TestMdP2");
+//				AdministrateurDAO.getInstance().update(administrateur);
 		
 		//		// Delete d'un admin :
-		//		AdministrateurDAO.getInstance().delete(administrateur);
+//				AdministrateurDAO.getInstance().delete(administrateur);
 		
-		//		System.out.println(administrateur);
+//				System.out.println(administrateur);
 		
 		
 		Connexion.fermer();

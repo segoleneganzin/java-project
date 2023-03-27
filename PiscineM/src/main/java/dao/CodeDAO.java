@@ -43,7 +43,7 @@ public class CodeDAO extends DAO<Code> {
 			pst.setObject(3, code.getDateEcheance());
 //			pst.setInt(4, code.getSolde());
 			//			pst.setInt(5, code.getPiscine().getIdPiscine());
-			pst.setInt(5, code.getOffre().getIdOffre());
+			pst.setInt(4, code.getOffre().getIdOffre());
 			pst.execute();
 			//			ResultSet rs = pst.getGeneratedKeys();
 			//			if (rs.next()) {

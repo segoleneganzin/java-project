@@ -134,7 +134,7 @@ public class CoursDAO extends DAO<Cours> {
 			pst.setInt(5, placesrest);
 			pst.setInt(6, idEmp);
 			pst.setInt(7, idPiscine);
-			pst.setInt(6, id) ;
+			pst.setInt(8, id) ;
 			pst.executeUpdate() ;
 			System.out.println(id);
 			
