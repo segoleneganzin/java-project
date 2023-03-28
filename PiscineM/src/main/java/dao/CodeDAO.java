@@ -38,12 +38,12 @@ public class CodeDAO extends DAO<Code> {
 		try {
 			String requete = "INSERT INTO " + TABLE + " (" + CLE_PRIMAIRE + ", " + ACHAT + ", " + ECHEANCE + ", " + OFFRE + ") VALUES (?, ?, ?, ?)";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
-			pst.setString(1, code.getIdCode());
+			pst.setInt(1, code.getIdCode());
 			pst.setObject(2, code.getDateAchat());
 			pst.setObject(3, code.getDateEcheance());
 //			pst.setInt(4, code.getSolde());
 			//			pst.setInt(5, code.getPiscine().getIdPiscine());
-			pst.setInt(5, code.getOffre().getIdOffre());
+			pst.setInt(4, code.getOffre().getIdOffre());
 			pst.execute();
 			//			ResultSet rs = pst.getGeneratedKeys();
 			//			if (rs.next()) {
@@ -53,28 +53,21 @@ public class CodeDAO extends DAO<Code> {
 		} catch (SQLException e) {
 			succes = false;
 			e.printStackTrace();
-			// TODO gerer les erreurs si clé etrangeres inexistantes
+			// gerer les erreurs si clÃ© etrangeres inexistantes
 			if (code.getOffre().getIdOffre() ==-1) {
-				//OffreDAO.getInstance().create(offre);
-				//afficher un message d'erreur
+				System.out.println("Offre inexistante");
 			}
 		}
 		return succes;
 	}
 
 	// READ
-	//Obligatoire en int avant d'override en string
 	public Code read(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	public Code read(String id) {
 		Code code = null;
 		try {
 			String requete = "SELECT * FROM " + TABLE + " WHERE " + CLE_PRIMAIRE + " = ? ;";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
-			pst.setString(1, id);
+			pst.setInt(1, id);
 			pst.execute();
 			//			ResultSet rs = Connexion.executeQuery(requete);
 			ResultSet rs =pst.getResultSet();
@@ -100,7 +93,7 @@ public class CodeDAO extends DAO<Code> {
 //		int solde = obj.getSolde();
 		//		int idPiscine = obj.getPiscine().getIdPiscine();
 		int idOffre = obj.getOffre().getIdOffre();
-		String idCode = obj.getIdCode();
+		int idCode = obj.getIdCode();
 
 		try {
 			String requete = "UPDATE " + TABLE
@@ -112,7 +105,7 @@ public class CodeDAO extends DAO<Code> {
 //			pst.setInt(3, solde);
 			//			pst.setInt(4, idPiscine);
 			pst.setInt(4, idOffre);
-			pst.setString(5, idCode);
+			pst.setInt(5, idCode);
 			pst.executeUpdate();
 			//			System.out.println(idCode);
 		} catch (SQLException e) {
@@ -126,10 +119,10 @@ public class CodeDAO extends DAO<Code> {
 	public boolean delete(Code obj) {
 		boolean succes = true;
 		try {
-			String idCode = obj.getIdCode();
+			int idCode = obj.getIdCode();
 			String requete = "DELETE FROM " + TABLE + " WHERE " + CLE_PRIMAIRE + " = ?";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
-			pst.setString(1, idCode);
+			pst.setInt(1, idCode);
 			pst.executeUpdate();
 		} catch (SQLException e) {
 			succes = false;
