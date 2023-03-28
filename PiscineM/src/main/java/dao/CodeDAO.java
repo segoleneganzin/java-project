@@ -38,7 +38,7 @@ public class CodeDAO extends DAO<Code> {
 		try {
 			String requete = "INSERT INTO " + TABLE + " (" + CLE_PRIMAIRE + ", " + ACHAT + ", " + ECHEANCE + ", " + OFFRE + ") VALUES (?, ?, ?, ?)";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
-			pst.setInt(1, code.getIdCode());
+			pst.setString(1, code.getIdCode());
 			pst.setObject(2, code.getDateAchat());
 			pst.setObject(3, code.getDateEcheance());
 //			pst.setInt(4, code.getSolde());
@@ -93,7 +93,7 @@ public class CodeDAO extends DAO<Code> {
 //		int solde = obj.getSolde();
 		//		int idPiscine = obj.getPiscine().getIdPiscine();
 		int idOffre = obj.getOffre().getIdOffre();
-		int idCode = obj.getIdCode();
+		String idCode = obj.getIdCode();
 
 		try {
 			String requete = "UPDATE " + TABLE
@@ -105,7 +105,7 @@ public class CodeDAO extends DAO<Code> {
 //			pst.setInt(3, solde);
 			//			pst.setInt(4, idPiscine);
 			pst.setInt(4, idOffre);
-			pst.setInt(5, idCode);
+			pst.setString(5, idCode);
 			pst.executeUpdate();
 			//			System.out.println(idCode);
 		} catch (SQLException e) {
@@ -119,10 +119,10 @@ public class CodeDAO extends DAO<Code> {
 	public boolean delete(Code obj) {
 		boolean succes = true;
 		try {
-			int idCode = obj.getIdCode();
+			String idCode = obj.getIdCode();
 			String requete = "DELETE FROM " + TABLE + " WHERE " + CLE_PRIMAIRE + " = ?";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
-			pst.setInt(1, idCode);
+			pst.setString(1, idCode);
 			pst.executeUpdate();
 		} catch (SQLException e) {
 			succes = false;

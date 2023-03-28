@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class Code {
-	private int idCode = -1; // valeur par defaut pour la gestion des erreurs
+	private String idCode = "no"; // valeur par defaut pour la gestion des erreurs
 	private LocalDateTime dateAchat;
 	private LocalDate dateEcheance;
 	private int solde;
@@ -14,7 +14,7 @@ public class Code {
 
 	private List<Utilisation> lesUtilisations; // TODO ajouter les utilisation du code dans cette liste
 
-	public Code(int idCode, LocalDateTime dateAchat, LocalDate dateEcheance, Offre offre) {
+	public Code(String idCode, LocalDateTime dateAchat, LocalDate dateEcheance, Offre offre) {
 		super();
 		this.idCode = idCode;
 		this.dateAchat = dateAchat;
@@ -23,11 +23,11 @@ public class Code {
 		this.offre = offre;
 	}
 
-	public int getIdCode() {
+	public String getIdCode() {
 		return idCode;
 	}
 
-	public void setIdCode(int idCode) {
+	public void setIdCode(String idCode) {
 		this.idCode = idCode;
 	}
 
