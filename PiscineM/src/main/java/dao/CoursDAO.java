@@ -26,8 +26,8 @@ public class CoursDAO extends DAO<Cours> {
 	private static final String EMPLOYE = "idEmp";
 	private static final String PISCINE = "idPiscine";
 	private static final String PARTICIPE = "participe";
-	private static final String ID_CODE_PROPOSE = "idCode";
-	private static final String ID_COURS_PROPOSE = "idCours";
+	private static final String ID_CODE_PARTICIPE = "idCode";
+	private static final String ID_COURS_PARTICIPE = "idCours";
 	
 	private static CoursDAO instance=null;
 
@@ -71,12 +71,10 @@ public class CoursDAO extends DAO<Cours> {
 			e.printStackTrace();
 			// TODO gerer les erreurs si clé etrangeres inexistantes
 			if (cours.getEmploye().getIdEmp() == -1) {
-				//EmployeDAO.getInstance().create(employe);
-				//afficher un message d'erreur
+				System.out.println("Employe inexistant");
 			}
 			if (cours.getPiscine().getIdPiscine() == -1) {
-				//EmployeDAO.getInstance().create(employe);
-				//afficher un message d'erreur
+				System.out.println("Piscine inexistante");
 			}
 		}
 		return succes;
@@ -97,10 +95,10 @@ public class CoursDAO extends DAO<Cours> {
 			Employe employe = EmployeDAO.getInstance().read(rs.getInt(EMPLOYE));
 			Piscine piscine = PiscineDAO.getInstance().read(rs.getInt(PISCINE));
 			List<Code> lesCodes = new ArrayList<Code>();
-			requete = "SELECT * FROM " + PARTICIPE + " WHERE " + ID_COURS_PROPOSE + "=" + id + ";";
+			requete = "SELECT * FROM " + PARTICIPE + " WHERE " + ID_COURS_PARTICIPE + "=" + id + ";";
 			rs = Connexion.executeQuery(requete);
 			while (rs.next()) {
-				String idCode = rs.getString(ID_CODE_PROPOSE);
+				String idCode = rs.getString(ID_CODE_PARTICIPE);
 				Code code = CodeDAO.getInstance().read(idCode);
 				lesCodes.add(code);
 			}

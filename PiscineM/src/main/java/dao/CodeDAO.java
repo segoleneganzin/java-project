@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import piscine.Adresse;
 import piscine.Code;
 import piscine.Offre;
 
@@ -53,10 +52,9 @@ public class CodeDAO extends DAO<Code> {
 		} catch (SQLException e) {
 			succes = false;
 			e.printStackTrace();
-			// TODO gerer les erreurs si clé etrangeres inexistantes
+			// gerer les erreurs si clé etrangeres inexistantes
 			if (code.getOffre().getIdOffre() ==-1) {
-				//OffreDAO.getInstance().create(offre);
-				//afficher un message d'erreur
+				System.out.println("Offre inexistante");
 			}
 		}
 		return succes;

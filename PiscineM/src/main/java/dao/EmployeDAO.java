@@ -83,11 +83,9 @@ public class EmployeDAO extends DAO<Employe> {
 		} catch (SQLException e) {
 			succes = false;
 			e.printStackTrace();
-			// TODO gerer les erreurs si clé etrangeres inexistantes
-			// vérifier que l'adresse a un identifiant sinon create dans Adresse
+			// gerer les erreurs si clé etrangeres inexistantes
 			if (employe.getAdresse().getIdAdresse() ==-1) {
-				//AdresseDAO.getInstance().create(adresse);
-				//afficher un message d'erreur
+				System.out.println("Adresse inexistante");
 			}
 		}
 		return succes;
