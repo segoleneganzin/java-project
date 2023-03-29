@@ -74,6 +74,21 @@ public class AccueilController {
         }
     }
     
+    @FXML
+    private Button solde;
+
+    @FXML
+    void AfficherSolde(ActionEvent event) {
+
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("../ihm/Solde.fxml"));
+            Scene scene = new Scene(root);
+            Main.stage.setScene(scene);
+            Main.stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 	@FXML
     private Button ticket;
 
