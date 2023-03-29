@@ -10,10 +10,10 @@ import piscine.Main;
 
 public class AboController {
 	   @FXML
-	    private Button retour;
+	    private Button AboToAcc;
 
 	    @FXML
-	    void Retour(ActionEvent event) {
+	    void AboToAcc(ActionEvent event) {
 
 	        try {
 	            Parent root = FXMLLoader.load(getClass().getResource("../ihm/Accueil.fxml"));
