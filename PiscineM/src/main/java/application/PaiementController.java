@@ -9,34 +9,34 @@ import javafx.scene.control.Button;
 import piscine.Main;
 
 public class PaiementController {
-       @FXML
-        private Button retour;
+	   @FXML
+	    private Button home;
 
-        @FXML
-        void Retour() {
+	    @FXML
+	    void home(ActionEvent event) {
 
-            try {
-                Parent root = FXMLLoader.load(getClass().getResource("../ihm/Accueil.fxml"));
-                Scene scene = new Scene(root);
-                Main.stage.setScene(scene);
-                Main.stage.show();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-           @FXML
-            private Button validepay ;
+	        try {
+	            Parent root = FXMLLoader.load(getClass().getResource("../ihm/Accueil.fxml"));
+	            Scene scene = new Scene(root);
+	            Main.stage.setScene(scene);
+	            Main.stage.show();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
+		   @FXML
+		    private Button validepay ;
 
-            @FXML
-            void validatepay(ActionEvent event) {
+		    @FXML
+		    void validatepay(ActionEvent event) {
 
-                try {
-                    Parent root = FXMLLoader.load(getClass().getResource("../ihm/Transaction.fxml"));
-                    Scene scene = new Scene(root);
-                    Main.stage.setScene(scene);
-                    Main.stage.show();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
+		        try {
+		            Parent root = FXMLLoader.load(getClass().getResource("../ihm/Transaction.fxml"));
+		            Scene scene = new Scene(root);
+		            Main.stage.setScene(scene);
+		            Main.stage.show();
+		        } catch (Exception e) {
+		            e.printStackTrace();
+		        }
+		    }
 }
