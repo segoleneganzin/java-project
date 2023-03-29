@@ -67,7 +67,6 @@ public class UtilisationDAO  extends DAO<Utilisation> {
 			pst.setObject(1, dateUtilisation);
 			pst.setString(2, idCode);
 			pst.execute();
-			//			ResultSet rs = Connexion.executeQuery(requete);
 			ResultSet rs =pst.getResultSet();
 			rs.next();
 			dateUtilisation = rs.getTimestamp(DATE_UTILISATION).toLocalDateTime();
