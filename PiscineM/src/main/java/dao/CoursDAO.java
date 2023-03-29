@@ -84,8 +84,11 @@ public class CoursDAO extends DAO<Cours> {
 	public Cours read(int id) {
 		Cours cours = null;
 		try {
-			String requete = "SELECT * FROM "+TABLE+" WHERE "+CLE_PRIMAIRE+"="+id+";";
-			ResultSet rs = Connexion.executeQuery(requete);
+			String requete = "SELECT * FROM " + TABLE + " WHERE " + CLE_PRIMAIRE + " = ? ;";
+			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			pst.setInt(1, id);
+			pst.execute();			
+			ResultSet rs =pst.getResultSet();
 			rs.next();
 			String intitule = rs.getString(INTITULE);
 			LocalDateTime horairedebut = rs.getTimestamp(HORAIREDEBUT).toLocalDateTime();

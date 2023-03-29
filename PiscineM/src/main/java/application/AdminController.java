@@ -39,10 +39,6 @@ public class AdminController {
         	}
 
     }
-
-	
-	
-	
-	
 	
 }
+

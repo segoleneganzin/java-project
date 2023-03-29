@@ -14,14 +14,13 @@ public class Code {
 
 	private List<Utilisation> lesUtilisations; //TODO ajouter les utilisation du code dans cette liste
 	
-	//	public Code(LocalDateTime dateAchat, LocalDateTime dateEcheance, int solde, Catalogue catalogue) {
-	//		super();
-	//		this.dateAchat = dateAchat;
-	//		this.dateEcheance = dateEcheance;
-	//		this.solde = solde;
-	////		this.piscine = piscine;
-	//		this.catalogue = catalogue;
-	//	}
+		public Code(LocalDateTime dateAchat, LocalDate dateEcheance, Offre offre) {
+			super();
+			this.dateAchat = dateAchat;
+			this.dateEcheance = dateEcheance;
+	//		this.piscine = piscine;
+			this.offre = offre;
+		}
 
 	public Code(String idCode, LocalDateTime dateAchat, LocalDate dateEcheance, Offre offre) {
 		super();

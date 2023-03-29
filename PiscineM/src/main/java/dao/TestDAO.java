@@ -1,33 +1,8 @@
 package dao;
 
-import java.security.SecureRandom;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
-import piscine.Code;
+import piscine.Adresse;
 
 public class TestDAO {
-	
-	// Méthode pour générer un mot de passe alphanumérique aléatoire d'une longueur spécifique
-			public static String generateRandomPassword(int len){
-			
-				// Gamme ASCII – alphanumérique (0-9, a-z, A-Z)
-				final String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-				SecureRandom random = new SecureRandom();
-				StringBuilder sb = new StringBuilder();
-
-				// chaque itération de la boucle choisit aléatoirement un caractère parmi les données
-				// Plage ASCII et l'ajoute à l'instance `StringBuilder`
-
-				for (int i = 0; i < len; i++)
-				{
-					int randomIndex = random.nextInt(chars.length());
-					sb.append(chars.charAt(randomIndex));
-				}
-
-				return sb.toString();
-			}
 			
 	public static void main(String[] args) {
 		//////////////////////////////////////////////////////////TEST OFFRE
@@ -56,7 +31,7 @@ public class TestDAO {
 //			AdresseDAO.getInstance().create(adresse);
 		
 		//Read d'une adresse :
-//			Adresse adresse = AdresseDAO.getInstance().read(9);
+			Adresse adresse = AdresseDAO.getInstance().read(1);
 //			System.out.println("read : " + adresse);
 		
 		//Update d'une adresse :
@@ -66,7 +41,7 @@ public class TestDAO {
 //			System.out.println("update : " + adresse);
 		
 		//Delete d'une adresse :
-//			AdresseDAO.getInstance().delete(adresse);
+			AdresseDAO.getInstance().delete(adresse);
 		
 		
 //////////////////////////////////////////////////////////TEST COURS
@@ -95,7 +70,7 @@ public class TestDAO {
 //			PiscineDAO.getInstance().create(p1);
 
 		//read d'une piscine :
-//			Piscine p2 = PiscineDAO.getInstance().read(7);
+//			Piscine p2 = PiscineDAO.getInstance().read(5);
 //			System.out.println(p2);
 		
 		//update d'une piscine :
@@ -133,39 +108,39 @@ public class TestDAO {
 		//delete d'un employe :
 //				EmployeDAO.getInstance().delete(employe);
 					
+			
 		
 //////////////////////////////////////////////////////////TEST CODE
 //		Creation d'un code :
-//				int len = 10;
-//				Code code = new Code(null, null, null, OffreDAO.getInstance().read(2));
-//				code.setIdCode(generateRandomPassword(len));
+//				Code code = new Code(null, null, OffreDAO.getInstance().read(2));
 //				code.setDateAchat(LocalDateTime.now());
 //				//automatisation de la date d'echeance du code :
+//				//TODO automatiser en fonction de offre.dureeValidite
 //				code.setDateEcheance(LocalDate.now().plusMonths(10).plusDays(1));
 //				CodeDAO.getInstance().create(code);
 		
 		//read d'un code
-				Code code = CodeDAO.getInstance().read("oEE3D7tavV");
+//				Code code = CodeDAO.getInstance().read("To9re9m5sT");
 
 		//update d'un  code
-		//		code.setDateEcheance(LocalDateTime.of(2024, Month.AUGUST, 01, 12, 30, 00));
-		//		code.setCatalogue(CatalogueDAO.getInstance().read(2));
-		//		CodeDAO.getInstance().update(code);
+//				code.setDateEcheance(LocalDateTime.of(2024, Month.AUGUST, 01, 12, 30, 00));
+//				code.setOffre(OffreDAO.getInstance().read(3));
+//				CodeDAO.getInstance().update(code);
 
 		//delete d'un code
 //				CodeDAO.getInstance().delete(code);
 
-		System.out.println(code);
+//		System.out.println(code);
 		
 		
 //////////////////////////////////////////////////////////TEST UTILISATION
 		//Creation d'une utilisation :
-//			Utilisation utilisation = new Utilisation(LocalDateTime.now(), CodeDAO.getInstance().read("gvdkjqsnbukb"), PiscineDAO.getInstance().read(1));
+//			Utilisation utilisation = new Utilisation(LocalDateTime.now(), CodeDAO.getInstance().read("To9re9m5sT"), PiscineDAO.getInstance().read(1));
 //			UtilisationDAO.getInstance().create(utilisation);
 //			System.out.println(utilisation);
 		
 		//read d'une utilisation
-//			Utilisation utilisation = UtilisationDAO.getInstance().read(LocalDateTime.parse("2023-01-17T10:16:50.450") , "gvdkjqsnbukb");
+//			Utilisation utilisation = UtilisationDAO.getInstance().read(LocalDateTime.parse("2023-03-29T14:30:48.163") , "To9re9m5sT");
 //			System.out.println(utilisation);
 		
 		//update d'une utilisation : jamais utilisé
@@ -176,7 +151,7 @@ public class TestDAO {
 		
 //////////////////////////////////////////////////////////TEST ADMINISTRATEUR
 		// Création d'un administrateur :
-//				Administrateur administrateur = new Administrateur(EmployeDAO.getInstance().read(2), "Test", "TestMdp");
+//				Administrateur administrateur = new Administrateur(EmployeDAO.getInstance().read(4), "Test", "TestMdp");
 //				AdministrateurDAO.getInstance().create(administrateur);
 
 		// Read d'un admin :
@@ -184,9 +159,9 @@ public class TestDAO {
 //				System.out.println(administrateur);
 		
 		//		Update d'un admin :
-//				administrateur.setEmploye(EmployeDAO.getInstance().read(2));
-//				administrateur.setIdentifiant("Coucou");
-//				administrateur.setMdp("coucou");
+//				administrateur.setEmploye(EmployeDAO.getInstance().read(3)); 	// utile ?
+//				administrateur.setIdentifiant("hello");
+//				administrateur.setMdp("mdp");
 //				AdministrateurDAO.getInstance().update(administrateur);
 		
 		//		// Delete d'un admin :

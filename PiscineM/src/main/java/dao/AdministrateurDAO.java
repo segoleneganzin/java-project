@@ -43,7 +43,7 @@ public class AdministrateurDAO extends DAO<Administrateur> {
 			// gerer les erreurs si clé etrangeres inexistantes
 			if (administrateur.getEmploye().getIdEmp() ==-1) {
 				//afficher un message d'erreur
-				System.out.println("Employé inexistante");
+				System.out.println("Employé inexistant");
 			}
 		}
 		return succes;

@@ -96,8 +96,11 @@ public class EmployeDAO extends DAO<Employe> {
 	public Employe read(int id) {
 		Employe employe = null;
 		try {
-			String requete = "SELECT * FROM " + TABLE + " WHERE " + CLE_PRIMAIRE + "=" + id + ";";
-			ResultSet rs = Connexion.executeQuery(requete);
+			String requete = "SELECT * FROM " + TABLE + " WHERE " + CLE_PRIMAIRE + " = ? ;";
+			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			pst.setInt(1, id);
+			pst.execute();			
+			ResultSet rs =pst.getResultSet();
 			rs.next();
 			String nom = rs.getString(NOM);
 			String prenom = rs.getString(PRENOM);
@@ -149,8 +152,7 @@ public class EmployeDAO extends DAO<Employe> {
 			
 			
 		//Update des piscines ou l'employe travail :
-
-			
+//			
 //			for (Piscine piscine : obj.getLesPiscines()) {
 //				if (piscine.getIdPiscine()==-1) {
 //					PiscineDAO.getInstance().create(piscine);
@@ -158,36 +160,40 @@ public class EmployeDAO extends DAO<Employe> {
 //			}
 //			//on reccupere la liste des piscine ou l'employe travail :
 //			List<Integer> IlesPiscinesTravail = new ArrayList<Integer>();
-//			requete = "SELECT * FROM " + TRAVAILPOUR + " WHERE " + ID_EMP_TRAVAILLEPOUR + "=" + id + ";";
+//			requete = "SELECT * FROM " + TRAVAILLEPOUR + " WHERE " + ID_EMP_TRAVAILLEPOUR + "=" + id + ";";
 //			ResultSet rs = Connexion.executeQuery(requete);
 //			while (rs.next()) {
 //					IlesPiscinesTravail.add(rs.getInt(ID_PISCINE_TRAVAILLEPOUR));
 //			}
-//			
+////			
 //			//on récupère la liste des piscines existantes dans la BD :
 //			List<Integer> IlesPiscinesExistantes = new ArrayList<Integer>();
 //			// Boucle pour sur la liste de piscines dans l'objet employé et insertion dans TRAVAILPOUR des id uniquement
 //			requete = "SELECT * FROM Piscine ;";
 //			ResultSet rs2 = Connexion.executeQuery(requete);
 //			while (rs2.next()) {
-//					IlesPiscinesExistantes.add(rs2.getInt(ID_PISCINE));
+//					IlesPiscinesExistantes.add(rs2.getInt(ID_PISCINE_TRAVAILLEPOUR));
 //			}
 //			//on compare les 2 listes et on stocks les piscines existantes ou l'employe ne travaille pas deja :
 //			//on test l'egalite :
 //			List<Integer> IlesPiscinesDisponibles = new ArrayList<Integer>();
+//			
 //			if (IlesPiscinesTravail.equals(IlesPiscinesExistantes)) {
 //				 System.out.println("L'employé travail dans toutes les piscines");
 //			} else {
 //				for(int i = 0 ; i < IlesPiscinesExistantes.size(); i++) {
-//					for(int j = 0 ; j < IlesPiscinesTravail.size(); i++) {
-//						if (IlesPiscinesExistantes.get(i)==IlesPiscinesTravail.get(j)) {
-//							
+//					for(int j = 0 ; j < IlesPiscinesTravail.size(); j++) {
+//						if (IlesPiscinesExistantes.get(i) != IlesPiscinesTravail.get(j)) {
+//							IlesPiscinesDisponibles.add(IlesPiscinesExistantes.get(i));
 //						}
 //					}
 //				}
 //			}
-//			
-//			requete = "UPDATE " + TRAVAILPOUR +  " SET idEmp = "+ id +", idPiscine = ? ";			
+			
+			//Afficher les piscines disponibles sous la forme d'un select qui propose les piscines disponibles et qui va add a une liste.
+			//Prevoir la possibilité de supprimer une piscine de la liste IlesPiscinesTravail
+			
+//			requete = "UPDATE " + TRAVAILLEPOUR +  " SET idEmp = ?, idPiscine = ? ";			
 //			for (Piscine piscine : obj.getLesPiscines()) {
 //				PreparedStatement pst2 = Connexion.getInstance().prepareStatement(requete);
 //				pst2.setInt(1, id);

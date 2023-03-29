@@ -70,8 +70,11 @@ public class PiscineDAO extends DAO<Piscine> {
 	public Piscine read(int id) {
 		Piscine piscine = null;
 		try {
-			String requete = "SELECT * FROM "+TABLE+" WHERE "+CLE_PRIMAIRE+"="+id+";";
-			ResultSet rs = Connexion.executeQuery(requete);
+			String requete = "SELECT * FROM " + TABLE + " WHERE " + CLE_PRIMAIRE + " = ? ;";
+			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			pst.setInt(1, id);
+			pst.execute();			
+			ResultSet rs =pst.getResultSet();
 			rs.next();
 			String nomPiscine = rs.getString(NOM);
 			String horaireFerm = rs.getString(HORAIREFERM);
@@ -121,7 +124,8 @@ public class PiscineDAO extends DAO<Piscine> {
 			pst.executeUpdate() ;
 		} catch (SQLException e) {
 			succes = false;
-			e.printStackTrace();
+//			e.printStackTrace();
+			System.out.println("Attention la piscine est utilisée dans au moins une autre table (utilisation, cours, travail)");
 		} 
 		return succes;		
 	}

@@ -40,3 +40,4 @@
       <Button fx:id="reglement" layoutX="79.0" layoutY="379.0" mnemonicParsing="false" onAction="#AfficherReglement" prefHeight="46.0" prefWidth="122.0" text="Réglement" />
    </children>
 </AnchorPane>
+

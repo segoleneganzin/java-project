@@ -40,3 +40,4 @@
       <Button fx:id="aboduo" layoutX="226.0" layoutY="164.0" mnemonicParsing="false" prefHeight="73.0" prefWidth="112.0" text="Abonnement Duo" />
    </children>
 </AnchorPane>
+

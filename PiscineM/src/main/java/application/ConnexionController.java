@@ -39,10 +39,7 @@ public class ConnexionController {
         	}
 
     }
-
-	
-	
-	
-	
 	
 }
+
+

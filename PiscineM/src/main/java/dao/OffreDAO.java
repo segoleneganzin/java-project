@@ -59,8 +59,11 @@ public class OffreDAO extends DAO<Offre> {
 	public Offre read(int id) {
 		Offre offre = null;
 		try {
-			String requete = "SELECT * FROM "+TABLE+" WHERE "+CLE_PRIMAIRE+"="+id+";";
-			ResultSet rs = Connexion.executeQuery(requete);
+			String requete = "SELECT * FROM " + TABLE + " WHERE " + CLE_PRIMAIRE + " = ? ;";
+			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			pst.setInt(1, id);
+			pst.execute();			
+			ResultSet rs =pst.getResultSet();
 			rs.next();
 			int validite = rs.getInt(VALIDITE);
 			int nbplace = rs.getInt(NBPLACE);
@@ -113,7 +116,8 @@ public class OffreDAO extends DAO<Offre> {
 			pst.executeUpdate() ;
 		} catch (SQLException e) {
 			succes = false;
-			e.printStackTrace();
+//			e.printStackTrace();
+			System.out.println("Attention l'offre est utilisée dans une autre table (code)");
 		} 
 		return succes;		
 	}

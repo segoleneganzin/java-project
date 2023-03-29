@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 	
 	public static Stage stage;
-    @Override
+	@Override
     public void start(Stage racine) throws Exception {
         // Nœud racine.
     	Main.stage = racine;

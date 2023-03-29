@@ -16,9 +16,10 @@ public class Administrateur {
 		return employe;
 	}
 	
-	public void setEmploye(Employe employe) {
-		this.employe = employe;
-	}
+	//Jamais utilisé 
+//	public void setEmploye(Employe employe) {
+//		this.employe = employe;
+//	}
 	
 	public String getIdentifiant() {
 		return identifiant;
