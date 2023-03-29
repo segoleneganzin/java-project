@@ -25,9 +25,9 @@
             <Font size="25.0" />
          </font>
       </Label>
-      <Button layoutX="481.0" layoutY="400.0" mnemonicParsing="false" text="Admin" />
+      <Button fx:id="admin" layoutX="481.0" layoutY="400.0" mnemonicParsing="false" onAction="#AfficherAdmin" prefHeight="85.0" prefWidth="163.0" text="Admin" />
       <Button fx:id="abo" layoutX="79.0" layoutY="141.0" mnemonicParsing="false" onAction="#AfficherAbo" prefHeight="85.0" prefWidth="163.0" text="Nos abonnements" />
-      <Button layoutX="309.0" layoutY="141.0" mnemonicParsing="false" prefHeight="85.0" prefWidth="163.0" text="Réserver un cours " />
+      <Button fx:id="cours" layoutX="309.0" layoutY="141.0" mnemonicParsing="false" onAction="#AfficherCours" prefHeight="85.0" prefWidth="163.0" text="Réserver un cours" />
       <Button layoutX="79.0" layoutY="261.0" mnemonicParsing="false" prefHeight="85.0" prefWidth="163.0" text="Consulter solde " />
       <Button fx:id="ticket" layoutX="309.0" layoutY="261.0" mnemonicParsing="false" onAction="#AfficherTicket" prefHeight="85.0" prefWidth="163.0" text="Acheter ticket(s)" />
       <ImageView fitHeight="99.0" fitWidth="107.0" layoutX="-11.0" layoutY="-5.0">

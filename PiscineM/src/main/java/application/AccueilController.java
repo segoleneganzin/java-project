@@ -58,6 +58,21 @@ public class AccueilController {
         }
     }
     
+    @FXML
+    private Button cours;
+
+    @FXML
+    void AfficherCours(ActionEvent event) {
+
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("../ihm/Cours.fxml"));
+            Scene scene = new Scene(root);
+            Main.stage.setScene(scene);
+            Main.stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     
 	@FXML
     private Button ticket;
@@ -75,5 +90,20 @@ public class AccueilController {
         }
     }    
     
-    
+	@FXML
+    private Button admin;
+
+    @FXML
+    void AfficherAdmin(ActionEvent event) {
+
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("../ihm/Connexion.fxml"));
+            Scene scene = new Scene(root);
+            Main.stage.setScene(scene);
+            Main.stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
