@@ -120,7 +120,7 @@ public class CodeDAO extends DAO<Code> {
 				Cours cours= CoursDAO.getInstance().read(idCours);
 				lesCours.add(cours);
 			}
-			code = new Code(id, dateAchat, dateEcheance.toLocalDate(), idOffre, lesCours);
+			code = new Code(id, dateAchat, dateEcheance, idOffre, lesCours);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -133,7 +133,7 @@ public class CodeDAO extends DAO<Code> {
 		boolean succes = true;
 
 		LocalDateTime dateAchat = obj.getDateAchat();
-		LocalDate dateEcheance = obj.getDateEcheance();
+		LocalDateTime dateEcheance = obj.getDateEcheance();
 		//		int solde = obj.getSolde();
 		int idOffre = obj.getOffre().getIdOffre();
 		String idCode = obj.getIdCode();
