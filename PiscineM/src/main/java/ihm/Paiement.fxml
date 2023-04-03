@@ -19,6 +19,7 @@
          </image>
       </ImageView>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="106.0" prefHeight="36.0" prefWidth="406.0" text="Montant total de votre transaction :">
+
          <font>
             <Font size="25.0" />
          </font>
@@ -41,4 +42,6 @@
       </ImageView>
       <Button fx:id="validepay" layoutX="476.0" layoutY="400.0" mnemonicParsing="false" onAction="#validatepay" text="Valider" />
    </children>
+
 </AnchorPane>
+

@@ -15,19 +15,25 @@
    <children>
       <ImageView fitHeight="439.0" fitWidth="546.0">
          <image>
+
             <Image url="@../../../Images/HD-wallpaper-sports-swimming-pool-underwater-blue-water-25-meter-swimming-pool-swimming-concepts.jpg" />
+
          </image>
       </ImageView>
       <ImageView fitHeight="99.0" fitWidth="112.0" layoutY="27.0">
          <image>
+
             <Image url="@../../../Images/logo_remi.png" />
+
          </image>
       </ImageView>
       <Button fx:id="retour" layoutX="14.0" layoutY="383.0" mnemonicParsing="false" onAction="#Retour" prefHeight="25.0" prefWidth="38.0">
          <graphic>
             <ImageView fitHeight="34.0" fitWidth="34.0">
                <image>
+
                   <Image url="@../../../Images/93634.png" />
+
                </image>
             </ImageView>
          </graphic>
@@ -40,4 +46,6 @@
       </Text>
       <Button layoutX="266.0" layoutY="293.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="84.0" text="Valider" />
    </children>
+
 </AnchorPane>
+

@@ -55,14 +55,18 @@
          <graphic>
             <ImageView fitHeight="34.0" fitWidth="34.0">
                <image>
+
                   <Image url="@../../../Images/93634.png" />
+
                </image>
             </ImageView>
          </graphic>
       </Button>
       <ImageView fitHeight="36.0" fitWidth="38.0" layoutX="154.0" layoutY="260.0">
          <image>
+
             <Image url="@../../../Images/2089795.png" />
+
          </image>
       </ImageView>
    </children>
