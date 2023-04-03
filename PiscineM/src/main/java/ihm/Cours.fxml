@@ -15,19 +15,19 @@
    <children>
       <ImageView fitHeight="439.0" fitWidth="546.0">
          <image>
-            <Image url="@../../../../Images/25223-190315153009072-0.jpg" />
+            <Image url="@../../../Images/25223-190315153009072-0.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="99.0" fitWidth="112.0" layoutY="27.0">
          <image>
-            <Image url="@../../../../Images/logo_remi.png" />
+            <Image url="@../../../Images/logo_remi.png" />
          </image>
       </ImageView>
       <Button fx:id="retour" layoutX="14.0" layoutY="5.0" mnemonicParsing="false" onAction="#AboToAcc" prefHeight="25.0" prefWidth="38.0">
          <graphic>
             <ImageView fitHeight="34.0" fitWidth="34.0">
                <image>
-                  <Image url="@../../../../Images/logo_remi.png" />
+                  <Image url="@../../../Images/93634.png" />
                </image>
             </ImageView>
          </graphic>
