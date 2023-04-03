@@ -8,14 +8,13 @@ import java.util.List;
 public class Code {
 	private String idCode = "no";	//valeur par defaut pour la gestion des erreurs
 	private LocalDateTime dateAchat;
-	private LocalDate dateEcheance;
+	private LocalDateTime dateEcheance;
 	//	private int solde;
 	private Offre offre; // cle etrangere qui fera le lien avec offre
 	
 	private List<Cours> lesCours= new ArrayList<Cours>();
-//	private List<Utilisation> lesUtilisations= new ArrayList<Utilisation>(); //TODO ajouter les utilisation du code dans cette liste
 
-	public Code(LocalDateTime dateAchat, LocalDate dateEcheance, Offre offre, List<Cours> lesCours) {
+	public Code(LocalDateTime dateAchat, LocalDateTime dateEcheance, Offre offre, List<Cours> lesCours) {
 		super();
 		this.dateAchat = dateAchat;
 		this.dateEcheance = dateEcheance;
@@ -23,7 +22,7 @@ public class Code {
 		this.lesCours = lesCours;
 	}
 
-	public Code(String idCode, LocalDateTime dateAchat, LocalDate dateEcheance, Offre offre, List<Cours> lesCours) {
+	public Code(String idCode, LocalDateTime dateAchat, LocalDateTime dateEcheance, Offre offre, List<Cours> lesCours) {
 		super();
 		this.idCode = idCode;
 		this.dateAchat = dateAchat;
@@ -48,11 +47,11 @@ public class Code {
 		this.dateAchat = dateAchat;
 	}
 
-	public LocalDate getDateEcheance() {
+	public LocalDateTime getDateEcheance() {
 		return dateEcheance;
 	}
 
-	public void setDateEcheance(LocalDate dateEcheance) {
+	public void setDateEcheance(LocalDateTime dateEcheance) {
 		this.dateEcheance = dateEcheance;
 	}
 

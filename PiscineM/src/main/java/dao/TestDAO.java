@@ -57,7 +57,7 @@ public class TestDAO {
 		//			CoursDAO.getInstance().create(cours);
 
 		//read d'un cours :
-					Cours cours = CoursDAO.getInstance().read(4);
+//					Cours cours = CoursDAO.getInstance().read(4);
 		//			System.out.println(cours);
 
 		//update d'un cours :
@@ -66,7 +66,7 @@ public class TestDAO {
 		//			System.out.println(cours);
 
 		//delete d'un cours :
-					CoursDAO.getInstance().delete(cours);
+//					CoursDAO.getInstance().delete(cours);
 
 
 		//////////////////////////////////////////////////////////TEST PISCINE
@@ -116,27 +116,23 @@ public class TestDAO {
 
 
 
-		//////////////////////////////////////////////////////////TEST CODE
-		//		Creation d'un code :
-		//				Code code = new Code(null, null, OffreDAO.getInstance().read(2));
-		//				code.setDateAchat(LocalDateTime.now());
-		//				//automatisation de la date d'echeance du code :
-		//				//TODO automatiser en fonction de offre.dureeValidite
-		//				code.setDateEcheance(LocalDate.now().plusMonths(10).plusDays(1));
-		//				CodeDAO.getInstance().create(code);
+//////////////////////////////////////////////////////////TEST CODE
+//Creation d'un code :
+//Code code = new Code(null, null, OffreDAO.getInstance().read(9));
+//code.setDateAchat(LocalDateTime.now());
 
-		//read d'un code
-		//				Code code = CodeDAO.getInstance().read("To9re9m5sT");
+// read d'un code
+Code code = CodeDAO.getInstance().read("DajxDhAxRf");
 
-		//update d'un  code
-		//				code.setDateEcheance(LocalDateTime.of(2024, Month.AUGUST, 01, 12, 30, 00));
-		//				code.setOffre(OffreDAO.getInstance().read(3));
-		//				CodeDAO.getInstance().update(code);
+// update d'un code
+code.setDateAchat(LocalDateTime.of(2000, Month.AUGUST, 01, 12, 30, 00));
+code.setOffre(OffreDAO.getInstance().read(7));
+CodeDAO.getInstance().update(code);
 
-		//delete d'un code
-		//				CodeDAO.getInstance().delete(code);
+// delete d'un code
+//CodeDAO.getInstance().delete(code);
 
-		//		System.out.println(code);
+System.out.println(code);
 
 
 		//////////////////////////////////////////////////////////TEST UTILISATION

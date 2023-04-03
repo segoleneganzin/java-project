@@ -13,7 +13,7 @@ import java.util.List;
 import piscine.Code;
 import piscine.Cours;
 import piscine.Offre;
-import piscine.Piscine;
+
 
 public class CodeDAO extends DAO<Code> {
 	private static final String CLE_PRIMAIRE = "idCode";
@@ -57,6 +57,11 @@ public class CodeDAO extends DAO<Code> {
 		return sb.toString();
 	}
 
+	public static LocalDateTime dateEcheance(Offre offre) {
+		LocalDateTime dureeVal = LocalDateTime.now().plusMonths(offre.getValidite()).plusDays(1);
+		return dureeVal;
+	}
+	
 	// CREATE
 	public boolean create(Code code) {
 		boolean succes = true;
@@ -64,9 +69,11 @@ public class CodeDAO extends DAO<Code> {
 		try {
 			String requete = "INSERT INTO " + TABLE + " (" + CLE_PRIMAIRE + ", " + ACHAT + ", " + ECHEANCE + ", " + OFFRE + ") VALUES (?, ?, ?, ?)";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			LocalDateTime dureeDeValidite = dateEcheance(code.getOffre());
 			code.setIdCode(generatedCode);
 			pst.setString(1, code.getIdCode());
 			pst.setObject(2, code.getDateAchat());
+			code.setDateEcheance(dureeDeValidite);
 			pst.setObject(3, code.getDateEcheance());
 			//			pst.setInt(4, code.getSolde());
 			pst.setInt(4, code.getOffre().getIdOffre());
@@ -183,28 +190,6 @@ public class CodeDAO extends DAO<Code> {
 		return succes;
 	}
 	
-//	public boolean readParticipe(String idCode) {
-//		Code code = null;
-//		try {
-//			String requete = "SELECT * FROM " + PARTICIPE + " WHERE " + CLE_PRIMAIRE + " = ? ;";
-//			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
-//			pst.setString(1, idCode);
-//			pst.execute();			
-//			ResultSet rs =pst.getResultSet();
-//			rs.next();
-//			Cours cours = CoursDAO.getInstance().read(rs.getInt(ID_COURS_PARTICIPE));
-//			List<Cours> lesCours = new ArrayList<Cours>();
-//			while (rs.next()) {
-//				int idC = rs.getInt(ID_COURS_PARTICIPE);
-//				cours = CoursDAO.getInstance().read(idC);
-//				lesCours.add(cours);
-//			}
-//			
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		return cours;
-//	}
 
 
 
