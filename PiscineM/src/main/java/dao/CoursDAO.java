@@ -97,15 +97,15 @@ public class CoursDAO extends DAO<Cours> {
 			int placesrest = rs.getInt(PLACESREST);
 			Employe employe = EmployeDAO.getInstance().read(rs.getInt(EMPLOYE));
 			Piscine piscine = PiscineDAO.getInstance().read(rs.getInt(PISCINE));
-			List<Code> lesCodes = new ArrayList<Code>();
-			requete = "SELECT * FROM " + PARTICIPE + " WHERE " + ID_COURS_PARTICIPE + "=" + id + ";";
-			rs = Connexion.executeQuery(requete);
-			while (rs.next()) {
-				String idCode = rs.getString(ID_CODE_PARTICIPE);
-				Code code = CodeDAO.getInstance().read(idCode);
-				lesCodes.add(code);
-			}
-			cours = new Cours(id, intitule, horairedebut, horairefin, nbplacesini, placesrest, employe, piscine, lesCodes);
+//			List<Code> lesCodes = new ArrayList<Code>();
+//			requete = "SELECT * FROM " + PARTICIPE + " WHERE " + ID_COURS_PARTICIPE + "=" + id + ";";
+//			rs = Connexion.executeQuery(requete);
+//			while (rs.next()) {
+//				String idCode = rs.getString(ID_CODE_PARTICIPE);
+//				Code code = CodeDAO.getInstance().read(idCode);
+//				lesCodes.add(code);
+//			}
+			cours = new Cours(id, intitule, horairedebut, horairefin, nbplacesini, placesrest, employe, piscine);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -153,14 +153,22 @@ public class CoursDAO extends DAO<Cours> {
 		boolean succes=true;
 		try {
 			int id = obj.getIdCours();
-			String requete = "DELETE FROM "+TABLE+" WHERE "+CLE_PRIMAIRE+" = ?";
-			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete) ;
-			pst.setInt(1, id) ;
-			pst.executeUpdate() ;
+			//supprime les lignes de la table participe si un cours est supprime
+			String requete = "DELETE FROM " + PARTICIPE +  " WHERE " + ID_COURS_PARTICIPE +" = ?;";			
+			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			pst.setInt(1, id);
+			pst.executeUpdate();	
+			
+			requete = "DELETE FROM "+TABLE+" WHERE "+CLE_PRIMAIRE+" = ?";
+			PreparedStatement pst2 = Connexion.getInstance().prepareStatement(requete) ;
+			pst2.setInt(1, id) ;
+			pst2.executeUpdate() ;
 		} catch (SQLException e) {
 			succes = false;
 			e.printStackTrace();
 		} 
 		return succes;		
 	}
+
+	
 }

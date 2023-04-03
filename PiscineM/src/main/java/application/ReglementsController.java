@@ -1,4 +1,5 @@
 package application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,13 +8,13 @@ import javafx.scene.control.Button;
 import piscine.Main;
  
 
-public class ReglementController {
+public class ReglementsController {
+
+	@FXML
+    private Button backhome;
 
     @FXML
-    private Button retour;
-
-    @FXML
-    void Retour() {
+    void backhome(ActionEvent event) {
 
         try {
             Parent root = FXMLLoader.load(getClass().getResource("../ihm/Accueil.fxml"));

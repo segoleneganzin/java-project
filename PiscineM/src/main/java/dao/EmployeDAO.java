@@ -25,6 +25,9 @@ public class EmployeDAO extends DAO<Employe> {
 	private static final String TRAVAILLEPOUR = "travail";
 	private static final String ID_EMP_TRAVAILLEPOUR = "idEmp";
 	private static final String ID_PISCINE_TRAVAILLEPOUR = "idPiscine";
+	//Pour la comprehension de lecture :
+	private static final String ID_PISCINE = "idPiscine";
+
 
 	private static EmployeDAO instance = null;
 
@@ -60,16 +63,16 @@ public class EmployeDAO extends DAO<Employe> {
 			if (rs.next()) {
 				employe.setIdEmp(rs.getInt(1));
 			}
-			
+
 			// vérifier pour chaque piscine de la liste de piscines dans l'objet employé qu'il y a une ligne dans la table
 			// piscine de la bd. Si la piscine n'existe pas la créer avec PiscineDAO.getInstance().create()
-			
+
 			for (Piscine piscine : employe.getLesPiscines()) {
 				if (piscine.getIdPiscine()==-1) {
 					PiscineDAO.getInstance().create(piscine);
 				}
 			}
-			
+
 			// Boucle pour sur la liste de piscines dans l'objet employé et insertion dans TRAVAILPOUR des id uniquement
 
 			int idEmp = employe.getIdEmp();
@@ -112,19 +115,19 @@ public class EmployeDAO extends DAO<Employe> {
 			requete = "SELECT * FROM " + TRAVAILLEPOUR + " WHERE " + ID_EMP_TRAVAILLEPOUR + "=" + id + ";";
 			rs = Connexion.executeQuery(requete);
 			while (rs.next()) {
-					int idP = rs.getInt(ID_PISCINE_TRAVAILLEPOUR);
-					Piscine piscine = PiscineDAO.getInstance().read(idP);
-					lesPiscines.add(piscine);
+				int idP = rs.getInt(ID_PISCINE_TRAVAILLEPOUR);
+				Piscine piscine = PiscineDAO.getInstance().read(idP);
+				lesPiscines.add(piscine);
 			}
 			employe = new Employe(id, nom, prenom, fonction, dateNaissance.toLocalDate(), adresse, lesPiscines);
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return employe;
 	}
 
-	// TODO UPDATE employe avec table d'association
+	// UPDATE employe avec table d'association
 	@Override
 	public boolean update(Employe obj) {
 		boolean succes = true;
@@ -149,79 +152,110 @@ public class EmployeDAO extends DAO<Employe> {
 			pst.setInt(6, id);
 			pst.executeUpdate();
 			//			System.out.println(id);
-			
-			
-		//Update des piscines ou l'employe travail :
-//			
-//			for (Piscine piscine : obj.getLesPiscines()) {
-//				if (piscine.getIdPiscine()==-1) {
-//					PiscineDAO.getInstance().create(piscine);
-//				}
-//			}
-//			//on reccupere la liste des piscine ou l'employe travail :
-//			List<Integer> IlesPiscinesTravail = new ArrayList<Integer>();
-//			requete = "SELECT * FROM " + TRAVAILLEPOUR + " WHERE " + ID_EMP_TRAVAILLEPOUR + "=" + id + ";";
-//			ResultSet rs = Connexion.executeQuery(requete);
-//			while (rs.next()) {
-//					IlesPiscinesTravail.add(rs.getInt(ID_PISCINE_TRAVAILLEPOUR));
-//			}
-////			
-//			//on récupère la liste des piscines existantes dans la BD :
-//			List<Integer> IlesPiscinesExistantes = new ArrayList<Integer>();
-//			// Boucle pour sur la liste de piscines dans l'objet employé et insertion dans TRAVAILPOUR des id uniquement
-//			requete = "SELECT * FROM Piscine ;";
-//			ResultSet rs2 = Connexion.executeQuery(requete);
-//			while (rs2.next()) {
-//					IlesPiscinesExistantes.add(rs2.getInt(ID_PISCINE_TRAVAILLEPOUR));
-//			}
-//			//on compare les 2 listes et on stocks les piscines existantes ou l'employe ne travaille pas deja :
-//			//on test l'egalite :
-//			List<Integer> IlesPiscinesDisponibles = new ArrayList<Integer>();
-//			
-//			if (IlesPiscinesTravail.equals(IlesPiscinesExistantes)) {
-//				 System.out.println("L'employé travail dans toutes les piscines");
-//			} else {
-//				for(int i = 0 ; i < IlesPiscinesExistantes.size(); i++) {
-//					for(int j = 0 ; j < IlesPiscinesTravail.size(); j++) {
-//						if (IlesPiscinesExistantes.get(i) != IlesPiscinesTravail.get(j)) {
-//							IlesPiscinesDisponibles.add(IlesPiscinesExistantes.get(i));
-//						}
-//					}
-//				}
-//			}
-			
+
+
+			//Update des piscines ou l'employe travail :
+
+			for (Piscine piscine : obj.getLesPiscines()) {
+				if (piscine.getIdPiscine()==-1) {
+					PiscineDAO.getInstance().create(piscine);
+				}
+			}
+			//on reccupere la liste des piscine ou l'employe travail :
+			List<Integer> lesPiscinesTravail = new ArrayList<Integer>();
+			requete = "SELECT * FROM " + TRAVAILLEPOUR + " WHERE " + ID_EMP_TRAVAILLEPOUR + "=" + id + ";";
+			ResultSet rs = Connexion.executeQuery(requete);
+			while (rs.next()) {
+				lesPiscinesTravail.add(rs.getInt(ID_PISCINE));
+			}
+			//			
+			//on récupère la liste des piscines existantes dans la BD :
+			List<Integer> lesPiscinesExistantes = new ArrayList<Integer>();
+			// Boucle pour sur la liste de piscines dans l'objet employé et insertion dans TRAVAILPOUR des id uniquement
+			requete = "SELECT * FROM Piscine ;";
+			ResultSet rs2 = Connexion.executeQuery(requete);
+			while (rs2.next()) {
+				lesPiscinesExistantes.add(rs2.getInt(ID_PISCINE));
+			}
+			//on compare les 2 listes et on stocks les piscines existantes ou l'employe ne travaille pas deja :
+			//on test l'egalite :
+			List<Integer> lesPiscinesDisponibles = new ArrayList<Integer>();
+
+			if (lesPiscinesTravail.equals(lesPiscinesExistantes)) {
+				System.out.println("L'employé travail dans toutes les piscines");
+			} else {
+				for(int i = 0 ; i < lesPiscinesExistantes.size(); i++) {
+
+					Integer piscineCourante = lesPiscinesExistantes.get(i);
+
+					if (!lesPiscinesTravail.contains(piscineCourante)) {
+						lesPiscinesDisponibles.add(piscineCourante);
+					}
+				}
+			}
+
 			//Afficher les piscines disponibles sous la forme d'un select qui propose les piscines disponibles et qui va add a une liste.
-			//Prevoir la possibilité de supprimer une piscine de la liste IlesPiscinesTravail
+			System.out.println("Les piscines travail : " + lesPiscinesTravail);
+			System.out.println("Les piscines existantes : " + lesPiscinesExistantes);
+			System.out.println("Les piscines disponibles : " + lesPiscinesDisponibles);
+
+			//delete all de travail et reinserer les bonnes lignes
+
+			requete = "DELETE FROM " + TRAVAILLEPOUR +  " WHERE idEmp = ?;";			
+				PreparedStatement pst2 = Connexion.getInstance().prepareStatement(requete);
+				pst2.setInt(1, id);
+				pst2.executeUpdate();		
 			
-//			requete = "UPDATE " + TRAVAILLEPOUR +  " SET idEmp = ?, idPiscine = ? ";			
-//			for (Piscine piscine : obj.getLesPiscines()) {
-//				PreparedStatement pst2 = Connexion.getInstance().prepareStatement(requete);
-//				pst2.setInt(1, id);
-//				pst2.setInt(2, piscine.getIdPiscine());
-//				pst2.executeUpdate();					
-//			}
-		} catch (SQLException e) {
-			succes = false;
-			e.printStackTrace();
+				List<Piscine> lesPiscinesAjoutees = new ArrayList<Piscine>();
+//				lesPiscinesAjoutees.add("recuperer la data des checkboxes");
+				//TODO avec la vue
+				obj.setLesPiscines(lesPiscinesAjoutees);
+				String requete2 = "INSERT INTO " + TRAVAILLEPOUR + " (" + ID_EMP_TRAVAILLEPOUR + ", " + ID_PISCINE_TRAVAILLEPOUR+") VALUES (?, ?)";
+				for (Piscine piscine : obj.getLesPiscines()) {
+					PreparedStatement pst3 = Connexion.getInstance().prepareStatement(requete2);
+					pst3.setInt(1, id);
+					pst3.setInt(2, piscine.getIdPiscine());
+					pst3.executeUpdate();					
+				}
+				
+			} catch (SQLException e) {
+				succes = false;
+				e.printStackTrace();
+			}
+			return succes;
 		}
-		return succes;
-	}
 
-	// DELETE
-	public boolean delete(Employe obj) {
-		boolean succes = true;
+		// DELETE
+		public boolean delete(Employe obj) {
+			boolean succes = true;
 
-		try {
-			int id = obj.getIdEmp();
-			String requete = "DELETE FROM " + TABLE + " WHERE " + CLE_PRIMAIRE + " = ?";
-			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
-			pst.setInt(1, id);
-			pst.executeUpdate();
-		} catch (SQLException e) {
-			succes = false;
-			e.printStackTrace();
+			try {
+				int id = obj.getIdEmp();
+				//supprime les lignes de la table travail si un employe est supprime
+				String requete = "DELETE FROM " + TRAVAILLEPOUR +  " WHERE " + ID_EMP_TRAVAILLEPOUR +" = ?;";			
+				PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+				pst.setInt(1, id);
+				pst.executeUpdate();	
+				
+				//delete de la table admin
+				requete = "DELETE FROM administrateur WHERE idAdmin = ?";
+				PreparedStatement pst2 = Connexion.getInstance().prepareStatement(requete);
+				pst2.setInt(1, id);
+				pst2.executeUpdate();
+				
+				requete = "DELETE FROM " + TABLE + " WHERE " + CLE_PRIMAIRE + " = ?";
+				PreparedStatement pst3 = Connexion.getInstance().prepareStatement(requete);
+				pst3.setInt(1, id);
+				pst3.executeUpdate();
+				
+				
+				
+				
+			} catch (SQLException e) {
+				succes = false;
+				e.printStackTrace();
+			}
+			return succes;
 		}
-		return succes;
-	}
 
-}
+	}

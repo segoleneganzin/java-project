@@ -17,14 +17,14 @@
    <children>
       <ImageView fitHeight="48.0" fitWidth="50.0" layoutX="14.0" layoutY="13.0">
          <image>
-            <Image url="@../../../../Users/Moi/Downloads/Admin-Profile-Vector-PNG-Picture.png" />
+            <Image url="@../../../Images/Admin-Profile-Vector-PNG-Picture.png" />
          </image>
       </ImageView>
       <Button fx:id="retour" layoutX="22.0" layoutY="383.0" mnemonicParsing="false" onAction="#Retour" prefHeight="25.0" prefWidth="38.0">
          <graphic>
             <ImageView fitHeight="36.0" fitWidth="38.0">
                <image>
-                  <Image url="@../../../../Users/Moi/Downloads/2089795.png" />
+                  <Image url="@../../../Images/2089795.png" />
                </image>
             </ImageView>
          </graphic>
