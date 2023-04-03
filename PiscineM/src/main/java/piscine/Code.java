@@ -8,11 +8,19 @@ public class Code {
 	private String idCode = "no"; // valeur par defaut pour la gestion des erreurs
 	private LocalDateTime dateAchat;
 	private LocalDate dateEcheance;
-	private int solde;
+//	private int solde;
 	// private Piscine piscine; cle etrangere qui fera le lien avec la piscine
 	private Offre offre; // cle etrangere qui fera le lien avec catalogue
 
 	private List<Utilisation> lesUtilisations; // TODO ajouter les utilisation du code dans cette liste
+
+	public Code(LocalDateTime dateAchat, LocalDate dateEcheance, Offre offre) {
+		super();
+		this.dateAchat = dateAchat;
+		this.dateEcheance = dateEcheance;
+		// this.piscine = piscine;
+		this.offre = offre;
+	}
 
 	public Code(String idCode, LocalDateTime dateAchat, LocalDate dateEcheance, Offre offre) {
 		super();

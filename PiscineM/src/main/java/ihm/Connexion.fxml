@@ -11,59 +11,80 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="439.0" prefWidth="546.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AdminController">
-   <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="72.0" layoutY="59.0" prefHeight="36.0" prefWidth="406.0" text="Accès administrateur" textAlignment="CENTER" wrapText="true">
-         <font>
-            <Font size="25.0" />
-         </font>
-      </Label>
+<AnchorPane prefHeight="439.0" prefWidth="546.0"
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="application.AdminController">
+	<children>
+		<Label alignment="CENTER" contentDisplay="CENTER" layoutX="72.0"
+			layoutY="59.0" prefHeight="36.0" prefWidth="406.0"
+			text="Accès administrateur" textAlignment="CENTER" wrapText="true">
+			<font>
+				<Font size="25.0" />
+			</font>
+		</Label>
 
-      <ImageView fitHeight="88.0" fitWidth="99.0" layoutX="16.0" layoutY="28.0">
-         <image>
-            <Image url="@../../../../Users/Moi/Downloads/logo_remi.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="36.0" fitWidth="38.0" layoutX="154.0" layoutY="190.0">
-         <image>
-            <Image url="@../../../../Users/Moi/Downloads/Admin-Profile-Vector-PNG-Picture.png" />
-         </image>
-      </ImageView>
-      <PasswordField layoutX="201.0" layoutY="271.0" promptText="Mot de passe" />
-      <TextFlow layoutX="173.0" layoutY="149.0" prefHeight="36.0" prefWidth="200.0">
-         <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="39.0" prefWidth="204.0" text="Nom d'utilisateur :" textAlignment="CENTER" wrapText="true">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Label>
-         </children>
-      </TextFlow>
-      <TextFlow layoutX="173.0" layoutY="232.0" prefHeight="36.0" prefWidth="200.0">
-         <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="39.0" prefWidth="204.0" text="Mot de passe :" textAlignment="CENTER" wrapText="true">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Label>
-         </children>
-      </TextFlow>
-      <Button fx:id="connexion" layoutX="237.0" layoutY="348.0" mnemonicParsing="false" onAction="#AfficherPageConnexion" text="Connexion" />
-      <CheckBox layoutX="220.0" layoutY="316.0" mnemonicParsing="false" text="Rester connecter" />
-      <TextField layoutX="199.0" layoutY="196.0" promptText="Identifiant" />
-      <Button fx:id="retour" layoutX="22.0" layoutY="383.0" mnemonicParsing="false" onAction="#Retour" prefHeight="25.0" prefWidth="38.0">
-         <graphic>
-            <ImageView fitHeight="34.0" fitWidth="34.0">
-               <image>
-                  <Image url="@../../../../Users/Moi/Downloads/93634.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <ImageView fitHeight="36.0" fitWidth="38.0" layoutX="154.0" layoutY="260.0">
-         <image>
-            <Image url="@../../../../Users/Moi/Downloads/2089795.png" />
-         </image>
-      </ImageView>
-   </children>
+		<ImageView fitHeight="88.0" fitWidth="99.0" layoutX="16.0"
+			layoutY="28.0">
+			<image>
+				<Image url="@../../../Images/logo_remi.png" />
+			</image>
+		</ImageView>
+		<ImageView fitHeight="36.0" fitWidth="38.0" layoutX="154.0"
+			layoutY="190.0">
+			<image>
+				<Image
+					url="@../../../Images/Admin-Profile-Vector-PNG-Picture.png" />
+			</image>
+		</ImageView>
+		<PasswordField layoutX="201.0" layoutY="271.0"
+			promptText="Mot de passe" />
+		<TextFlow layoutX="173.0" layoutY="149.0" prefHeight="36.0"
+			prefWidth="200.0">
+			<children>
+				<Label alignment="CENTER" contentDisplay="CENTER"
+					prefHeight="39.0" prefWidth="204.0" text="Nom d'utilisateur :"
+					textAlignment="CENTER" wrapText="true">
+					<font>
+						<Font size="13.0" />
+					</font>
+				</Label>
+			</children>
+		</TextFlow>
+		<TextFlow layoutX="173.0" layoutY="232.0" prefHeight="36.0"
+			prefWidth="200.0">
+			<children>
+				<Label alignment="CENTER" contentDisplay="CENTER"
+					prefHeight="39.0" prefWidth="204.0" text="Mot de passe :"
+					textAlignment="CENTER" wrapText="true">
+					<font>
+						<Font size="13.0" />
+					</font>
+				</Label>
+			</children>
+		</TextFlow>
+		<Button fx:id="connexion" layoutX="237.0" layoutY="348.0"
+			mnemonicParsing="false" onAction="#AfficherPageConnexion"
+			text="Connexion" />
+		<CheckBox layoutX="220.0" layoutY="316.0"
+			mnemonicParsing="false" text="Rester connecter" />
+		<TextField layoutX="199.0" layoutY="196.0"
+			promptText="Identifiant" />
+		<Button fx:id="retour" layoutX="22.0" layoutY="383.0"
+			mnemonicParsing="false" onAction="#Retour" prefHeight="25.0"
+			prefWidth="38.0">
+			<graphic>
+				<ImageView fitHeight="34.0" fitWidth="34.0">
+					<image>
+						<Image url="@../../../Images/93634.png" />
+					</image>
+				</ImageView>
+			</graphic>
+		</Button>
+		<ImageView fitHeight="36.0" fitWidth="38.0" layoutX="154.0"
+			layoutY="260.0">
+			<image>
+				<Image url="@../../../Images/2089795.png" />
+			</image>
+		</ImageView>
+	</children>
 </AnchorPane>

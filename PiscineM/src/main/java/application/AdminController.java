@@ -9,40 +9,35 @@ import piscine.Main;
 
 public class AdminController {
 
-    @FXML
-    private Button retour;
+	@FXML
+	private Button retour;
 
-    @FXML
-    private Button connexion;
-    
-    @FXML
-    void Retour() {
-    	try {
-        Parent root = FXMLLoader.load(getClass().getResource("../ihm/Accueil.fxml"));
-        Scene scene = new Scene(root);
-        Main.stage.setScene(scene);
-        Main.stage.show();
-    		} catch (Exception e) {
-		e.printStackTrace();
-    	}
-}
-    
-    @FXML
-    void AfficherPageConnexion() {
-    	try {
-            Parent root = FXMLLoader.load(getClass().getResource("../ihm/Admin.fxml"));
-            Scene scene = new Scene(root);
-            Main.stage.setScene(scene);
-            Main.stage.show();
-        		} catch (Exception e) {
-    		e.printStackTrace();
-        	}
+	@FXML
+	private Button connexion;
 
-    }
+	@FXML
+	void Retour() {
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("../ihm/Accueil.fxml"));
+			Scene scene = new Scene(root);
+			Main.stage.setScene(scene);
+			Main.stage.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
-	
-	
-	
-	
-	
+	@FXML
+	void AfficherPageConnexion() {
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("../ihm/Admin.fxml"));
+			Scene scene = new Scene(root);
+			Main.stage.setScene(scene);
+			Main.stage.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
 }

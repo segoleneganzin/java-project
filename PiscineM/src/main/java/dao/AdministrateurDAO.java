@@ -14,37 +14,42 @@ public class AdministrateurDAO extends DAO<Administrateur> {
 	private static final String MDP = "mdp";
 
 	private static AdministrateurDAO instance = null;
-	
+
 	public static AdministrateurDAO getInstance() {
 		if (instance == null) {
 			instance = new AdministrateurDAO();
 		}
 		return instance;
 	}
-	
+
 	private AdministrateurDAO() {
 		super();
 	}
-	
-	// CREATE 
+
+	// CREATE
 	public boolean create(Administrateur administrateur) {
 		boolean succes = true;
 		try {
-			String requete = "INSERT INTO " + TABLE + " (" + CLE_PRIMAIRE + ", " + IDENTIFIANT + ", " + MDP + ") VALUES (?, ?, ?)";
+			String requete = "INSERT INTO " + TABLE + " (" + CLE_PRIMAIRE + ", " + IDENTIFIANT + ", " + MDP
+					+ ") VALUES (?, ?, ?)";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
 			pst.setInt(1, administrateur.getEmploye().getIdEmp());
 			pst.setString(2, administrateur.getIdentifiant());
 			pst.setString(3, administrateur.getMdp());
 			pst.execute();
-			
+
 		} catch (SQLException e) {
 			succes = false;
 			e.printStackTrace();
-			// TODO gerer les erreurs si clé etrangeres inexistantes
+			// gerer les erreurs si clé etrangeres inexistantes
+			if (administrateur.getEmploye().getIdEmp() == -1) {
+				// afficher un message d'erreur
+				System.out.println("Employé inexistant");
+			}
 		}
 		return succes;
 	}
-	
+
 	// READ
 	public Administrateur read(int id) {
 		Administrateur administrateur = null;
@@ -64,19 +69,17 @@ public class AdministrateurDAO extends DAO<Administrateur> {
 		}
 		return administrateur;
 	}
-	
+
 	// UPDATE
 	public boolean update(Administrateur obj) {
 		boolean succes = true;
-		
+
 		String identifiant = obj.getIdentifiant();
 		String mdp = obj.getMdp();
 		int id = obj.getEmploye().getIdEmp();
-		
+
 		try {
-			String requete = "UPDATE " + TABLE 
-			+ " SET identifiant = ?, mdp = ? WHERE "
-			+ CLE_PRIMAIRE + " = ?";
+			String requete = "UPDATE " + TABLE + " SET identifiant = ?, mdp = ? WHERE " + CLE_PRIMAIRE + " = ?";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
 			pst.setString(1, identifiant);
 			pst.setString(2, mdp);
@@ -88,7 +91,7 @@ public class AdministrateurDAO extends DAO<Administrateur> {
 		}
 		return succes;
 	}
-	
+
 	// DELETE
 	public boolean delete(Administrateur obj) {
 		boolean succes = true;
@@ -104,5 +107,5 @@ public class AdministrateurDAO extends DAO<Administrateur> {
 		}
 		return succes;
 	}
-	
+
 }

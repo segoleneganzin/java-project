@@ -6,16 +6,16 @@ import java.util.List;
 
 public class Employe {
 
-	private int idEmp = -1;	//valeur par defaut pour la gestion des erreurs
+	private int idEmp = -1; // valeur par defaut pour la gestion des erreurs
 	private String nom;
 	private String prenom;
 	private String fonction;
 	private LocalDate dateNaissance;
-	private Adresse adresse; //cle etrangere
-	private List<Piscine> lesPiscines = new ArrayList<Piscine>(); //lien tables d'association "travail"
+	private Adresse adresse; // cle etrangere
+	private List<Piscine> lesPiscines = new ArrayList<Piscine>(); // lien tables d'association "travail"
 
-
-	public Employe(int idEmp, String nom, String prenom, String fonction, LocalDate dateNaissance, Adresse adresse, List<Piscine> lesPiscines) {
+	public Employe(int idEmp, String nom, String prenom, String fonction, LocalDate dateNaissance, Adresse adresse,
+			List<Piscine> lesPiscines) {
 		super();
 		this.idEmp = idEmp;
 		this.fonction = fonction;
@@ -27,7 +27,8 @@ public class Employe {
 	}
 
 	// Constructeur utilisé pour le create
-	public Employe(String nom, String prenom, String fonction, LocalDate dateNaissance, Adresse adresse, List<Piscine> lesPiscines) {
+	public Employe(String nom, String prenom, String fonction, LocalDate dateNaissance, Adresse adresse,
+			List<Piscine> lesPiscines) {
 		super();
 		this.fonction = fonction;
 		this.prenom = prenom;
@@ -98,9 +99,5 @@ public class Employe {
 		return "Employe [idEmp=" + idEmp + ", nom=" + nom + ", prenom=" + prenom + ", fonction=" + fonction
 				+ ", dateNaissance=" + dateNaissance + ", adresse=" + adresse + ", lesPiscines=" + lesPiscines + "]";
 	}
-	
-	
-
-	
 
 }

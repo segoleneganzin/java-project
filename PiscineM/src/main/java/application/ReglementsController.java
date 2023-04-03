@@ -8,12 +8,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import piscine.Main;
 
-public class PaiementController {
-	@FXML
-	private Button home;
+public class ReglementsController {
 
 	@FXML
-	void home(ActionEvent event) {
+	private Button backhome;
+
+	@FXML
+	void backhome(ActionEvent event) {
 
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("../ihm/Accueil.fxml"));
@@ -25,19 +26,4 @@ public class PaiementController {
 		}
 	}
 
-	@FXML
-	private Button validepay;
-
-	@FXML
-	void validatepay(ActionEvent event) {
-
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource("../ihm/Transaction.fxml"));
-			Scene scene = new Scene(root);
-			Main.stage.setScene(scene);
-			Main.stage.show();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 }

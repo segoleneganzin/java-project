@@ -10,22 +10,18 @@ import piscine.Main;
 public class SoldeController {
 
 	@FXML
-    private Button retour;
+	private Button retour;
 
-    @FXML
-    void Retour() {
-    	try {
-        Parent root = FXMLLoader.load(getClass().getResource("../ihm/Accueil.fxml"));
-        Scene scene = new Scene(root);
-        Main.stage.setScene(scene);
-        Main.stage.show();
-    		} catch (Exception e) {
-		e.printStackTrace();
-    	}
-}
-
-	
-	
-	
+	@FXML
+	void Retour() {
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("../ihm/Accueil.fxml"));
+			Scene scene = new Scene(root);
+			Main.stage.setScene(scene);
+			Main.stage.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 }

@@ -15,11 +15,12 @@ public class Administrateur {
 	public Employe getEmploye() {
 		return employe;
 	}
-	
-	public void setEmploye(Employe employe) {
-		this.employe = employe;
-	}
-	
+
+	// Jamais utilisé
+//	public void setEmploye(Employe employe) {
+//		this.employe = employe;
+//	}
+
 	public String getIdentifiant() {
 		return identifiant;
 	}
@@ -38,7 +39,7 @@ public class Administrateur {
 
 	@Override
 	public String toString() {
-		return "Administrateur [employe= " + employe  + ", mdp= " + mdp + ", " + " identifiant= " + identifiant + "]";
+		return "Administrateur [employe= " + employe + ", mdp= " + mdp + ", " + " identifiant= " + identifiant + "]";
 	}
 
 }

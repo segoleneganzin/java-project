@@ -2,13 +2,12 @@ package piscine;
 
 public class Adresse {
 
-	private int idAdresse = -1; //valeur par defaut pour la gestion des erreurs
+	private int idAdresse = -1; // valeur par defaut pour la gestion des erreurs
 	private String numVoie;
 	private String rue;
 	private String ville;
 	private int codePostal;
 
-	
 	public Adresse(String numVoie, String rue, String ville, int codePostal) {
 		super();
 		this.numVoie = numVoie;
@@ -72,5 +71,5 @@ public class Adresse {
 		return "Adresse [idAdresse=" + idAdresse + ", numVoie=" + numVoie + ", rue=" + rue + ", ville=" + ville
 				+ ", codePostal=" + codePostal + "]";
 	}
-	
+
 }

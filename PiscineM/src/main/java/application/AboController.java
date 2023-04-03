@@ -9,20 +9,20 @@ import javafx.scene.control.Button;
 import piscine.Main;
 
 public class AboController {
-	   @FXML
-	    private Button retour;
+	@FXML
+	private Button AboToAcc;
 
-	    @FXML
-	    void Retour(ActionEvent event) {
+	@FXML
+	void AboToAcc(ActionEvent event) {
 
-	        try {
-	            Parent root = FXMLLoader.load(getClass().getResource("../ihm/Accueil.fxml"));
-	            Scene scene = new Scene(root);
-	            Main.stage.setScene(scene);
-	            Main.stage.show();
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
-	    }
-	    
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("../ihm/Accueil.fxml"));
+			Scene scene = new Scene(root);
+			Main.stage.setScene(scene);
+			Main.stage.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 }

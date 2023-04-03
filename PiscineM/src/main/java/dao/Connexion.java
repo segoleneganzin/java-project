@@ -9,8 +9,6 @@ import java.util.List;
 
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 
-
-
 public class Connexion {
 
 	private static Connection connect = null;
@@ -22,11 +20,12 @@ public class Connexion {
 
 	/**
 	 * Patron de conception Singleton
+	 * 
 	 * @return l'instance unique de connexion
 	 */
 	public static Connection getInstance() {
-		if (connect==null) {
-			try { 
+		if (connect == null) {
+			try {
 
 				SQLServerDataSource ds = new SQLServerDataSource();
 				ds.setUser(ID);
@@ -35,9 +34,8 @@ public class Connexion {
 				ds.setDatabaseName(BASE_DE_DONNEES);
 				connect = ds.getConnection();
 				System.out.println("Connecté");
-			}
-			catch (SQLException e){
-				System.out.println("Echec de la tentative de connexion : " + e.getMessage() + e.getStackTrace()) ;
+			} catch (SQLException e) {
+				System.out.println("Echec de la tentative de connexion : " + e.getMessage() + e.getStackTrace());
 			}
 		}
 		return connect;
@@ -47,33 +45,37 @@ public class Connexion {
 		super();
 	}
 
-	public static ResultSet executeQuery(String requete){
-		Statement st = null ;
+	public static ResultSet executeQuery(String requete) {
+		Statement st = null;
 		ResultSet rs = null;
-		//System.out.println("requete = "+requete);
-		try{
-			st = Connexion.getInstance().createStatement() ;
-			rs = st.executeQuery(requete) ;
-		}catch(SQLException e){
-			System.out.println("Echec de la tentative d'ex�cution de requete : " +requete + " ["+ e.getMessage()+"]") ;
+		// System.out.println("requete = "+requete);
+		try {
+			st = Connexion.getInstance().createStatement();
+			rs = st.executeQuery(requete);
+		} catch (SQLException e) {
+			System.out
+					.println("Echec de la tentative d'ex�cution de requete : " + requete + " [" + e.getMessage() + "]");
 		}
 		return rs;
 	}
 
 	/**
-	 * Une m�thode statique qui permet de faire une mise � jour d'une table (INSERT / UPDATE / DELETE)
+	 * Une m�thode statique qui permet de faire une mise � jour d'une table (INSERT
+	 * / UPDATE / DELETE)
+	 * 
 	 * @param requete
 	 * @return
 	 */
-	public static boolean executeUpdate(String requete){
+	public static boolean executeUpdate(String requete) {
 		boolean succes = true;
-		Statement st = null ;
-		try{
-			st = Connexion.getInstance().createStatement() ;
-			st.executeUpdate(requete) ;
-		}catch(SQLException e){
+		Statement st = null;
+		try {
+			st = Connexion.getInstance().createStatement();
+			st.executeUpdate(requete);
+		} catch (SQLException e) {
 			succes = false;
-			System.out.println("Echec de la tentative d'exécution de Mise à Jour : " +requete + " ["+ e.getMessage()+"]") ;
+			System.out.println(
+					"Echec de la tentative d'exécution de Mise à Jour : " + requete + " [" + e.getMessage() + "]");
 		}
 		return succes;
 	}
@@ -81,24 +83,20 @@ public class Connexion {
 	/**
 	 * Fermeture de la connexion au SGBD SQL ServerExpress
 	 */
-	public static void fermer()
-	{
-		try
-		{
+	public static void fermer() {
+		try {
 			getInstance().close();
 			System.out.println("Deconnexion ok");
-		}
-		catch (SQLException e)
-		{
-			connect=null;
+		} catch (SQLException e) {
+			connect = null;
 			System.out.println("Echec de la fermeture");
 		}
 	}
 
 	public static int getMaxId(String cle, String table) {
-		String requete = "SELECT MAX("+cle+")as max FROM "+table;
+		String requete = "SELECT MAX(" + cle + ")as max FROM " + table;
 		ResultSet rs = Connexion.executeQuery(requete);
-		int id= -1;
+		int id = -1;
 		try {
 			rs.next();
 			id = rs.getInt("max");
@@ -109,10 +107,10 @@ public class Connexion {
 	}
 
 	public static List<Integer> getLesIds(String attribut, String table, String clauseWhere) {
-		String requete = "SELECT DISTINCT "+attribut+" FROM "+table;
-		if (clauseWhere!=null) {
-			requete += " WHERE "+clauseWhere;
-		}		
+		String requete = "SELECT DISTINCT " + attribut + " FROM " + table;
+		if (clauseWhere != null) {
+			requete += " WHERE " + clauseWhere;
+		}
 		ResultSet rs = Connexion.executeQuery(requete);
 		List<Integer> liste = new ArrayList<Integer>();
 		try {
@@ -126,6 +124,5 @@ public class Connexion {
 		return liste;
 
 	}
-
 
 }

@@ -4,7 +4,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class Cours {
 	private int idCours;
 	private String intitule;
@@ -12,12 +11,13 @@ public class Cours {
 	private LocalDateTime horaireFin;
 	private int nombrePlacesInitiales;
 	private int placesRestantes;
-	private Employe employe;	//cle etrangere
-	private Piscine piscine;  //cle etrangere
-	private List<Code> lesCodes = new ArrayList<Code>();	//lien tables d'association "participe"
+	private Employe employe; // cle etrangere
+	private Piscine piscine; // cle etrangere
+	private List<Code> lesCodes = new ArrayList<Code>(); // lien tables d'association "participe"
 
-	//constructeur sans idCours ni liste de codes :
-	public Cours(String intitule, LocalDateTime horaireDebut, LocalDateTime horaireFin, int nombrePlacesInitiales, int placesRestantes, Employe employe, Piscine piscine) {
+	// constructeur sans idCours ni liste de codes :
+	public Cours(String intitule, LocalDateTime horaireDebut, LocalDateTime horaireFin, int nombrePlacesInitiales,
+			int placesRestantes, Employe employe, Piscine piscine) {
 		super();
 		this.horaireFin = horaireFin;
 		this.horaireDebut = horaireDebut;
@@ -27,9 +27,10 @@ public class Cours {
 		this.employe = employe;
 		this.piscine = piscine;
 	}
-		
-	//constructeur sans codes 
-	public Cours(int idCours, String intitule, LocalDateTime horaireDebut, LocalDateTime horaireFin, int nombrePlacesInitiales, int placesRestantes, Employe employe, Piscine piscine) {
+
+	// constructeur sans codes
+	public Cours(int idCours, String intitule, LocalDateTime horaireDebut, LocalDateTime horaireFin,
+			int nombrePlacesInitiales, int placesRestantes, Employe employe, Piscine piscine) {
 		super();
 		this.idCours = idCours;
 		this.horaireFin = horaireFin;
@@ -40,9 +41,10 @@ public class Cours {
 		this.employe = employe;
 		this.piscine = piscine;
 	}
-	
-	////Constructeur avec id et liste de cours, pour l'update 
-	public Cours(int idCours, String intitule, LocalDateTime horaireDebut, LocalDateTime horaireFin, int nombrePlacesInitiales, int placesRestantes, Employe employe, Piscine piscine, List<Code> lesCodes) {
+
+	//// Constructeur avec id et liste de cours, pour l'update
+	public Cours(int idCours, String intitule, LocalDateTime horaireDebut, LocalDateTime horaireFin,
+			int nombrePlacesInitiales, int placesRestantes, Employe employe, Piscine piscine, List<Code> lesCodes) {
 		super();
 		this.idCours = idCours;
 		this.horaireFin = horaireFin;
@@ -54,63 +56,50 @@ public class Cours {
 		this.piscine = piscine;
 		this.setLesCodes(lesCodes);
 	}
-	
-
 
 	public int getIdCours() {
 		return idCours;
 	}
 
-
 	public void setIdCours(int idCours) {
 		this.idCours = idCours;
 	}
-
 
 	public String getIntitule() {
 		return intitule;
 	}
 
-
 	public void setIntitule(String intitule) {
 		this.intitule = intitule;
 	}
-
 
 	public LocalDateTime getHoraireDebut() {
 		return horaireDebut;
 	}
 
-
 	public void setHoraireDebut(LocalDateTime horaireDebut) {
 		this.horaireDebut = horaireDebut;
 	}
-
 
 	public LocalDateTime getHoraireFin() {
 		return horaireFin;
 	}
 
-
 	public void setHoraireFin(LocalDateTime horaireFin) {
 		this.horaireFin = horaireFin;
 	}
-
 
 	public int getNombrePlacesInitiales() {
 		return nombrePlacesInitiales;
 	}
 
-
 	public void setNombrePlacesInitiales(int nombrePlacesInitiales) {
 		this.nombrePlacesInitiales = nombrePlacesInitiales;
 	}
 
-
 	public int getPlacesRestantes() {
 		return placesRestantes;
 	}
-
 
 	public void setPlacesRestantes(int placesRestantes) {
 		this.placesRestantes = placesRestantes;
@@ -147,10 +136,4 @@ public class Cours {
 				+ ", placesRestantes=" + placesRestantes + ", employe=" + employe + ", lesCodes=" + lesCodes + "]";
 	}
 
-	
-	
-	
-
-
-	
 }

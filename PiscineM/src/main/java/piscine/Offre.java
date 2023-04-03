@@ -1,13 +1,12 @@
 package piscine;
 
-
 public class Offre {
-	private int idOffre = -1;	//valeur par defaut pour la gestion des erreurs
+	private int idOffre = -1; // valeur par defaut pour la gestion des erreurs
 	private int validite;
 	private int tarif;
 	private int nbPlaces;
 	private String modalite;
-	
+
 	public Offre(int validite, int tarif, int nbPlaces, String modalite) {
 		super();
 		this.validite = validite;
@@ -25,16 +24,13 @@ public class Offre {
 		this.modalite = modalite;
 	}
 
-
 	public int getIdOffre() {
 		return idOffre;
 	}
 
-
 	public void setIdOffre(int idOffre) {
 		this.idOffre = idOffre;
 	}
-
 
 	public int getValidite() {
 		return validite;
@@ -48,21 +44,18 @@ public class Offre {
 		return tarif;
 	}
 
-
 	public void setTarif(int tarif) {
 		this.tarif = tarif;
 	}
-
 
 	public int getNbPlaces() {
 		return nbPlaces;
 	}
 
-
 	public void setNbPlaces(int nbPlaces) {
 		this.nbPlaces = nbPlaces;
 	}
-	
+
 	public String getModalite() {
 		return modalite;
 	}
@@ -70,17 +63,11 @@ public class Offre {
 	public void setModalite(String modalite) {
 		this.modalite = modalite;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Offre [idOffre=" + idOffre + ", validite=" + validite + ", tarif=" + tarif + ", nbPlaces="
-				+ nbPlaces + ", modalite=" + modalite + "]";
+		return "Offre [idOffre=" + idOffre + ", validite=" + validite + ", tarif=" + tarif + ", nbPlaces=" + nbPlaces
+				+ ", modalite=" + modalite + "]";
 	}
 
-	
-
-
-
-
-	
 }

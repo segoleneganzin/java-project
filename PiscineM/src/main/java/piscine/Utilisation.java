@@ -4,9 +4,9 @@ import java.time.LocalDateTime;
 
 public class Utilisation {
 	private LocalDateTime dateUtilisation;
-	private Code code;   //cle etrangere 
-	private Piscine piscine;	//cle etrangere
-	
+	private Code code; // cle etrangere
+	private Piscine piscine; // cle etrangere
+
 	public Utilisation(LocalDateTime dateUtilisation, Code code, Piscine piscine) {
 		super();
 		this.dateUtilisation = dateUtilisation;
@@ -43,8 +43,4 @@ public class Utilisation {
 		return "Utilisation [dateUtilisation=" + dateUtilisation + ", code=" + code + ", piscine=" + piscine + "]";
 	}
 
-
-	
-	
-	
 }
