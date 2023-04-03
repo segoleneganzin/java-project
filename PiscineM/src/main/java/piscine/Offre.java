@@ -1,5 +1,7 @@
 package piscine;
 
+import java.time.LocalDateTime;
+
 public class Offre {
 	private int idOffre = -1; // valeur par defaut pour la gestion des erreurs
 	private int validite;
@@ -36,8 +38,8 @@ public class Offre {
 		return validite;
 	}
 
-	public void setValidite(int validite) {
-		this.validite = validite;
+	public void setValidite(int dureeVal) {
+		this.validite = dureeVal;
 	}
 
 	public int getTarif() {

@@ -1,22 +1,20 @@
 package dao;
 
 import java.time.LocalDateTime;
-import java.time.Month;
 
-import piscine.Adresse;
 import piscine.Code;
-import piscine.Offre;
 
 public class TestDAO {
 
 	public static void main(String[] args) {
 		////////////////////////////////////////////////////////// TEST OFFRE
 		// Creation d'une entree catalogue(offre) :
-//		Offre offre = new Offre(20, 200, 30, "solo");
+//		Offre offre = new Offre(20, 200, 30, "test");
 //		OffreDAO.getInstance().create(offre);
+//		System.out.println(offre);
 
 		// Read d'une offre du catalogue :
-//		Offre offre = OffreDAO.getInstance().read(2);
+//		Offre offre = OffreDAO.getInstance().read(10);
 //		System.out.println(offre);
 
 		// Update d'une offre du catalogue :
@@ -113,25 +111,25 @@ public class TestDAO {
 
 //////////////////////////////////////////////////////////TEST CODE
 //		Creation d'un code :
-//		Code code = new Code(null, null, OffreDAO.getInstance().read(2));
-//		code.setDateAchat(LocalDateTime.now());
+		Code code = new Code(null, null, OffreDAO.getInstance().read(2));
+		code.setDateAchat(LocalDateTime.now());
 //				//automatisation de la date d'echeance du code :
 //				//TODO automatiser en fonction de offre.dureeValidite
 //		code.setDateEcheance(LocalDate.now().plusMonths(10).plusDays(1));
-//		CodeDAO.getInstance().create(code);
+		CodeDAO.getInstance().create(code);
 
 		// read d'un code
-		Code code = CodeDAO.getInstance().read("OgoZfOy1Bb");
+//		Code code = CodeDAO.getInstance().read("OgoZfOy1Bb");
 
 		// update d'un code
-		code.setDateEcheance(LocalDateTime.of(2099, Month.JANUARY, 01, 13, 30, 00));
-		code.setOffre(OffreDAO.getInstance().read(3));
-		CodeDAO.getInstance().update(code);
+//		code.setDateEcheance(LocalDateTime.of(2024, Month.AUGUST, 01, 12, 30, 00));
+//		code.setOffre(OffreDAO.getInstance().read(3));
+//		CodeDAO.getInstance().update(code);
 
 		// delete d'un code
 //		CodeDAO.getInstance().delete(code);
 
-//		System.out.println(code);
+		System.out.println(code);
 
 //////////////////////////////////////////////////////////TEST UTILISATION
 		// Creation d'une utilisation :

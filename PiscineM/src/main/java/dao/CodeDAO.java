@@ -47,11 +47,17 @@ public class CodeDAO extends DAO<Code> {
 		}
 		return sb.toString();
 	}
+	
+	public static LocalDateTime dureeValidite() {
+		LocalDateTime dureeVal = LocalDateTime.now().plusMonths(10).plusDays(1);
+		return dureeVal;
+	}
 
 	// CREATE
 	public boolean create(Code code) {
 		boolean succes = true;
 		String generatedCode = generateRandomPassword();
+		LocalDateTime dureeDeValidite = dureeValidite();
 		try {
 			String requete = "INSERT INTO " + TABLE + " (" + CLE_PRIMAIRE + ", " + ACHAT + ", " + ECHEANCE + ", "
 					+ OFFRE + ") VALUES (?, ?, ?, ?)";
@@ -59,6 +65,7 @@ public class CodeDAO extends DAO<Code> {
 			code.setIdCode(generatedCode);
 			pst.setString(1, code.getIdCode());
 			pst.setObject(2, code.getDateAchat());
+			code.setDateEcheance(dureeDeValidite);
 			pst.setObject(3, code.getDateEcheance());
 			// pst.setInt(4, code.getSolde());
 			pst.setInt(4, code.getOffre().getIdOffre());

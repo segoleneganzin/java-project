@@ -27,16 +27,17 @@ public class OffreDAO extends DAO<Offre> {
 	private OffreDAO() {
 		super();
 	}
+	
+	
 
 	// CREATE
 	public boolean create(Offre offre) {
-
 		boolean succes = true;
 		try {
 			String requete = "INSERT INTO " + TABLE + " (" + VALIDITE + ", " + TARIF + ", " + NBPLACE + ", " + MODALITE
 					+ ") VALUES (?, ?, ?, ?)";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete, Statement.RETURN_GENERATED_KEYS);
-			pst.setObject(1, offre.getValidite());
+			pst.setInt(1, offre.getValidite());
 			pst.setInt(2, offre.getTarif());
 			pst.setInt(3, offre.getNbPlaces());
 			pst.setString(4, offre.getModalite());
