@@ -48,8 +48,8 @@ public class CodeDAO extends DAO<Code> {
 		return sb.toString();
 	}
 	
-	public static LocalDateTime dureeValidite() {
-		LocalDateTime dureeVal = LocalDateTime.now().plusMonths(10).plusDays(1);
+	public static LocalDateTime dateEcheance(Offre offre) {
+		LocalDateTime dureeVal = LocalDateTime.now().plusMonths(offre.getValidite()).plusDays(1);
 		return dureeVal;
 	}
 
@@ -57,11 +57,11 @@ public class CodeDAO extends DAO<Code> {
 	public boolean create(Code code) {
 		boolean succes = true;
 		String generatedCode = generateRandomPassword();
-		LocalDateTime dureeDeValidite = dureeValidite();
 		try {
 			String requete = "INSERT INTO " + TABLE + " (" + CLE_PRIMAIRE + ", " + ACHAT + ", " + ECHEANCE + ", "
 					+ OFFRE + ") VALUES (?, ?, ?, ?)";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			LocalDateTime dureeDeValidite = dateEcheance(code.getOffre());
 			code.setIdCode(generatedCode);
 			pst.setString(1, code.getIdCode());
 			pst.setObject(2, code.getDateAchat());

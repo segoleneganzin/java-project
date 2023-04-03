@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
 
 import piscine.Offre;
 
@@ -90,7 +91,7 @@ public class OffreDAO extends DAO<Offre> {
 					+ CLE_PRIMAIRE + " = ?";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
 
-			pst.setInt(1, validite);
+			pst.setObject(1, validite);
 			pst.setInt(2, tarif);
 			pst.setInt(3, nbPlace);
 			pst.setString(4, modalite);

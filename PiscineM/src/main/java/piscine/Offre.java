@@ -26,6 +26,10 @@ public class Offre {
 		this.modalite = modalite;
 	}
 
+	public Offre(String modalite) {
+		this.modalite = modalite;
+	}
+
 	public int getIdOffre() {
 		return idOffre;
 	}
