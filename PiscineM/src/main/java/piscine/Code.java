@@ -7,14 +7,14 @@ import java.util.List;
 public class Code {
 	private String idCode = "no"; // valeur par defaut pour la gestion des erreurs
 	private LocalDateTime dateAchat;
-	private LocalDate dateEcheance;
+	private LocalDateTime dateEcheance;
 //	private int solde;
 	// private Piscine piscine; cle etrangere qui fera le lien avec la piscine
 	private Offre offre; // cle etrangere qui fera le lien avec catalogue
 
 	private List<Utilisation> lesUtilisations; // TODO ajouter les utilisation du code dans cette liste
 
-	public Code(LocalDateTime dateAchat, LocalDate dateEcheance, Offre offre) {
+	public Code(LocalDateTime dateAchat, LocalDateTime dateEcheance, Offre offre) {
 		super();
 		this.dateAchat = dateAchat;
 		this.dateEcheance = dateEcheance;
@@ -22,7 +22,7 @@ public class Code {
 		this.offre = offre;
 	}
 
-	public Code(String idCode, LocalDateTime dateAchat, LocalDate dateEcheance, Offre offre) {
+	public Code(String idCode, LocalDateTime dateAchat, LocalDateTime dateEcheance, Offre offre) {
 		super();
 		this.idCode = idCode;
 		this.dateAchat = dateAchat;
@@ -47,12 +47,12 @@ public class Code {
 		this.dateAchat = dateAchat;
 	}
 
-	public LocalDate getDateEcheance() {
+	public LocalDateTime getDateEcheance() {
 		return dateEcheance;
 	}
 
-	public void setDateEcheance(LocalDate dateEcheance) {
-		this.dateEcheance = dateEcheance;
+	public void setDateEcheance(LocalDateTime localDateTime) {
+		this.dateEcheance = localDateTime;
 	}
 
 //	public int getSolde() {
