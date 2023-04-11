@@ -31,7 +31,7 @@ public class PaiementController {
 		    void validatepay(ActionEvent event) {
 
 		        try {
-		            Parent root = FXMLLoader.load(getClass().getResource("../ihm/Transaction.fxml"));
+		            Parent root = FXMLLoader.load(getClass().getResource("../ihm/PinCode.fxml"));
 		            Scene scene = new Scene(root);
 		            Main.stage.setScene(scene);
 		            Main.stage.show();

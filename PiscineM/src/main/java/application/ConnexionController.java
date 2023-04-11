@@ -58,7 +58,11 @@ public class ConnexionController {
 			        return;
 			    }
 			}
+			
+			//TODO intégrer les message d'erreur à JAVAFX
 			System.out.println("mauvais identifiant ou mot de passe");
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
