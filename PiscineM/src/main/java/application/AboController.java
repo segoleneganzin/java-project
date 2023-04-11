@@ -8,12 +8,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import piscine.Main;
 
-public class AboController {
+public class PinCodeController {
 	   @FXML
-	    private Button AboToAcc;
+	    private Button home;
 
 	    @FXML
-	    void AboToAcc(ActionEvent event) {
+	    void home(ActionEvent event) {
 
 	        try {
 	            Parent root = FXMLLoader.load(getClass().getResource("../ihm/Accueil.fxml"));
