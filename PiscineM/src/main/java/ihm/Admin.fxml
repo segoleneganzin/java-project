@@ -29,6 +29,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Text layoutX="321.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Connecté en tant que :" wrappingWidth="130.13671875" />
+      <Text layoutX="313.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Connecté en tant que :" wrappingWidth="130.13671875" />
+      <Text fx:id="loginName" layoutX="437.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="94.13671875" />
    </children>
 </AnchorPane>

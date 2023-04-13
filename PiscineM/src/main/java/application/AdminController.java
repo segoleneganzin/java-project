@@ -5,11 +5,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.text.Text;
 import piscine.Main;
 
 public class AdminController {
-
-    @FXML
+	@FXML
+	private Text loginName;
+	@FXML
+	private void initialize() {
+		// TODO Recuperer le nom
+		loginName.setText("admin");
+	}
+	@FXML
     private Button retour;
 
     @FXML

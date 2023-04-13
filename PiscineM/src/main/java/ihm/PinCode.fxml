@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="439.0" prefWidth="546.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PaiementController">
+<AnchorPane prefHeight="439.0" prefWidth="546.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PinCodeController">
    <children>
       <ImageView fitHeight="439.0" fitWidth="546.0">
          <image>
@@ -28,21 +28,21 @@
             <Image url="@../../../Images/logo_remi.png" />
          </image>    
       </ImageView>
-      <Button fx:id="home" layoutX="17.0" layoutY="400.0" mnemonicParsing="false" onAction="#home" text="Annuler" />
+      <Button fx:id="home" layoutX="17.0" layoutY="400.0" mnemonicParsing="false" onAction="#homeClique" text="Annuler" />
       <GridPane layoutX="124.0" layoutY="175.0" prefHeight="156.0" prefWidth="299.0">
          <children>
-         <Button fx:id="1" prefHeight="44.0" prefWidth="99.0" text="1" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-         <Button fx:id="2" prefHeight="47.0" prefWidth="100.0" text="2" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-         <Button fx:id="3" prefHeight="47.0" prefWidth="100.0" text="3" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-         <Button fx:id="4" prefHeight="45.0" prefWidth="99.0" text="4" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-         <Button fx:id="5" prefHeight="42.0" prefWidth="100.0" text="5" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-         <Button fx:id="6" prefHeight="59.0" prefWidth="100.0" text="6" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-         <Button fx:id="7" prefHeight="43.0" prefWidth="99.0" text="7" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-         <Button fx:id="8" prefHeight="39.0" prefWidth="100.0" text="8" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-         <Button fx:id="9" prefHeight="41.0" prefWidth="100.0" text="9" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-         <Button fx:id="etoile" prefHeight="52.0" prefWidth="99.0" text="*" GridPane.rowIndex="3" />
-         <Button fx:id="0" prefHeight="39.0" prefWidth="100.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-         <Button fx:id="diese" prefHeight="39.0" prefWidth="100.0" text="#" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+         <Button fx:id="1" onAction="#pincodeTape" onMouseClicked="#pincodeTape" prefHeight="44.0" prefWidth="99.0" text="1" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+         <Button fx:id="2" onAction="#pincodeTape" onMouseClicked="#pincodeTape" prefHeight="47.0" prefWidth="100.0" text="2" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+         <Button fx:id="3" onAction="#pincodeTape" onMouseClicked="#pincodeTape" prefHeight="47.0" prefWidth="100.0" text="3" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+         <Button fx:id="4" onAction="#pincodeTape" onMouseClicked="#pincodeTape" prefHeight="45.0" prefWidth="99.0" text="4" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+         <Button fx:id="5" onAction="#pincodeTape" onMouseClicked="#pincodeTape" prefHeight="42.0" prefWidth="100.0" text="5" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         <Button fx:id="6" onAction="#pincodeTape" onMouseClicked="#pincodeTape" prefHeight="59.0" prefWidth="100.0" text="6" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+         <Button fx:id="7" onAction="#pincodeTape" onMouseClicked="#pincodeTape" prefHeight="43.0" prefWidth="99.0" text="7" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+         <Button fx:id="8" onAction="#pincodeTape" onMouseClicked="#pincodeTape" prefHeight="39.0" prefWidth="100.0" text="8" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         <Button fx:id="9" onAction="#pincodeTape" prefHeight="41.0" prefWidth="100.0" text="9" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+         <Button fx:id="etoile" onAction="#pincodeTape" onMouseClicked="#pincodeTape" prefHeight="52.0" prefWidth="99.0" text="Cancel" GridPane.rowIndex="3" />
+         <Button fx:id="0" onAction="#pincodeTape" onMouseClicked="#pincodeTape" prefHeight="39.0" prefWidth="100.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+         <Button fx:id="diese" onAction="#pincodeTape" onMouseClicked="#pincodeTape" prefHeight="39.0" prefWidth="100.0" text="Valider" GridPane.columnIndex="2" GridPane.rowIndex="3" />
          </children>
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

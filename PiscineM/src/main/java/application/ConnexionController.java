@@ -8,13 +8,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import piscine.Administrateur;
 import piscine.Main;
 
 public class ConnexionController {
-
+	@FXML
+	private Label messageErreur;
 	@FXML
 	private Button retour;
 
@@ -44,11 +46,8 @@ public class ConnexionController {
 		try {
 			String identifiant = id.getText();
 			String motDePasse = mdp.getText();
-			//            System.out.println(identifiant);
-			//            System.out.println(motDePasse);
 			List<Administrateur> admins = AdministrateurDAO.getInstance().readAll();
 
-			//Intégrer une boucle for pour rechercher le bon utilisateurs
 			for (Administrateur admin : admins) {
 			    if (admin.getIdentifiant().equals(identifiant) && admin.getMdp().equals(motDePasse)) {
 			        Parent root = FXMLLoader.load(getClass().getResource("../ihm/Admin.fxml"));
@@ -58,11 +57,7 @@ public class ConnexionController {
 			        return;
 			    }
 			}
-			
-			//TODO intégrer les message d'erreur à JAVAFX
-			System.out.println("mauvais identifiant ou mot de passe");
-			
-			
+			messageErreur.setText("Mauvais identifiant ou mot de passe, Veuillez réessayer !");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
