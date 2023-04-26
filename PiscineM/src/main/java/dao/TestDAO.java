@@ -1,11 +1,9 @@
 package dao;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 
 import piscine.Code;
-import piscine.Cours;
 
 public class TestDAO {
 
@@ -122,28 +120,28 @@ public class TestDAO {
 //code.setDateAchat(LocalDateTime.now());
 
 // read d'un code
-Code code = CodeDAO.getInstance().read("DajxDhAxRf");
+//Code code = CodeDAO.getInstance().read("6Wg4gQog9x");
 
 // update d'un code
-code.setDateAchat(LocalDateTime.of(2000, Month.AUGUST, 01, 12, 30, 00));
-code.setOffre(OffreDAO.getInstance().read(7));
-CodeDAO.getInstance().update(code);
+//code.setDateAchat(LocalDateTime.of(2000, Month.AUGUST, 01, 12, 30, 00));
+//code.setOffre(OffreDAO.getInstance().read(3));
+//CodeDAO.getInstance().update(code);
 
 // delete d'un code
 //CodeDAO.getInstance().delete(code);
 
-System.out.println(code);
+//System.out.println(code);
 
 
 		//////////////////////////////////////////////////////////TEST UTILISATION
-		//Creation d'une utilisation :
-		//			Utilisation utilisation = new Utilisation(LocalDateTime.now(), CodeDAO.getInstance().read("To9re9m5sT"), PiscineDAO.getInstance().read(1));
-		//			UtilisationDAO.getInstance().create(utilisation);
-		//			System.out.println(utilisation);
+//		Creation d'une utilisation :
+//					Utilisation utilisation = new Utilisation(LocalDateTime.now(), CodeDAO.getInstance().read("To9re9m5sT"), PiscineDAO.getInstance().read(1));
+//					UtilisationDAO.getInstance().create(utilisation);
+//					System.out.println(utilisation);
 
-		//read d'une utilisation
-		//			Utilisation utilisation = UtilisationDAO.getInstance().read(LocalDateTime.parse("2023-03-29T14:30:48.163") , "To9re9m5sT");
-		//			System.out.println(utilisation);
+//		read d'une utilisation //TODO
+//					Utilisation utilisation = UtilisationDAO.getInstance().read(LocalDateTime.parse("2023-03-29T14:30:48.163") , "To9re9m5sT");
+//					System.out.println(utilisation);
 
 		//update d'une utilisation : jamais utilisé
 
@@ -176,13 +174,18 @@ System.out.println(code);
 
 		//read d'un code
 //		Code code = CodeDAO.getInstance().read("To9re9m5sT");
-//		
-////		Pas besoin d'un update
-//		
 //		System.out.println(code.getLesCours());
 //		
 //		System.out.println(code);
 //		
+		
+//		///////////////////////////////////////////////////////////Test du calcul du solde d'un code 
+		// read d'un code
+		Code code = CodeDAO.getInstance().read("To9re9m5sT");
+//		Code code = CodeDAO.getInstance().read("6Wg4gQog9x");
+//		System.out.println(code.getSoldeCode());
+		System.out.println(code);
+		
 
 		Connexion.fermer();
 	}

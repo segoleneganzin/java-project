@@ -3,10 +3,10 @@ package piscine;
 
 public class Offre {
 	private int idOffre = -1;	//valeur par defaut pour la gestion des erreurs
-	private int validite;
+	private int validite;	//mois
 	private int tarif;
 	private int nbPlaces;
-	private String modalite;
+	private String modalite;	//solo/duo/cours
 	
 	public Offre(int validite, int tarif, int nbPlaces, String modalite) {
 		super();
@@ -70,6 +70,7 @@ public class Offre {
 	public void setModalite(String modalite) {
 		this.modalite = modalite;
 	}
+
 	
 	@Override
 	public String toString() {

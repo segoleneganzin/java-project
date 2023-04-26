@@ -1,17 +1,17 @@
 package piscine;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import dao.UtilisationDAO;
 
 public class Code {
 	private String idCode = "no";	//valeur par defaut pour la gestion des erreurs
 	private LocalDateTime dateAchat;
 	private LocalDateTime dateEcheance;
-	//	private int solde;
 	private Offre offre; // cle etrangere qui fera le lien avec offre
-	
+
 	private List<Cours> lesCours= new ArrayList<Cours>();
 
 	public Code(LocalDateTime dateAchat, LocalDateTime dateEcheance, Offre offre, List<Cours> lesCours) {
@@ -55,14 +55,6 @@ public class Code {
 		this.dateEcheance = dateEcheance;
 	}
 
-	//	public int getSolde() {
-	//		return solde;
-	//	}
-	//
-	//	public void setSolde(int solde) {
-	//		this.solde = solde;
-	//	}
-
 	public List<Cours> getLesCours() {
 		return lesCours;
 	}
@@ -70,7 +62,7 @@ public class Code {
 	public void setLesCours(List<Cours> lesCours) {
 		this.lesCours = lesCours;
 	}
-	
+
 	public void ajouterCours(Cours cours) {
 		lesCours.add(cours);
 	}
@@ -83,10 +75,23 @@ public class Code {
 		this.offre = offre;
 	}
 
+	//consulter le solde du code
+	public int getSoldeCode() {
+		String idCode = this.getIdCode();
+		//		System.out.println(idCode);
+		int nombreUtilisation = UtilisationDAO.getInstance().getNombreUtilisation(idCode);
+		//		System.out.println(nombreUtilisation);
+		Offre offre = this.getOffre();
+		int nbPlaces = offre.getNbPlaces();
+		//		System.out.println(nbPlaces);
+		int solde = nbPlaces - nombreUtilisation;
+		return solde;
+	}
+
 	@Override
 	public String toString() {
 		return "Code [idCode = " + idCode + ", dateAchat = " + dateAchat + ", dateEcheance = " + dateEcheance
-				+  ", offre = " + offre + ", les cours : " + lesCours + "]";
+				+  ", offre = " + offre + ", entrée(s) restante(s) = " + this.getSoldeCode() + ", les cours : " + lesCours + "]";
 	}
 
 }

@@ -1,3 +1,8 @@
+//les offres sont gerees par l'admin
+//il peut :
+// -les modifier
+// -les supprimer
+// - en ajouter
 package dao;
 
 
@@ -12,10 +17,10 @@ import piscine.Offre;
 public class OffreDAO extends DAO<Offre> {
 	private static final String CLE_PRIMAIRE = "idOffre";
 	private static final String TABLE = "offre";
-	private static final String VALIDITE = "validite";
+	private static final String VALIDITE = "validite";	//mois
 	private static final String TARIF = "tarif";
 	private static final String NBPLACE = "nbPlaces";
-	private static final String MODALITE = "modalite";
+	private static final String MODALITE = "modalite";	//solo/duo/cours
 
 
 	private static OffreDAO instance=null;
