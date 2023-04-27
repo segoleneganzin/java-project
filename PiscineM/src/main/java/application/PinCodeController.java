@@ -10,7 +10,7 @@ import javafx.scene.control.PasswordField;
 import piscine.Main;
 
 public class PinCodeController {
-	//TODO Résoudre message d'erreur sous Console JAVA, seul le 9 ne renvoie pas d'erreur....
+	
 	@FXML
 	private PasswordField pincode;
 	@FXML
@@ -18,9 +18,9 @@ public class PinCodeController {
 	    if(event.getSource() instanceof Button) {
 	        Button clickedButton = (Button) event.getSource();
 	        String buttonLabel = clickedButton.getText();
-        	System.out.println(buttonLabel);	        
-	        System.out.println(pincode.getText());
-	        System.out.println(pincode.getLength());
+//        	System.out.println(buttonLabel);	        
+//	        System.out.println(pincode.getText());
+//	        System.out.println(pincode.getLength());
         	if(buttonLabel.equals("Valider") && pincode.getLength()>=4) {
 	            // Validation du pincode affichage de la page transaction.fxml
 	        	try {

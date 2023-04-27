@@ -29,7 +29,6 @@
             <Image url="@../../../Images/Admin-Profile-Vector-PNG-Picture.png" />
          </image>
       </ImageView>
-      <PasswordField fx:id="mdp" layoutX="201.0" layoutY="271.0" promptText="Mot de passe" />
       <TextFlow layoutX="173.0" layoutY="149.0" prefHeight="36.0" prefWidth="200.0">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="39.0" prefWidth="204.0" text="Nom d'utilisateur :" textAlignment="CENTER" wrapText="true">
@@ -50,6 +49,7 @@
       </TextFlow>
       <Button fx:id="connexion" layoutX="237.0" layoutY="348.0" mnemonicParsing="false" onAction="#AfficherPageConnexion" text="Connexion" />
       <TextField fx:id="id" layoutX="199.0" layoutY="196.0" promptText="Identifiant" />
+      <PasswordField fx:id="mdp" layoutX="201.0" layoutY="271.0" promptText="Mot de passe" />
       <Button fx:id="retour" layoutX="22.0" layoutY="383.0" mnemonicParsing="false" onAction="#Retour" prefHeight="25.0" prefWidth="38.0">
          <graphic>
             <ImageView fitHeight="34.0" fitWidth="34.0">

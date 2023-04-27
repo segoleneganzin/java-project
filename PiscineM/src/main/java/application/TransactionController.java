@@ -12,7 +12,7 @@ public class TransactionController {
 	private void initialize() {
 	    Thread thread = new Thread(() -> {
 	        try {
-	            Thread.sleep(5000);
+	            Thread.sleep(3000);
 	            Parent root = FXMLLoader.load(getClass().getResource("../ihm/Accueil.fxml"));
 	            Scene scene = new Scene(root);
 	            Platform.runLater(() -> {
