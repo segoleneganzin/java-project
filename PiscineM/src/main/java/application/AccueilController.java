@@ -79,7 +79,6 @@ public class AccueilController {
 
     @FXML
     void AfficherSolde(ActionEvent event) {
-
         try {
             Parent root = FXMLLoader.load(getClass().getResource("../ihm/Solde.fxml"));
             Scene scene = new Scene(root);

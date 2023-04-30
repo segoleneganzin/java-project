@@ -6,6 +6,7 @@ import java.util.List;
 
 import dao.UtilisationDAO;
 
+
 public class Code {
 	private String idCode = "no";	//valeur par defaut pour la gestion des erreurs
 	private LocalDateTime dateAchat;
@@ -13,6 +14,7 @@ public class Code {
 	private Offre offre; // cle etrangere qui fera le lien avec offre
 
 	private List<Cours> lesCours= new ArrayList<Cours>();
+	
 
 	public Code(LocalDateTime dateAchat, LocalDateTime dateEcheance, Offre offre, List<Cours> lesCours) {
 		super();
@@ -30,6 +32,7 @@ public class Code {
 		this.offre = offre;
 		this.lesCours = lesCours;
 	}
+	
 
 	public String getIdCode() {
 		return idCode;
@@ -74,6 +77,7 @@ public class Code {
 	public void setOffre(Offre offre) {
 		this.offre = offre;
 	}
+
 
 	//consulter le solde du code
 	public int getSoldeCode() {

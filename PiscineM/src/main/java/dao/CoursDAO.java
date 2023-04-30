@@ -6,10 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-
-import piscine.Code;
 import piscine.Cours;
 import piscine.Employe;
 import piscine.Piscine;
@@ -26,7 +22,6 @@ public class CoursDAO extends DAO<Cours> {
 	private static final String EMPLOYE = "idEmp";
 	private static final String PISCINE = "idPiscine";
 	private static final String PARTICIPE = "participe";
-	private static final String ID_CODE_PARTICIPE = "idCode";
 	private static final String ID_COURS_PARTICIPE = "idCours";
 	
 	private static CoursDAO instance=null;

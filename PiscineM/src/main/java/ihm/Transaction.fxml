@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="homeInit" prefHeight="441.0" prefWidth="553.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TransactionController">
+   <children>
+      <ImageView fitHeight="451.0" fitWidth="562.0">
+         <image>
+            <Image url="@../Images/25223-190315153009072-0.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="99.0" fitWidth="134.0" layoutX="210.0" layoutY="171.0">
+         <image>
+            <Image url="@../Images/wait.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="99.0" fitWidth="107.0" layoutX="6.0" layoutY="6.0">
+         <image>
+            <Image url="@../Images/logo_remi.png" />
+         </image>    
+      </ImageView>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="96.0" layoutY="45.0" prefHeight="36.0" prefWidth="406.0" text="Transaction en cours">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
