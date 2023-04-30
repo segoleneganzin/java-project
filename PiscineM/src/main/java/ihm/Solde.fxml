@@ -2,12 +2,11 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -34,18 +33,34 @@
          </font>
       </Text>
       <Button layoutX="375.0" layoutY="126.0" mnemonicParsing="false" onAction="#afficherCode" prefHeight="35.0" prefWidth="84.0" text="Valider" />
-      <TableView fx:id="tableCode" layoutX="62.0" layoutY="183.0" prefHeight="56.0" prefWidth="402.0">
-        <columns>
-          <TableColumn fx:id="dateAchat" prefWidth="207.0" text="Date d'achat" />
-          <TableColumn fx:id="dateEcheance" minWidth="0.0" prefWidth="189.0" text="Date d'écheance" />
-        </columns>
-      </TableView>
-      <Label layoutX="84.0" layoutY="266.0" text="Nombre d'entrée(s) restante(s) :" underline="true">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
       <Label fx:id="messageErreur" layoutX="74.0" layoutY="161.0" />
-      <Label fx:id="solde" layoutX="291.0" layoutY="268.0" />
+      <Pane fx:id="codeInfosContainer" layoutX="116.0" layoutY="194.0" prefHeight="156.0" prefWidth="315.0" visible="false">
+         <children>
+            <Label layoutX="10.0" layoutY="14.0" text="Date d'achat :" underline="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="39.0" text="Date d'échéance :" underline="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="62.0" text="Modalité de l'offre :" underline="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="10.0" layoutY="88.0" text="Nombre d'entrée(s) restante(s) :" underline="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="modaliteOffre" layoutX="140.0" layoutY="64.0" text="Label" />
+            <Label fx:id="dateEcheance" layoutX="126.0" layoutY="40.0" text="Label" />
+            <Label fx:id="dateAchat" layoutX="103.0" layoutY="16.0" text="Label" />
+            <Label fx:id="solde" layoutX="213.0" layoutY="89.0" prefHeight="17.0" prefWidth="50.0" text="Label" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

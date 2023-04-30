@@ -8,20 +8,19 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import piscine.Main;
+import piscine.Offre;
 
 public class PaiementController {
 	private String entreeValeur;
-	@FXML
-	private Label montant;
+	@FXML private Label montant;
+	@FXML private Label typeAboChoisi;
+	@FXML private Button home;
+	@FXML private Button validepay ;
+	
 	@FXML
 	private void initialize() {
-		System.out.println(entreeValeur);
-		// TODO Récupérer la valeur de la case de la page précédente
-		montant.setText("essai de modif label "+ getEntreeValeur());
 	}
-	@FXML
-	private Button home;
-
+	
 	@FXML
 	void home(ActionEvent event) {
 		System.out.println(entreeValeur);
@@ -34,12 +33,9 @@ public class PaiementController {
 			e.printStackTrace();
 		}
 	}
-	@FXML
-	private Button validepay ;
 
 	@FXML
 	void validatepay(ActionEvent event) {
-
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("../ihm/PinCode.fxml"));
 			Scene scene = new Scene(root);
@@ -49,11 +45,22 @@ public class PaiementController {
 			e.printStackTrace();
 		}
 	}
-	public String getEntreeValeur() {
-        return entreeValeur;
-    }
-
-    public void setEntreeValeur(String value) {
-        entreeValeur = value;
-    }
+	
+	//recupere les infos de la page des abonnements
+	public void setInfo(Offre uneOffre) {
+		int tarifAbo = uneOffre.getTarif();
+		String typeAbo = uneOffre.getModalite();
+		typeAboChoisi.setText(typeAbo);
+		montant.setText(String.valueOf(tarifAbo) + "€");
+	}
+	
+//	public String getEntreeValeur() {
+//        return entreeValeur;
+//    }
+//
+//    public void setEntreeValeur(String value) {
+//        entreeValeur = value;
+//    }
+	
+	
 }

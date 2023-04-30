@@ -126,6 +126,26 @@ public class OffreDAO extends DAO<Offre> {
 		} 
 		return succes;		
 	}
+	
+	public Offre readModalite(String modalite) {
+		Offre offre = null;
+		try {
+			String requete = "SELECT * FROM " + TABLE + " WHERE " + MODALITE + " = ? ;";
+			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			pst.setString(1, modalite);
+			pst.execute();			
+			ResultSet rs =pst.getResultSet();
+			rs.next();
+			int idOffre = rs.getInt(CLE_PRIMAIRE);
+			int validite = rs.getInt(VALIDITE);
+			int nbplace = rs.getInt(NBPLACE);
+			int tarif = rs.getInt(TARIF);
+			offre = new Offre(idOffre, validite, tarif, nbplace, modalite);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return offre;
+	}
 
 
 

@@ -14,7 +14,6 @@ public class CoursController {
 
 	    @FXML
 	    void AboToAcc(ActionEvent event) {
-
 	        try {
 	            Parent root = FXMLLoader.load(getClass().getResource("../ihm/Accueil.fxml"));
 	            Scene scene = new Scene(root);
@@ -23,6 +22,11 @@ public class CoursController {
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	        }
+	    }
+	    
+	    @FXML
+	    void achatCours() {
+	    	
 	    }
 	    
 }
