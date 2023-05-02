@@ -34,17 +34,5 @@ public class AdminController {
     	}
 }
     
-//    @FXML
-//    void AfficherPageAdmin() {
-//    	try {
-//            Parent root = FXMLLoader.load(getClass().getResource("../ihm/Admin.fxml"));
-//            Scene scene = new Scene(root);
-//            Main.stage.setScene(scene);
-//            Main.stage.show();
-//        		} catch (Exception e) {
-//    		e.printStackTrace();
-//        	}
-//
-//    }
 	
 }

@@ -53,14 +53,5 @@ public class PaiementController {
 		typeAboChoisi.setText(typeAbo);
 		montant.setText(String.valueOf(tarifAbo) + "€");
 	}
-	
-//	public String getEntreeValeur() {
-//        return entreeValeur;
-//    }
-//
-//    public void setEntreeValeur(String value) {
-//        entreeValeur = value;
-//    }
-	
-	
+		
 }

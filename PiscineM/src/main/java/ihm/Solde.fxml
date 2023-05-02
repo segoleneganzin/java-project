@@ -17,15 +17,7 @@
             <Image url="@../../../Images/logo_remi.png" />
          </image>
       </ImageView>
-      <Button fx:id="retour" layoutX="14.0" layoutY="383.0" mnemonicParsing="false" onAction="#Retour" prefHeight="25.0" prefWidth="38.0">
-         <graphic>
-            <ImageView fitHeight="34.0" fitWidth="34.0">
-               <image>
-                  <Image url="@../Images/93634.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
+      <Button fx:id="retour" layoutX="14.0" layoutY="383.0" mnemonicParsing="false" onAction="#Retour" prefHeight="25.0" prefWidth="70.0" text="Retour" />
       <TextField fx:id="code" layoutX="74.0" layoutY="126.0" prefHeight="35.0" prefWidth="292.0" promptText="10 caractères maximum" />
       <Text blendMode="DARKEN" layoutX="112.0" layoutY="71.0" stroke="#030303" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrez le code indiqué au dos de votre ticket ou scannez le code" textAlignment="CENTER" wrappingWidth="357.13671875">
          <font>
