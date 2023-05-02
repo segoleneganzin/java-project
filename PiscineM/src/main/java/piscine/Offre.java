@@ -1,13 +1,11 @@
 package piscine;
 
-import java.time.LocalDateTime;
-
 public class Offre {
 	private int idOffre = -1; // valeur par defaut pour la gestion des erreurs
-	private int validite;
+	private int validite; // mois
 	private int tarif;
 	private int nbPlaces;
-	private String modalite;
+	private String modalite; // solo/duo/cours
 
 	public Offre(int validite, int tarif, int nbPlaces, String modalite) {
 		super();
@@ -26,10 +24,6 @@ public class Offre {
 		this.modalite = modalite;
 	}
 
-	public Offre(String modalite) {
-		this.modalite = modalite;
-	}
-
 	public int getIdOffre() {
 		return idOffre;
 	}
@@ -42,8 +36,8 @@ public class Offre {
 		return validite;
 	}
 
-	public void setValidite(int dureeVal) {
-		this.validite = dureeVal;
+	public void setValidite(int validite) {
+		this.validite = validite;
 	}
 
 	public int getTarif() {

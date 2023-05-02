@@ -1,20 +1,24 @@
+//les offres sont gerees par l'admin
+//il peut :
+// -les modifier
+// -les supprimer
+// - en ajouter
 package dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDateTime;
 
 import piscine.Offre;
 
 public class OffreDAO extends DAO<Offre> {
 	private static final String CLE_PRIMAIRE = "idOffre";
 	private static final String TABLE = "offre";
-	private static final String VALIDITE = "validite";
+	private static final String VALIDITE = "validite"; // mois
 	private static final String TARIF = "tarif";
 	private static final String NBPLACE = "nbPlaces";
-	private static final String MODALITE = "modalite";
+	private static final String MODALITE = "modalite"; // solo/duo/cours
 
 	private static OffreDAO instance = null;
 
@@ -28,17 +32,16 @@ public class OffreDAO extends DAO<Offre> {
 	private OffreDAO() {
 		super();
 	}
-	
-	
 
 	// CREATE
 	public boolean create(Offre offre) {
+
 		boolean succes = true;
 		try {
 			String requete = "INSERT INTO " + TABLE + " (" + VALIDITE + ", " + TARIF + ", " + NBPLACE + ", " + MODALITE
 					+ ") VALUES (?, ?, ?, ?)";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete, Statement.RETURN_GENERATED_KEYS);
-			pst.setInt(1, offre.getValidite());
+			pst.setObject(1, offre.getValidite());
 			pst.setInt(2, offre.getTarif());
 			pst.setInt(3, offre.getNbPlaces());
 			pst.setString(4, offre.getModalite());
@@ -91,7 +94,7 @@ public class OffreDAO extends DAO<Offre> {
 					+ CLE_PRIMAIRE + " = ?";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
 
-			pst.setObject(1, validite);
+			pst.setInt(1, validite);
 			pst.setInt(2, tarif);
 			pst.setInt(3, nbPlace);
 			pst.setString(4, modalite);
@@ -120,6 +123,26 @@ public class OffreDAO extends DAO<Offre> {
 			System.out.println("Attention l'offre est utilisée dans une autre table (code)");
 		}
 		return succes;
+	}
+
+	public Offre readModalite(String modalite) {
+		Offre offre = null;
+		try {
+			String requete = "SELECT * FROM " + TABLE + " WHERE " + MODALITE + " = ? ;";
+			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			pst.setString(1, modalite);
+			pst.execute();
+			ResultSet rs = pst.getResultSet();
+			rs.next();
+			int idOffre = rs.getInt(CLE_PRIMAIRE);
+			int validite = rs.getInt(VALIDITE);
+			int nbplace = rs.getInt(NBPLACE);
+			int tarif = rs.getInt(TARIF);
+			offre = new Offre(idOffre, validite, tarif, nbplace, modalite);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return offre;
 	}
 
 }

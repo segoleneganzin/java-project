@@ -17,7 +17,7 @@
 	<children>
 		<ImageView fitHeight="441.0" fitWidth="553.0" layoutX="-1.0">
 			<image>
-				<Image url="@../../../Images/25223-190315153009072-0.jpg" />
+				<Image url="@../Images/25223-190315153009072-0.jpg" />
 			</image>
 		</ImageView>
 		<Label alignment="CENTER" contentDisplay="CENTER" layoutX="76.0"
@@ -30,7 +30,7 @@
 		<ImageView fitHeight="99.0" fitWidth="107.0" layoutX="-11.0"
 			layoutY="-5.0">
 			<image>
-				<Image url="@../../../Images/logo_remi.png" />
+				<Image url="@../Images/logo_remi.png" />
 			</image>
 		</ImageView>
 		<Button fx:id="backhome" layoutX="17.0" layoutY="400.0"
@@ -38,7 +38,7 @@
 		<ImageView fitHeight="279.0" fitWidth="379.0" layoutX="96.0"
 			layoutY="94.0">
 			<image>
-				<Image url="@../../../Images/Reglement.png" />
+				<Image url="@../Images/Reglement.png" />
 			</image>
 		</ImageView>
 	</children>

@@ -5,10 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-
-import piscine.Code;
 import piscine.Cours;
 import piscine.Employe;
 import piscine.Piscine;
@@ -25,7 +21,6 @@ public class CoursDAO extends DAO<Cours> {
 	private static final String EMPLOYE = "idEmp";
 	private static final String PISCINE = "idPiscine";
 	private static final String PARTICIPE = "participe";
-	private static final String ID_CODE_PARTICIPE = "idCode";
 	private static final String ID_COURS_PARTICIPE = "idCours";
 
 	private static CoursDAO instance = null;
@@ -97,16 +92,15 @@ public class CoursDAO extends DAO<Cours> {
 			int placesrest = rs.getInt(PLACESREST);
 			Employe employe = EmployeDAO.getInstance().read(rs.getInt(EMPLOYE));
 			Piscine piscine = PiscineDAO.getInstance().read(rs.getInt(PISCINE));
-			List<Code> lesCodes = new ArrayList<Code>();
-			requete = "SELECT * FROM " + PARTICIPE + " WHERE " + ID_COURS_PARTICIPE + "=" + id + ";";
-			rs = Connexion.executeQuery(requete);
-			while (rs.next()) {
-				String idCode = rs.getString(ID_CODE_PARTICIPE);
-				Code code = CodeDAO.getInstance().read(idCode);
-				lesCodes.add(code);
-			}
-			cours = new Cours(id, intitule, horairedebut, horairefin, nbplacesini, placesrest, employe, piscine,
-					lesCodes);
+//			List<Code> lesCodes = new ArrayList<Code>();
+//			requete = "SELECT * FROM " + PARTICIPE + " WHERE " + ID_COURS_PARTICIPE + "=" + id + ";";
+//			rs = Connexion.executeQuery(requete);
+//			while (rs.next()) {
+//				String idCode = rs.getString(ID_CODE_PARTICIPE);
+//				Code code = CodeDAO.getInstance().read(idCode);
+//				lesCodes.add(code);
+//			}
+			cours = new Cours(id, intitule, horairedebut, horairefin, nbplacesini, placesrest, employe, piscine);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -156,14 +150,21 @@ public class CoursDAO extends DAO<Cours> {
 		boolean succes = true;
 		try {
 			int id = obj.getIdCours();
-			String requete = "DELETE FROM " + TABLE + " WHERE " + CLE_PRIMAIRE + " = ?";
+			// supprime les lignes de la table participe si un cours est supprime
+			String requete = "DELETE FROM " + PARTICIPE + " WHERE " + ID_COURS_PARTICIPE + " = ?;";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
 			pst.setInt(1, id);
 			pst.executeUpdate();
+
+			requete = "DELETE FROM " + TABLE + " WHERE " + CLE_PRIMAIRE + " = ?";
+			PreparedStatement pst2 = Connexion.getInstance().prepareStatement(requete);
+			pst2.setInt(1, id);
+			pst2.executeUpdate();
 		} catch (SQLException e) {
 			succes = false;
 			e.printStackTrace();
 		}
 		return succes;
 	}
+
 }

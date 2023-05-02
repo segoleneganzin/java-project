@@ -14,8 +14,7 @@ public class AccueilController {
 	private Button abo;
 
 	@FXML
-	void AfficherAbo(ActionEvent event) {
-
+	void achatAbo(ActionEvent event) {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("../ihm/Abonnement.fxml"));
 			Scene scene = new Scene(root);
@@ -27,13 +26,27 @@ public class AccueilController {
 	}
 
 	@FXML
-	private Button horaires;
+	private Button cours;
 
 	@FXML
-	void AfficherHoraires(ActionEvent event) {
-
+	void acheterCours(ActionEvent event) {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("../ihm/Horaires.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("../ihm/Cours.fxml"));
+			Scene scene = new Scene(root);
+			Main.stage.setScene(scene);
+			Main.stage.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
+	private Button solde;
+
+	@FXML
+	void AfficherSolde(ActionEvent event) {
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("../ihm/Solde.fxml"));
 			Scene scene = new Scene(root);
 			Main.stage.setScene(scene);
 			Main.stage.show();
@@ -59,45 +72,13 @@ public class AccueilController {
 	}
 
 	@FXML
-	private Button cours;
+	private Button horaires;
 
 	@FXML
-	void AfficherCours(ActionEvent event) {
+	void AfficherHoraires(ActionEvent event) {
 
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("../ihm/Cours.fxml"));
-			Scene scene = new Scene(root);
-			Main.stage.setScene(scene);
-			Main.stage.show();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	@FXML
-	private Button solde;
-
-	@FXML
-	void AfficherSolde(ActionEvent event) {
-
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource("../ihm/Solde.fxml"));
-			Scene scene = new Scene(root);
-			Main.stage.setScene(scene);
-			Main.stage.show();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	@FXML
-	private Button ticket;
-
-	@FXML
-	void AfficherTicket(ActionEvent event) {
-
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource("../ihm/Ticket.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("../ihm/Horaires.fxml"));
 			Scene scene = new Scene(root);
 			Main.stage.setScene(scene);
 			Main.stage.show();
@@ -121,5 +102,21 @@ public class AccueilController {
 			e.printStackTrace();
 		}
 	}
+
+	// @FXML
+	// private Button ticket;
+	//
+	// @FXML
+	// void AfficherTicket(ActionEvent event) {
+	//
+	// try {
+	// Parent root = FXMLLoader.load(getClass().getResource("../ihm/Ticket.fxml"));
+	// Scene scene = new Scene(root);
+	// Main.stage.setScene(scene);
+	// Main.stage.show();
+	// } catch (Exception e) {
+	// e.printStackTrace();
+	// }
+	// }
 
 }

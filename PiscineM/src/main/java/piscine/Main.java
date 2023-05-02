@@ -14,8 +14,8 @@ public class Main extends Application {
 	public void start(Stage racine) throws Exception {
 		// Nœud racine.
 		Main.stage = racine;
-		// String pwd = System.getProperty("user.dir");
-		// System.out.println("Le répertoire courant est : " + pwd);
+//        String pwd = System.getProperty("user.dir");
+//        System.out.println("Le répertoire courant est : " + pwd);
 		Parent root = FXMLLoader.load(getClass().getResource("../ihm/Accueil.fxml"));
 		// Configuration de la scène.
 		Scene scene = new Scene(root, 546, 439);

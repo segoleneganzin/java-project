@@ -3,6 +3,9 @@ package dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import piscine.Administrateur;
 import piscine.Employe;
@@ -33,7 +36,7 @@ public class AdministrateurDAO extends DAO<Administrateur> {
 			String requete = "INSERT INTO " + TABLE + " (" + CLE_PRIMAIRE + ", " + IDENTIFIANT + ", " + MDP
 					+ ") VALUES (?, ?, ?)";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
-			pst.setInt(1, administrateur.getEmploye().getIdEmp());
+			pst.setInt(1, administrateur.getIdEmp());
 			pst.setString(2, administrateur.getIdentifiant());
 			pst.setString(3, administrateur.getMdp());
 			pst.execute();
@@ -42,10 +45,11 @@ public class AdministrateurDAO extends DAO<Administrateur> {
 			succes = false;
 			e.printStackTrace();
 			// gerer les erreurs si clé etrangeres inexistantes
-			if (administrateur.getEmploye().getIdEmp() == -1) {
-				// afficher un message d'erreur
-				System.out.println("Employé inexistant");
-			}
+			System.out.println("Employé inexistant");
+//			if (administrateur.getIdEmp() ==-1) {
+//				//afficher un message d'erreur
+//				System.out.println("Employé inexistant");
+//			}
 		}
 		return succes;
 	}
@@ -60,10 +64,10 @@ public class AdministrateurDAO extends DAO<Administrateur> {
 			pst.execute();
 			ResultSet rs = pst.getResultSet();
 			rs.next();
-			Employe idEmp = EmployeDAO.getInstance().read(rs.getInt(CLE_PRIMAIRE));
-			String identifiant = rs.getString(IDENTIFIANT);
-			String mdp = rs.getString(MDP);
-			administrateur = new Administrateur(idEmp, identifiant, mdp);
+			Employe emp = EmployeDAO.getInstance().read(rs.getInt(CLE_PRIMAIRE));
+			administrateur = new Administrateur(emp.getIdEmp(), emp.getNom(), emp.getPrenom(), emp.getFonction(),
+					emp.getDateNaissance(), emp.getAdresse(), emp.getLesPiscines(), rs.getString(IDENTIFIANT),
+					rs.getString(MDP));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -76,7 +80,7 @@ public class AdministrateurDAO extends DAO<Administrateur> {
 
 		String identifiant = obj.getIdentifiant();
 		String mdp = obj.getMdp();
-		int id = obj.getEmploye().getIdEmp();
+		int id = obj.getIdEmp();
 
 		try {
 			String requete = "UPDATE " + TABLE + " SET identifiant = ?, mdp = ? WHERE " + CLE_PRIMAIRE + " = ?";
@@ -96,7 +100,7 @@ public class AdministrateurDAO extends DAO<Administrateur> {
 	public boolean delete(Administrateur obj) {
 		boolean succes = true;
 		try {
-			int idAdmin = obj.getEmploye().getIdEmp();
+			int idAdmin = obj.getIdEmp();
 			String requete = "DELETE FROM " + TABLE + " WHERE " + CLE_PRIMAIRE + " = ?";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
 			pst.setInt(1, idAdmin);
@@ -106,6 +110,27 @@ public class AdministrateurDAO extends DAO<Administrateur> {
 			e.printStackTrace();
 		}
 		return succes;
+	}
+
+	public List<Administrateur> readAll() {
+		List<Administrateur> admins = new ArrayList<>();
+		try {
+//	        Connection conn = (Connection) AdministrateurDAO.getInstance();
+			Statement stmt = Connexion.getInstance().createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM " + TABLE);
+			while (rs.next()) {
+				// récupérer l'employe rs.getInt(Employe)
+				Employe emp = EmployeDAO.getInstance().read(rs.getInt(CLE_PRIMAIRE));
+				// tout envoyer dans le constructeur de Admin
+				Administrateur admin = new Administrateur(emp.getIdEmp(), emp.getNom(), emp.getPrenom(),
+						emp.getFonction(), emp.getDateNaissance(), emp.getAdresse(), emp.getLesPiscines(),
+						rs.getString(IDENTIFIANT), rs.getString(MDP));
+				admins.add(admin);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return admins;
 	}
 
 }

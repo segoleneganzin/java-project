@@ -124,19 +124,22 @@ public class UtilisationDAO extends DAO<Utilisation> {
 		return succes;
 	}
 
-	public boolean delete(Code obj) {
-		boolean succes = true;
+	public int getNombreUtilisation(String code) {
+		int nombreUtilisation = 0;
 		try {
-			String idCode = obj.getIdCode();
-			String requete = "DELETE FROM " + TABLE + " WHERE " + CODE + " = ? ;";
+			String requete = "SELECT COUNT (*) FROM " + TABLE + " WHERE " + CODE + " = ? ;";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
-			pst.setString(1, idCode);
-			pst.executeUpdate();
+			pst.setString(1, code);
+			pst.execute();
+			ResultSet rs = pst.getResultSet();
+			if (rs.next()) {
+				nombreUtilisation = rs.getInt(1);
+			}
 		} catch (SQLException e) {
-			succes = false;
+			System.out.println("code inexistant");
 			e.printStackTrace();
 		}
-		return succes;
+		return nombreUtilisation;
 	}
 
 	@Override

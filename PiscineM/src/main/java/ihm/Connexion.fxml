@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.canvas.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextFlow?>
 
 <AnchorPane prefHeight="439.0" prefWidth="546.0"
-	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="application.AdminController">
+	xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="application.ConnexionController">
 	<children>
 		<Label alignment="CENTER" contentDisplay="CENTER" layoutX="72.0"
 			layoutY="59.0" prefHeight="36.0" prefWidth="406.0"
@@ -26,18 +25,15 @@
 		<ImageView fitHeight="88.0" fitWidth="99.0" layoutX="16.0"
 			layoutY="28.0">
 			<image>
-				<Image url="@../../../Images/logo_remi.png" />
+				<Image url="@../Images/logo_remi.png" />
 			</image>
 		</ImageView>
 		<ImageView fitHeight="36.0" fitWidth="38.0" layoutX="154.0"
 			layoutY="190.0">
 			<image>
-				<Image
-					url="@../../../Images/Admin-Profile-Vector-PNG-Picture.png" />
+				<Image url="@../Images/Admin-Profile-Vector-PNG-Picture.png" />
 			</image>
 		</ImageView>
-		<PasswordField layoutX="201.0" layoutY="271.0"
-			promptText="Mot de passe" />
 		<TextFlow layoutX="173.0" layoutY="149.0" prefHeight="36.0"
 			prefWidth="200.0">
 			<children>
@@ -65,26 +61,40 @@
 		<Button fx:id="connexion" layoutX="237.0" layoutY="348.0"
 			mnemonicParsing="false" onAction="#AfficherPageConnexion"
 			text="Connexion" />
-		<CheckBox layoutX="220.0" layoutY="316.0"
-			mnemonicParsing="false" text="Rester connecter" />
-		<TextField layoutX="199.0" layoutY="196.0"
+		<TextField fx:id="id" layoutX="199.0" layoutY="196.0"
 			promptText="Identifiant" />
+		<PasswordField fx:id="mdp" layoutX="201.0"
+			layoutY="271.0" promptText="Mot de passe" />
 		<Button fx:id="retour" layoutX="22.0" layoutY="383.0"
 			mnemonicParsing="false" onAction="#Retour" prefHeight="25.0"
-			prefWidth="38.0">
-			<graphic>
-				<ImageView fitHeight="34.0" fitWidth="34.0">
-					<image>
-						<Image url="@../../../Images/93634.png" />
-					</image>
-				</ImageView>
-			</graphic>
-		</Button>
+			prefWidth="73.0" text="Retour" />
 		<ImageView fitHeight="36.0" fitWidth="38.0" layoutX="154.0"
 			layoutY="260.0">
 			<image>
-				<Image url="@../../../Images/2089795.png" />
+				<Image url="@../Images/2089795.png" />
 			</image>
 		</ImageView>
+		<Label fx:id="wid" alignment="CENTER" contentDisplay="CENTER"
+			layoutX="342.0" layoutY="189.0" prefHeight="39.0" prefWidth="204.0"
+			textAlignment="CENTER" wrapText="true">
+			<font>
+				<Font size="13.0" />
+			</font>
+		</Label>
+		<Label fx:id="wmdp" alignment="CENTER" contentDisplay="CENTER"
+			layoutX="350.0" layoutY="264.0" prefHeight="39.0" prefWidth="204.0"
+			textAlignment="CENTER" wrapText="true">
+			<font>
+				<Font size="13.0" />
+			</font>
+		</Label>
+		<Label fx:id="messageErreur" alignment="CENTER"
+			contentDisplay="CENTER" layoutX="85.0" layoutY="312.0"
+			prefHeight="25.0" prefWidth="385.0" textAlignment="CENTER"
+			wrapText="true">
+			<font>
+				<Font size="13.0" />
+			</font>
+		</Label>
 	</children>
 </AnchorPane>
