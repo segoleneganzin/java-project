@@ -20,6 +20,7 @@ public class PinCodeController {
 	private String modalite;
 	@FXML private PasswordField pincode;
 	@FXML private Button pinToPaiement;
+	@FXML private Button valider;
 
 
 	public void setModalite(String modalite) {
@@ -37,7 +38,7 @@ public class PinCodeController {
 		if(event.getSource() instanceof Button) {
 			Button clickedButton = (Button) event.getSource();
 			String buttonLabel = clickedButton.getText();
-			if(event.getSource() == "valider" && pincode.getLength()==4) {
+			if(event.getSource() == valider && pincode.getLength()==4) {
 				try {
 					Offre uneOffre = OffreDAO.getInstance().readModalite(modalite);
 					Code code = new Code(null, null, OffreDAO.getInstance().read(uneOffre.getIdOffre()));
