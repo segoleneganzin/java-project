@@ -6,19 +6,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="homeInit" prefHeight="441.0" prefWidth="553.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TransactionController">
+<AnchorPane fx:id="homeInit" prefHeight="441.0" prefWidth="553.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BonneBaignadeController">
    <children>
-      <ImageView fitHeight="99.0" fitWidth="134.0" layoutX="210.0" layoutY="171.0">
-         <image>
-            <Image url="@../Images/wait.gif" />
-         </image>
-      </ImageView>
       <ImageView fitHeight="84.0" fitWidth="105.0" layoutY="3.0">
          <image>
             <Image url="@../Images/logo_remi.png" />
          </image>    
       </ImageView>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="74.0" layoutY="34.0" prefHeight="36.0" prefWidth="406.0" text="Transaction en cours">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="74.0" layoutY="185.0" prefHeight="36.0" prefWidth="406.0" text="Bonne baignade !">
          <font>
             <Font size="25.0" />
          </font>

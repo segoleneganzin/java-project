@@ -7,13 +7,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import piscine.Main;
 
-public class TransactionController {
+public class BonneBaignadeController {
 	@FXML
 	private void initialize() {
 	    Thread thread = new Thread(() -> {
 	        try {
 	            Thread.sleep(3000);
-	            Parent root = FXMLLoader.load(getClass().getResource("../ihm/AffichageCode.fxml"));
+	            Parent root = FXMLLoader.load(getClass().getResource("../ihm/Accueil.fxml"));
 	            Scene scene = new Scene(root);
 	            Platform.runLater(() -> {
 	                Main.stage.setScene(scene);

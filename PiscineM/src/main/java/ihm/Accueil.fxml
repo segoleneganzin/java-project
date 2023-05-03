@@ -14,9 +14,9 @@
             <Font size="25.0" />
          </font>
       </Label>
-      <Button fx:id="admin" layoutX="400.0" layoutY="390.0" mnemonicParsing="false" onAction="#AfficherAdmin" prefHeight="25.0" prefWidth="70.0" text="Admin" />
+      <Button fx:id="admin" layoutX="400.0" layoutY="390.0" mnemonicParsing="false" onAction="#afficherAdmin" prefHeight="25.0" prefWidth="70.0" text="Admin" />
       <Button fx:id="cours" layoutX="200.0" layoutY="268.0" mnemonicParsing="false" onAction="#acheterCours" prefHeight="54.0" prefWidth="147.0" text="Acheter un cours" />
-       <Button fx:id="solde" layoutX="200.0" layoutY="336.0" mnemonicParsing="false" onAction="#AfficherSolde" prefHeight="54.0" prefWidth="147.0" text="Consulter Solde" />
+       <Button fx:id="solde" layoutX="200.0" layoutY="336.0" mnemonicParsing="false" onAction="#afficherSolde" prefHeight="54.0" prefWidth="147.0" text="Consulter Solde" />
       
       <Button fx:id="abo" layoutX="200.0" layoutY="205.0" mnemonicParsing="false" onAction="#achatAbo" prefHeight="54.0" prefWidth="147.0" text="Acheter un abonnement" />
       <ImageView fitHeight="87.0" fitWidth="113.0" layoutY="2.0">
@@ -24,7 +24,8 @@
             <Image url="@../Images/logo_remi.png" />
          </image>    
       </ImageView>
-      <Button fx:id="horaires" layoutX="200.0" layoutY="143.0" mnemonicParsing="false" onAction="#AfficherHoraires" prefHeight="54.0" prefWidth="147.0" text="Horaires" />
-      <Button fx:id="reglement" layoutX="200.0" layoutY="82.0" mnemonicParsing="false" onAction="#AfficherReglement" prefHeight="54.0" prefWidth="147.0" text="Réglement" />
+      <Button fx:id="horaires" layoutX="200.0" layoutY="143.0" mnemonicParsing="false" onAction="#afficherHoraires" prefHeight="54.0" prefWidth="147.0" text="Horaires" />
+      <Button fx:id="reglement" layoutX="200.0" layoutY="82.0" mnemonicParsing="false" onAction="#afficherReglement" prefHeight="54.0" prefWidth="147.0" text="Réglement" />
+      <Button layoutX="416.0" layoutY="220.0" mnemonicParsing="false" onAction="#simulerEntree" text="Simuler entrée" />
    </children>
 </AnchorPane>

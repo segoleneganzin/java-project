@@ -10,7 +10,40 @@ import piscine.Main;
 
 public class AccueilController {
 
-	@FXML private Button abo;
+//	@FXML private Button reglement;
+//	@FXML private Button horaires;
+//	@FXML private Button abo;
+//	@FXML private Button cours;
+//	@FXML private Button solde;
+//	@FXML private Button admin;
+
+	
+	@FXML
+	void afficherReglement(ActionEvent event) {
+
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("../ihm/Reglement.fxml"));
+			Scene scene = new Scene(root);
+			Main.stage.setScene(scene);
+			Main.stage.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@FXML
+	void afficherHoraires(ActionEvent event) {
+
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("../ihm/Horaires.fxml"));
+			Scene scene = new Scene(root);
+			Main.stage.setScene(scene);
+			Main.stage.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	@FXML
 	void achatAbo(ActionEvent event) {
 		try {
@@ -23,8 +56,6 @@ public class AccueilController {
 		}
 	}
 
-	@FXML
-	private Button cours;
 
 	@FXML
 	void acheterCours(ActionEvent event) {
@@ -38,11 +69,9 @@ public class AccueilController {
 		}
 	}
 
-	@FXML
-	private Button solde;
 
 	@FXML
-	void AfficherSolde(ActionEvent event) {
+	void afficherSolde(ActionEvent event) {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("../ihm/Solde.fxml"));
 			Scene scene = new Scene(root);
@@ -53,41 +82,9 @@ public class AccueilController {
 		}
 	}
 
-	@FXML
-	private Button reglement;
 
 	@FXML
-	void AfficherReglement(ActionEvent event) {
-
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource("../ihm/Reglement.fxml"));
-			Scene scene = new Scene(root);
-			Main.stage.setScene(scene);
-			Main.stage.show();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	@FXML private Button horaires;
-	@FXML
-	void AfficherHoraires(ActionEvent event) {
-
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource("../ihm/Horaires.fxml"));
-			Scene scene = new Scene(root);
-			Main.stage.setScene(scene);
-			Main.stage.show();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	@FXML
-	private Button admin;
-
-	@FXML
-	void AfficherAdmin(ActionEvent event) {
+	void afficherAdmin(ActionEvent event) {
 
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("../ihm/Connexion.fxml"));
@@ -99,21 +96,20 @@ public class AccueilController {
 		}
 	}
 
-	//	@FXML
-	//  private Button ticket;
-	//
-	//  @FXML
-	//  void AfficherTicket(ActionEvent event) {
-	//
-	//      try {
-	//          Parent root = FXMLLoader.load(getClass().getResource("../ihm/Ticket.fxml"));
-	//          Scene scene = new Scene(root);
-	//          Main.stage.setScene(scene);
-	//          Main.stage.show();
-	//      } catch (Exception e) {
-	//          e.printStackTrace();
-	//      }
-	//  }  
+		@FXML
+	  private Button simulationEntree;
+	
+	  @FXML
+	  void simulerEntree(ActionEvent event) {
+	      try {
+	          Parent root = FXMLLoader.load(getClass().getResource("../ihm/SimulationEntree.fxml"));
+	          Scene scene = new Scene(root);
+	          Main.stage.setScene(scene);
+	          Main.stage.show();
+	      } catch (Exception e) {
+	          e.printStackTrace();
+	      }
+	  }  
 
 }
 
