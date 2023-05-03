@@ -13,7 +13,7 @@ public class TransactionController {
 	    Thread thread = new Thread(() -> {
 	        try {
 	            Thread.sleep(3000);
-	            Parent root = FXMLLoader.load(getClass().getResource("../ihm/Accueil.fxml"));
+	            Parent root = FXMLLoader.load(getClass().getResource("../ihm/AffichageCode.fxml"));
 	            Scene scene = new Scene(root);
 	            Platform.runLater(() -> {
 	                Main.stage.setScene(scene);

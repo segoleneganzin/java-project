@@ -16,7 +16,7 @@ import piscine.Main;
 import piscine.Offre;
 
 public class PinCodeController {
-
+	private Parent root;
 	private String modalite;
 	@FXML private PasswordField pincode;
 	@FXML private Button pinToPaiement;
@@ -44,7 +44,11 @@ public class PinCodeController {
 					Code code = new Code(null, null, OffreDAO.getInstance().read(uneOffre.getIdOffre()));
 					code.setDateAchat(LocalDateTime.now());
 					CodeDAO.getInstance().create(code);
-					Parent root = FXMLLoader.load(getClass().getResource("../ihm/Transaction.fxml"));
+					Code nouveauCode = CodeDAO.getInstance().read(code.getIdCode());
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("../ihm/AffichageCode.fxml"));
+					root = loader.load();
+					AffichageCodeController affichageCodeController = loader.getController();
+					affichageCodeController.setInfoCode(nouveauCode);
 					Scene scene = new Scene(root);
 					Main.stage.setScene(scene);
 					Main.stage.show();
