@@ -1,35 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.canvas.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="439.0" prefWidth="546.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ReglementsController">
+<AnchorPane prefHeight="439.0" prefWidth="546.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ReglementsController">
    <children>
-      <ImageView fitHeight="441.0" fitWidth="553.0" layoutX="-1.0">
-         <image>
-            <Image url="@../Images/25223-190315153009072-0.jpg" />
-         </image>
-      </ImageView>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="76.0" layoutY="45.0" prefHeight="36.0" prefWidth="406.0" text="Réglement des piscine vannetaises">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="112.0" layoutY="27.0" prefHeight="36.0" prefWidth="406.0" text="Règlement des piscines vannetaises">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <ImageView fitHeight="99.0" fitWidth="107.0" layoutX="-11.0" layoutY="-5.0">
+      <ImageView fitHeight="86.0" fitWidth="110.0" layoutY="2.0">
          <image>
             <Image url="@../Images/logo_remi.png" />
          </image>    
       </ImageView>
-      <Button fx:id="backhome" layoutX="17.0" layoutY="400.0" mnemonicParsing="false" onAction="#backhome" text="Retour" />
-      <ImageView fitHeight="279.0" fitWidth="379.0" layoutX="96.0" layoutY="94.0">
+      <Button fx:id="reglementRetourAcc" layoutX="17.0" layoutY="400.0" mnemonicParsing="false" onAction="#retourAcc" text="Retour" />
+      <ImageView fitHeight="301.0" fitWidth="495.0" layoutX="26.0" layoutY="81.0">
          <image>
             <Image url="@../Images/Reglement.png" />
          </image>

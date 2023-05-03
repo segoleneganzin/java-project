@@ -17,7 +17,7 @@
             <Image url="@../../../Images/logo_remi.png" />
          </image>
       </ImageView>
-      <Button fx:id="retour" layoutX="14.0" layoutY="383.0" mnemonicParsing="false" onAction="#Retour" prefHeight="25.0" prefWidth="70.0" text="Retour" />
+      <Button fx:id="soldeRetourAcc" layoutX="14.0" layoutY="383.0" mnemonicParsing="false" onAction="#retourAcc" prefHeight="25.0" prefWidth="70.0" text="Retour" />
       <TextField fx:id="code" layoutX="74.0" layoutY="126.0" prefHeight="35.0" prefWidth="292.0" promptText="10 caractères maximum" />
       <Text blendMode="DARKEN" layoutX="112.0" layoutY="71.0" stroke="#030303" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrez le code indiqué au dos de votre ticket ou scannez le code" textAlignment="CENTER" wrappingWidth="357.13671875">
          <font>
@@ -25,7 +25,7 @@
          </font>
       </Text>
       <Button layoutX="375.0" layoutY="126.0" mnemonicParsing="false" onAction="#afficherCode" prefHeight="35.0" prefWidth="84.0" text="Valider" />
-      <Label fx:id="messageErreur" layoutX="74.0" layoutY="161.0" />
+      <Label fx:id="messageErreur" layoutX="74.0" layoutY="161.0" visible="false" />
       <Pane fx:id="codeInfosContainer" layoutX="116.0" layoutY="194.0" prefHeight="156.0" prefWidth="315.0" visible="false">
          <children>
             <Label layoutX="10.0" layoutY="14.0" text="Date d'achat :" underline="true">

@@ -14,32 +14,14 @@ import javafx.scene.control.TextField;
 import piscine.Administrateur;
 import piscine.Main;
 
-public class ConnexionController {
-	@FXML
-	private Label messageErreur;
-	@FXML
-	private Button retour;
+public class ConnexionController extends GeneralController {
+	@FXML private Label messageErreur;
 
-	@FXML
-	private Button connexion;
+	@FXML private Button connexion;
 
-	@FXML
-	private TextField id;
+	@FXML private TextField id;
 
-	@FXML
-	private PasswordField mdp;
-
-	@FXML
-	void Retour() {
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource("../ihm/Accueil.fxml"));
-			Scene scene = new Scene(root);
-			Main.stage.setScene(scene);
-			Main.stage.show();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+	@FXML private PasswordField mdp;
 
 	@FXML
 	void AfficherPageConnexion() {
@@ -49,17 +31,18 @@ public class ConnexionController {
 			List<Administrateur> admins = AdministrateurDAO.getInstance().readAll();
 
 			for (Administrateur admin : admins) {
-			    if (admin.getIdentifiant().equals(identifiant) && admin.getMdp().equals(motDePasse)) {
-			        Parent root = FXMLLoader.load(getClass().getResource("../ihm/Admin.fxml"));
-			        Scene scene = new Scene(root);
-			        Main.stage.setScene(scene);
-			        Main.stage.show();
-			        return;
-			    }
+				if (admin.getIdentifiant().equals(identifiant) && admin.getMdp().equals(motDePasse)) {
+					Parent root = FXMLLoader.load(getClass().getResource("../ihm/Admin.fxml"));
+					Scene scene = new Scene(root);
+					Main.stage.setScene(scene);
+					Main.stage.show();
+					return;
+				}
 			}
 			messageErreur.setText("Mauvais identifiant ou mot de passe, Veuillez réessayer !");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+
 }

@@ -1,34 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.canvas.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="439.0" prefWidth="546.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HorairesController">
+<AnchorPane prefHeight="439.0" prefWidth="546.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HorairesController">
    <children>
-      <ImageView fitHeight="441.0" fitWidth="553.0" layoutX="-1.0">
-         <image>
-            <Image url="@../Images/25223-190315153009072-0.jpg" />
-         </image>
-      </ImageView>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="58.0" prefHeight="36.0" prefWidth="406.0" text="Bienvenue aux piscines Vannetaises">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="109.0" layoutY="28.0" prefHeight="36.0" prefWidth="406.0" text="Horaires des piscines vannetaises">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <ImageView fitHeight="99.0" fitWidth="107.0" layoutX="-11.0" layoutY="-5.0">
+      <ImageView fitHeight="87.0" fitWidth="109.0" layoutY="2.0">
          <image>
             <Image url="@../Images/logo_remi.png" />
          </image>    
       </ImageView>
-      <Button fx:id="hortoacc" layoutX="17.0" layoutY="400.0" mnemonicParsing="false" onAction="#RetAcc" text="Retour" />
-      <TextArea layoutX="79.0" layoutY="94.0" prefHeight="292.0" prefWidth="400.0" text="Période scolaire&#10;lundi : 10h-13h ; 15h-17h45&#10;mardi, jeudi : 16h-18h45&#10;mercredi : 16h15;19h45&#10;vendredi : 14h-18h45&#10;samedi : 14h-19h&#10;dimanches &amp; jours fériés : 9h-13h&#10;&#10;Brevets de natation et tests de niveaux (payant) : &#10;le mercredi et samedis sur rendez-vous.&#10;&#10;Petites vacances&#10;Lundi au vendredi : 14h-20h&#10;Samedi : 14h-19h&#10;Dimanche et jours fériés : 9h-13h&#10;&#10;Été&#10;lundi, mardi, mercredi, jeudi, vendredi : 14h-20h&#10;samedi : 14h-19h&#10;dimanche et jours fériés : 9h-13h&#10;Bassin de natation&#10;&#10;Le bassin de natation est exclusivement dédié pour faire&#10;des longueurs.&#10;&#10;    Bassin de 25 m sur 10 m&#10;    profondeur variable de 1,3 m à 1,8 m&#10;    gradins&#10;    séparation de l'espace ludique par cloison d'insonorisation&#10;&#10;Période scolaire&#10;lundi : 10h-14h &amp; 16h-20h&#10;mardi : 13h-14h ; 16h-21h&#10;mercredi : 12h-14h ; 16h-20h&#10;jeudi : 8h15-10h30;11h30-14h ; 16h-20h &#10;vendredi : 13h-14h;16h-21h* &#10;samedi : 14h-19h&#10;dimanches &amp; jours fériés : 9h-13h&#10;&#10;* 2 couloirs dès 19h30&#10;&#10;Petites vacances&#10;lundi au vendredi : 12h-20h&#10;samedi : 14h-19h&#10;dimanches &amp; jours fériés : 9h-13h&#10;&#10;Été&#10;lundi, mardi, mercredi, jeudi, vendredi : 12h-20h&#10;samedi : 14h-19h&#10;dimanche et jours fériés : 9h-13h&#10;" />
+      <Button fx:id="horairesRetourAcc" layoutX="17.0" layoutY="400.0" mnemonicParsing="false" onAction="#retourAcc" text="Retour" />
+      <Text layoutX="204.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Période scolaire ">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <TextArea layoutX="148.0" layoutY="166.0" prefHeight="60.0" prefWidth="251.0" text="semaine : 10h-14h &amp; 16h-20h&#10;samedi : 14h-19h&#10;dimanches &amp; jours fériés : 9h-13h" />
+      <Text layoutX="193.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vacances scolaires ">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Text>
+      <TextArea layoutX="148.0" layoutY="290.0" prefHeight="60.0" prefWidth="251.0" text="lundi au vendredi : 12h-20h&#10;samedi : 10h-20h&#10;dimanches &amp; jours fériés : 9h-13h" />
    </children>
 </AnchorPane>

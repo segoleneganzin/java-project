@@ -15,7 +15,13 @@ public class Code {
 
 	private List<Cours> lesCours= new ArrayList<Cours>();
 	
-
+	public Code(LocalDateTime dateAchat, LocalDateTime dateEcheance, Offre offre) {
+		super();
+		this.dateAchat = dateAchat;
+		this.dateEcheance = dateEcheance;
+		this.offre = offre;
+	}
+	
 	public Code(LocalDateTime dateAchat, LocalDateTime dateEcheance, Offre offre, List<Cours> lesCours) {
 		super();
 		this.dateAchat = dateAchat;

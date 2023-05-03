@@ -12,7 +12,7 @@ import javafx.scene.layout.Pane;
 import piscine.Main;
 import piscine.Offre;
 
-public class AboController {
+public class AboController extends GeneralController{
 	private Parent root;
 	@FXML private int tarifAbo;
 	@FXML private Pane descriptionAboSolo;
@@ -27,20 +27,6 @@ public class AboController {
 	@FXML private Button achatSolo;
 	@FXML private Button voirDuo;
 	@FXML private Button achatDuo;
-	@FXML private Button AboToAcc;
-
-
-	@FXML
-	void AboToAcc(ActionEvent event) {
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource("../ihm/Accueil.fxml"));
-			Scene scene = new Scene(root);
-			Main.stage.setScene(scene);
-			Main.stage.show();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 
 
 	@FXML
@@ -89,6 +75,5 @@ public class AboController {
 			e.printStackTrace();
 		}
 	}
-
 
 }
