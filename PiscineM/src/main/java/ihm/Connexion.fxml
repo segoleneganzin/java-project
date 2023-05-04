@@ -10,15 +10,15 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane prefHeight="439.0" prefWidth="546.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ConnexionController">
+<AnchorPane prefHeight="439.0" prefWidth="546.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ConnexionController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="72.0" layoutY="59.0" prefHeight="36.0" prefWidth="406.0" text="Accès administrateur" textAlignment="CENTER" wrapText="true">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="95.0" layoutY="25.0" prefHeight="36.0" prefWidth="406.0" styleClass="titrePage" text="Accès administrateur" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
 
-      <ImageView fitHeight="88.0" fitWidth="99.0" layoutX="16.0" layoutY="28.0">
+      <ImageView fitHeight="85.0" fitWidth="110.0">
          <image>
             <Image url="@../Images/logo_remi.png" />
          </image>
@@ -49,7 +49,7 @@
       <Button fx:id="connexion" layoutX="237.0" layoutY="348.0" mnemonicParsing="false" onAction="#AfficherPageConnexion" text="Connexion" />
       <TextField fx:id="id" layoutX="199.0" layoutY="196.0" promptText="Identifiant" />
       <PasswordField fx:id="mdp" layoutX="201.0" layoutY="271.0" promptText="Mot de passe" />
-      <Button fx:id="connexionRetourAcc" layoutX="22.0" layoutY="383.0" mnemonicParsing="false" onAction="#retourAcc" prefHeight="25.0" prefWidth="73.0" text="Retour" />
+      <Button fx:id="connexionRetourAcc" layoutX="22.0" layoutY="383.0" mnemonicParsing="false" onAction="#retourAcc" prefHeight="25.0" prefWidth="73.0" styleClass="boutonAccAdmin" text="Retour" />
       <ImageView fitHeight="36.0" fitWidth="38.0" layoutX="154.0" layoutY="260.0">
          <image>
             <Image url="@../Images/2089795.png" />

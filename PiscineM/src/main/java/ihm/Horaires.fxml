@@ -9,19 +9,19 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="439.0" prefWidth="546.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HorairesController">
+<AnchorPane prefHeight="439.0" prefWidth="546.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HorairesController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="109.0" layoutY="28.0" prefHeight="36.0" prefWidth="406.0" text="Horaires des piscines vannetaises">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="109.0" layoutY="28.0" prefHeight="36.0" prefWidth="406.0" styleClass="titrePage" text="Horaires des piscines vannetaises">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <ImageView fitHeight="87.0" fitWidth="109.0" layoutY="2.0">
+      <ImageView fitHeight="87.0" fitWidth="109.0" layoutY="2.0" styleClass="logoEntete">
          <image>
             <Image url="@../Images/logo_remi.png" />
          </image>    
       </ImageView>
-      <Button fx:id="horairesRetourAcc" layoutX="17.0" layoutY="400.0" mnemonicParsing="false" onAction="#retourAcc" text="Retour" />
+      <Button fx:id="horairesRetourAcc" layoutX="17.0" layoutY="400.0" mnemonicParsing="false" onAction="#retourAcc" styleClass="boutonRetour" text="Retour" />
       <Text layoutX="204.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Période scolaire ">
          <font>
             <Font name="System Bold" size="18.0" />

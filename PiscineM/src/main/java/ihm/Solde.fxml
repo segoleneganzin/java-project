@@ -10,21 +10,21 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="439.0" prefWidth="546.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SoldeController">
+<AnchorPane prefHeight="439.0" prefWidth="546.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SoldeController">
    <children>
       <ImageView fitHeight="99.0" fitWidth="112.0" layoutY="27.0">
          <image>
             <Image url="@../../../Images/logo_remi.png" />
          </image>
       </ImageView>
-      <Button fx:id="soldeRetourAcc" layoutX="14.0" layoutY="383.0" mnemonicParsing="false" onAction="#retourAcc" prefHeight="25.0" prefWidth="70.0" text="Retour" />
+      <Button fx:id="soldeRetourAcc" layoutX="14.0" layoutY="383.0" mnemonicParsing="false" onAction="#retourAcc" prefHeight="25.0" prefWidth="70.0" styleClass="boutonRetour" text="Retour" />
       <TextField fx:id="code" layoutX="74.0" layoutY="126.0" prefHeight="35.0" prefWidth="292.0" promptText="10 caractères maximum" />
       <Text blendMode="DARKEN" layoutX="112.0" layoutY="71.0" stroke="#030303" strokeType="OUTSIDE" strokeWidth="0.0" text="Entrez le code indiqué au dos de votre ticket ou scannez le code" textAlignment="CENTER" wrappingWidth="357.13671875">
          <font>
             <Font size="21.0" />
          </font>
       </Text>
-      <Button layoutX="375.0" layoutY="126.0" mnemonicParsing="false" onAction="#afficherCode" prefHeight="35.0" prefWidth="84.0" text="Valider" />
+      <Button layoutX="375.0" layoutY="126.0" mnemonicParsing="false" onAction="#afficherCode" prefHeight="35.0" prefWidth="84.0" styleClass="boutonValider" text="Valider" />
       <Label fx:id="messageErreur" layoutX="74.0" layoutY="161.0" visible="false" />
       <Pane fx:id="codeInfosContainer" layoutX="116.0" layoutY="194.0" prefHeight="156.0" prefWidth="315.0" visible="false">
          <children>

@@ -7,19 +7,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="439.0" prefWidth="546.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PaiementController">
+<AnchorPane prefHeight="439.0" prefWidth="546.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PaiementController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="29.0" layoutY="148.0" prefHeight="36.0" prefWidth="406.0" text="Montant total de votre transaction :" underline="true">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <ImageView fitHeight="92.0" fitWidth="127.0" layoutY="-1.0">
+      <ImageView fitHeight="85.0" fitWidth="110.0">
          <image>
             <Image url="@../Images/logo_remi.png" />
          </image>    
       </ImageView>
-      <Button fx:id="paiementToAbo" layoutX="17.0" layoutY="400.0" mnemonicParsing="false" onAction="#paiementToAbo" text="Retour" />
+      <Button fx:id="paiementToAbo" layoutX="17.0" layoutY="400.0" mnemonicParsing="false" onAction="#paiementToAbo" styleClass="boutonRetour" text="Retour" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="52.0" layoutY="220.0" prefHeight="36.0" prefWidth="442.0" text="Veuillez insérer votre carte et suivre les indications svp">
          <font>
             <Font size="18.0" />
@@ -30,7 +30,7 @@
             <Image url="@../Images/logo-terminaldepaiement.png" />
          </image>
       </ImageView>
-      <Button fx:id="creerCode" layoutX="476.0" layoutY="400.0" mnemonicParsing="false" onAction="#creerCode" text="Valider" />
+      <Button fx:id="creerCode" layoutX="476.0" layoutY="400.0" mnemonicParsing="false" onAction="#creerCode" styleClass="boutonValider" text="Valider" />
       <Label fx:id="montant" alignment="CENTER" contentDisplay="CENTER" layoutX="417.0" layoutY="148.0" prefHeight="36.0" prefWidth="118.0" text="prix">
          <font>
             <Font size="18.0" />
@@ -46,7 +46,7 @@
             <Font size="25.0" />
          </font>
       </Label>
-      <Label layoutX="215.0" layoutY="27.0" prefHeight="36.0" prefWidth="118.0" text="Paiement">
+      <Label layoutX="215.0" layoutY="27.0" prefHeight="36.0" prefWidth="118.0" styleClass="titrePage" text="Paiement">
          <font>
             <Font size="25.0" />
          </font>

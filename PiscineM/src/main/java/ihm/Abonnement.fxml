@@ -9,14 +9,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="439.0" prefWidth="546.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AboController">
+<AnchorPane prefHeight="439.0" prefWidth="546.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AboController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="84.0" layoutY="32.0" prefHeight="36.0" prefWidth="406.0" text="Abonnements">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="84.0" layoutY="32.0" prefHeight="36.0" prefWidth="406.0" styleClass="titrePage" text="Abonnements">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <ImageView fitHeight="90.0" fitWidth="117.0" layoutY="5.0">
+      <ImageView fitHeight="85.0" fitWidth="110.0" preserveRatio="true">
          <image>
             <Image url="@../Images/logo_remi.png" />
          </image>    
@@ -45,7 +45,7 @@
             <Text layoutX="10.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(Chaque passage déduit 2 entrées)" />
          </children>
       </Pane>
-      <Button fx:id="voirSolo" layoutX="87.0" layoutY="195.0" mnemonicParsing="false" onAction="#afficherAboSolo" text="Voir abonnement solo" />
-      <Button fx:id="voirDuo" layoutX="320.0" layoutY="195.0" mnemonicParsing="false" onAction="#afficherAboDuo" text="Voir abonnement duo" />
+      <Button fx:id="voirSolo" layoutX="87.0" layoutY="195.0" mnemonicParsing="false" onAction="#afficherAboSolo" styleClass="boutonAbo" text="Voir abonnement solo" />
+      <Button fx:id="voirDuo" layoutX="320.0" layoutY="195.0" mnemonicParsing="false" onAction="#afficherAboDuo" styleClass="boutonAbo" text="Voir abonnement duo" />
    </children>
 </AnchorPane>

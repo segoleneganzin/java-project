@@ -10,13 +10,6 @@ import piscine.Main;
 
 public class AccueilController {
 
-//	@FXML private Button reglement;
-//	@FXML private Button horaires;
-//	@FXML private Button abo;
-//	@FXML private Button cours;
-//	@FXML private Button solde;
-//	@FXML private Button admin;
-
 	
 	@FXML
 	void afficherReglement(ActionEvent event) {

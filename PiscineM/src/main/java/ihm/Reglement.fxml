@@ -7,19 +7,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="439.0" prefWidth="546.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ReglementsController">
+<AnchorPane prefHeight="439.0" prefWidth="546.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ReglementsController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="112.0" layoutY="27.0" prefHeight="36.0" prefWidth="406.0" text="Règlement des piscines vannetaises">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="112.0" layoutY="27.0" prefHeight="36.0" prefWidth="406.0" styleClass="titrePage" text="Règlement des piscines vannetaises">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <ImageView fitHeight="86.0" fitWidth="110.0" layoutY="2.0">
+      <ImageView fitHeight="85.0" fitWidth="110.0">
          <image>
             <Image url="@../Images/logo_remi.png" />
          </image>    
       </ImageView>
-      <Button fx:id="reglementRetourAcc" layoutX="17.0" layoutY="400.0" mnemonicParsing="false" onAction="#retourAcc" text="Retour" />
+      <Button fx:id="reglementRetourAcc" layoutX="17.0" layoutY="400.0" mnemonicParsing="false" onAction="#retourAcc" styleClass="boutonRetour" text="Retour" />
       <ImageView fitHeight="301.0" fitWidth="495.0" layoutX="26.0" layoutY="81.0">
          <image>
             <Image url="@../Images/Reglement.png" />

@@ -1,0 +1,59 @@
+/**************************** principale*/
+.titrePage {
+	-fx-background-color :  #F4F4F4;
+	-fx-text-fill: #0758A7;
+	-fx-font-size: 25px;
+}
+
+.logoEntete{
+	-fx-pref-width: 110
+	-fx-pref-height: 85
+}
+.boutonRetour{
+	-fx-background-radius : 10;
+	-fx-border-radius : 10;
+	-fx-background-color :  #0758A7;
+	-fx-text-fill: #FCD902;
+	-fx-font-size: 14px;
+}
+.boutonValider{
+	-fx-background-radius : 10;
+	-fx-border-radius : 10;
+	-fx-background-color : #FCD902 ;
+	-fx-text-fill: #0758A7;
+	-fx-font-size: 14px;
+}
+/****************************page accueil*/
+.boutonAcc {
+	-fx-background-color :  #FCD902;
+	-fx-background-radius : 10;
+	-fx-border-radius : 10;
+	-fx-text-fill: white;
+	-fx-font-size: 24px;
+}
+
+.boutonAccAdmin{
+	-fx-background-radius : 10;
+	-fx-border-radius : 10;
+	-fx-background-color :  #0758A7;
+	-fx-text-fill: #FCD902;
+	-fx-font-size: 14px;
+}
+
+.boutonAccEntree{
+	-fx-background-radius : 10;
+	-fx-border-radius : 10;
+	-fx-background-color :  #0758A7;
+	-fx-text-fill: #FCD902;
+	-fx-font-size: 14px;
+
+}
+
+/****************************page Acheter abonnement*/
+
+.boutonAbo {
+	-fx-background-color :  #FCD902;
+	-fx-background-radius : 10;
+	-fx-border-radius : 10;
+	-fx-text-fill : #0758A7;
+}

@@ -9,22 +9,22 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="439.0" prefWidth="546.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PassageController">
+<AnchorPane prefHeight="439.0" prefWidth="546.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PassageController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="119.0" layoutY="27.0" prefHeight="36.0" prefWidth="406.0" text="Bienvenue aux piscines vannetaises">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="119.0" layoutY="27.0" prefHeight="36.0" prefWidth="406.0" styleClass="titrePage" text="Bienvenue aux piscines vannetaises">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
-      <ImageView fitHeight="87.0" fitWidth="113.0" layoutY="1.0">
+      <ImageView fitHeight="85.0" fitWidth="110.0">
          <image>
             <Image url="@../Images/logo_remi.png" />
          </image>
       </ImageView>
       <Text layoutX="63.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pour accéder au bassin veuillez saisir votre code ou scanner votre carte :" />
       <TextField fx:id="code" layoutX="70.0" layoutY="193.0" prefHeight="35.0" prefWidth="292.0" promptText="10 caractères maximum" />
-      <Button layoutX="384.0" layoutY="193.0" mnemonicParsing="false" onAction="#validerPassage" prefHeight="35.0" prefWidth="84.0" text="Valider" />
-      <Button fx:id="simulationRetourAcc" layoutX="24.0" layoutY="393.0" mnemonicParsing="false" onAction="#retourAcc" prefHeight="25.0" prefWidth="70.0" text="Retour" />
+      <Button layoutX="384.0" layoutY="193.0" mnemonicParsing="false" onAction="#validerPassage" prefHeight="35.0" prefWidth="84.0" styleClass="boutonValider" text="Valider" />
+      <Button fx:id="simulationRetourAcc" layoutX="24.0" layoutY="393.0" mnemonicParsing="false" onAction="#retourAcc" prefHeight="25.0" prefWidth="70.0" styleClass="boutonRetour" text="Retour" />
       <Label fx:id="messageErreur" layoutX="70.0" layoutY="241.0" visible="false" />
       <Label fx:id="messageValide" layoutX="71.0" layoutY="294.0" prefHeight="17.0" prefWidth="390.0" visible="false" />
    </children>
