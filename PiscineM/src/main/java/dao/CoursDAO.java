@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import piscine.Cours;
 import piscine.Employe;
 import piscine.Piscine;
@@ -18,7 +20,6 @@ public class CoursDAO extends DAO<Cours> {
 	private static final String HORAIREDEBUT = "horaireDebut";
 	private static final String HORAIREFIN = "horaireFin";
 	private static final String NBPLACESINI = "nombrePlacesInitiales";
-	private static final String PLACESREST = "placesRestantes";
 	private static final String EMPLOYE = "idEmp";
 	private static final String PISCINE = "idPiscine";
 	private static final String PARTICIPE = "participe";
@@ -46,15 +47,14 @@ public class CoursDAO extends DAO<Cours> {
 			Employe employe = cours.getEmploye();
 			Piscine piscine = cours.getPiscine();
 			
-			String requete = "INSERT INTO "+TABLE+" ("+INTITULE+", "+HORAIREDEBUT+", "+HORAIREFIN+", "+NBPLACESINI+", "+PLACESREST+", "+EMPLOYE +", " + PISCINE + ") VALUES (?, ?, ?, ?, ?, ?, ?)";
+			String requete = "INSERT INTO "+TABLE+" ("+INTITULE+", "+HORAIREDEBUT+", "+HORAIREFIN+", "+NBPLACESINI+", "+EMPLOYE +", " + PISCINE + ") VALUES (?, ?, ?, ?, ?, ?)";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete, Statement.RETURN_GENERATED_KEYS);
 			pst.setString(1, cours.getIntitule());
 			pst.setObject(2, cours.getHoraireDebut());
 			pst.setObject(3, cours.getHoraireFin());
 			pst.setInt(4, cours.getNombrePlacesInitiales());
-			pst.setInt(5, cours.getPlacesRestantes());
-			pst.setInt(6, employe.getIdEmp());
-			pst.setInt(7, piscine.getIdPiscine());
+			pst.setInt(5, employe.getIdEmp());
+			pst.setInt(6, piscine.getIdPiscine());
 			pst.executeUpdate() ;
 			ResultSet rs = pst.getGeneratedKeys();
 			if (rs.next()) {
@@ -89,18 +89,9 @@ public class CoursDAO extends DAO<Cours> {
 			LocalDateTime horairedebut = rs.getTimestamp(HORAIREDEBUT).toLocalDateTime();
 			LocalDateTime horairefin = rs.getTimestamp(HORAIREFIN).toLocalDateTime();
 			int nbplacesini = rs.getInt(NBPLACESINI);
-			int placesrest = rs.getInt(PLACESREST);
 			Employe employe = EmployeDAO.getInstance().read(rs.getInt(EMPLOYE));
 			Piscine piscine = PiscineDAO.getInstance().read(rs.getInt(PISCINE));
-//			List<Code> lesCodes = new ArrayList<Code>();
-//			requete = "SELECT * FROM " + PARTICIPE + " WHERE " + ID_COURS_PARTICIPE + "=" + id + ";";
-//			rs = Connexion.executeQuery(requete);
-//			while (rs.next()) {
-//				String idCode = rs.getString(ID_CODE_PARTICIPE);
-//				Code code = CodeDAO.getInstance().read(idCode);
-//				lesCodes.add(code);
-//			}
-			cours = new Cours(id, intitule, horairedebut, horairefin, nbplacesini, placesrest, employe, piscine);
+			cours = new Cours(id, intitule, horairedebut, horairefin, nbplacesini, employe, piscine);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -115,19 +106,17 @@ public class CoursDAO extends DAO<Cours> {
 		LocalDateTime horairefin =obj.getHoraireFin();
 		LocalDateTime horairedebut = obj.getHoraireDebut();
 		int nbplacesinit = obj.getNombrePlacesInitiales();
-		int placesrest = obj.getPlacesRestantes();
 		int idEmp = obj.getEmploye().getIdEmp();
 		int idPiscine = obj.getPiscine().getIdPiscine();
 		int id = obj.getIdCours();
 
 		try {
-			String requete = "UPDATE "+TABLE+" SET intitule = ?, horaireDebut = ?, horaireFin = ?, nombrePlacesInitiales = ?, placesRestantes = ?, idEmp = ?, idPiscine = ? WHERE "+CLE_PRIMAIRE+" = ?";
+			String requete = "UPDATE "+TABLE+" SET intitule = ?, horaireDebut = ?, horaireFin = ?, nombrePlacesInitiales = ?, idEmp = ?, idPiscine = ? WHERE "+CLE_PRIMAIRE+" = ?";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete) ;
 			pst.setString(1,intitule) ; 
 			pst.setObject(2,horairefin) ; 
 			pst.setObject(3, horairedebut) ;
 			pst.setInt(4, nbplacesinit);
-			pst.setInt(5, placesrest);
 			pst.setInt(6, idEmp);
 			pst.setInt(7, idPiscine);
 			pst.setInt(8, id) ;
@@ -164,6 +153,26 @@ public class CoursDAO extends DAO<Cours> {
 		} 
 		return succes;		
 	}
+	
+	public List<Cours> readAllCoursDispo(Piscine piscine) {
+		List<Cours> lesCours = new ArrayList<Cours>();
+		try {
+//			String requete = "SELECT * FROM " + TABLE + " WHERE " + HORAIREDEBUT + " > NOW() AND " + PISCINE + " = " + piscine.getIdPiscine()";
+			String requete = "SELECT * FROM " + TABLE + " WHERE "  + PISCINE + " = " + piscine.getIdPiscine();
+			ResultSet rs = Connexion.executeQuery(requete);
+		while (rs.next()) {
+			int idCours = rs.getInt(CLE_PRIMAIRE);
+			Cours cours = CoursDAO.getInstance().read(idCours);
+			int placesRestantes = cours.getPlacesRestantes();
+			if (placesRestantes > 1) {
+				lesCours.add(cours);
+			}
+		}} catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+		return lesCours;	
+	}
+
 
 	
 }
