@@ -3,7 +3,6 @@ package application;
 import java.time.LocalDateTime;
 
 import dao.CodeDAO;
-import dao.PiscineDAO;
 import dao.UtilisationDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,13 +15,13 @@ import piscine.Main;
 import piscine.Piscine;
 import piscine.Utilisation;
 
-public class PassageController extends GeneralController{
+public class UtilisationController extends GeneralController{
 
 	@FXML private TextField code;
 	@FXML private Label messageErreur;
 	@FXML private Label messageValide;
-	//Dans ce contexte nous n'avons qu'une piscine (pourrait etre selectionne au lancement du programme) :
-	private Piscine piscine= PiscineDAO.getInstance().read(1);
+	//recuperation de la piscine stocke dans la classe mere :
+	private Piscine piscine= GeneralController.getLaPiscine();
 
 
 	@FXML
@@ -52,7 +51,7 @@ public class PassageController extends GeneralController{
 					else if (modalite.equals("duo") && solde>2) {				
 						Utilisation utilisation1 = new Utilisation(LocalDateTime.now(), unCode, piscine);
 						UtilisationDAO.getInstance().create(utilisation1);
-						//ajoute 5 secondes car on ne peut avoir deux clé identiques
+						//ajoute 5 secondes car on ne peut avoir deux clé identiques (code+date)
 						Utilisation utilisation2 = new Utilisation(LocalDateTime.now().plusSeconds(5), unCode, piscine);
 						UtilisationDAO.getInstance().create(utilisation2);
 						Parent root = FXMLLoader.load(getClass().getResource("../ihm/BonneBaignade.fxml"));

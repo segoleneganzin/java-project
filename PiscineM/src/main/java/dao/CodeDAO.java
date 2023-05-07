@@ -19,7 +19,6 @@ public class CodeDAO extends DAO<Code> {
 	private static final String TABLE = "code";
 	private static final String ACHAT = "dateAchat";
 	private static final String ECHEANCE = "dateEcheance";
-	//	private static final String SOLDE = "solde";
 	private static final String OFFRE = "idOffre";
 	private static final String PARTICIPE = "participe";
 	private static final String ID_CODE_PARTICIPE = "idCode";
