@@ -171,7 +171,6 @@ public class CodeDAO extends DAO<Code> {
 	
 	//Ajouter une participation a un cours
 	public boolean ajouterParticipation(Cours cours, Code code) {
-
 		boolean succes=true;
 		try {			
 			String requete = "INSERT INTO "+PARTICIPE+" ("+ID_CODE_PARTICIPE+", "+ID_COURS_PARTICIPE+ ") VALUES (?, ?)";
@@ -185,6 +184,24 @@ public class CodeDAO extends DAO<Code> {
 			e.printStackTrace();
 		}
 		return succes;
+	}
+	
+	public int getNombreParticipant(int cours) {
+		int nombreParticipant = 0;
+		try {
+			String requete = "SELECT COUNT (*) FROM " + PARTICIPE + " WHERE " + ID_COURS_PARTICIPE + " = ? ;";
+			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			pst.setInt(1, cours);
+			pst.execute();
+			ResultSet rs =pst.getResultSet();
+			if (rs.next()) {
+	            nombreParticipant = rs.getInt(1);
+	        }
+		} catch (SQLException e) {
+			System.out.println("code inexistant");
+			e.printStackTrace();
+		}
+		return nombreParticipant;
 	}
 	
 	
