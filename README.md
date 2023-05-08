@@ -20,7 +20,7 @@ Les administrateurs authentifiés pourront définir :
 La configuration proposée est la plus générique/modulable possible.
 N'importe qui pourra tester la validité d'un code et voir son contenu actuel.
 
-<b>Langages et technologies utilisés :<b>
+## Langages et technologies utilisés
 
 <ul>
   <li>Java</li>
