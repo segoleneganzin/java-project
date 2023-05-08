@@ -28,8 +28,9 @@ public class CoursController extends GeneralController{
 	private ObservableList<Cours> coursData = FXCollections.observableArrayList();
 	private Cours coursSelectionne;
 	private Parent root;
+	@FXML private Label tarifCours;
 	@FXML private TableView<Cours> tableCours;
-    @FXML private TableColumn<Cours, String> intitule;
+	@FXML private TableColumn<Cours, String> intitule;
 	@FXML private TableColumn<Cours, String> date;
 	@FXML private TableColumn<Cours, String> heureDebut;
 	@FXML private TableColumn<Cours, String> heureFin;
@@ -39,6 +40,7 @@ public class CoursController extends GeneralController{
 	@FXML private Label horaireDebut;
 	@FXML private Label horaireFin;
 	@FXML Pane reserverCours;
+	@FXML Pane tarif;
 	Piscine laPiscine = GeneralController.getLaPiscine();
 
 	public Cours getCoursSelectionne() {
@@ -48,44 +50,47 @@ public class CoursController extends GeneralController{
 	public void setCoursSelectionne(Cours coursSelectionne) {
 		this.coursSelectionne = coursSelectionne;
 	}
-	
+
 	public ObservableList<Cours> getCoursData() {
 		return coursData;
 	}
-	
+
 	public void afficherCours(ActionEvent event) {
-			   tableCours.setVisible(true);
-			   afficherCours.setVisible(false);
-			   intitule.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIntitule()));
-			   date.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().toStringDate()));
-			   heureDebut.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().toStringHoraireDebut()));
-			   heureFin.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().toStringHoraireFin()));
-			   CoursDAO coursDAO = CoursDAO.getInstance();
-			   List<Cours> lesCours = coursDAO.readAllCoursDispo(laPiscine);
-			   coursData.clear();
-			   coursData.addAll(lesCours);
-			   tableCours.setItems(coursData);
+		Offre uneOffre = OffreDAO.getInstance().readModalite("cours");
+		tarifCours.setText(String.valueOf(uneOffre.getTarif()) + "€");
+		tarif.setVisible(true);
+		tableCours.setVisible(true);
+		afficherCours.setVisible(false);
+		intitule.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIntitule()));
+		date.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().toStringDate()));
+		heureDebut.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().toStringHoraireDebut()));
+		heureFin.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().toStringHoraireFin()));
+		CoursDAO coursDAO = CoursDAO.getInstance();
+		List<Cours> lesCours = coursDAO.readAllCoursDispo(laPiscine);
+		coursData.clear();
+		coursData.addAll(lesCours);
+		tableCours.setItems(coursData);
 	}
-	
+
 	public void fermerReservation(ActionEvent event) {
 		reserverCours.setVisible(false);
 	}
-	
+
 	@FXML
 	void selectionCours() {
 		// Récupérer la ligne sélectionnée
-	    setCoursSelectionne(tableCours.getSelectionModel().getSelectedItem());
-	    System.out.println(getCoursSelectionne());
-	    Cours cours = getCoursSelectionne();
-	    if (cours != null) {
-	    	reserverCours.setVisible(true);
-	    	intituleCours.setText(cours.getIntitule());
-	    	dateCours.setText(cours.toStringDate());
-	    	horaireDebut.setText(cours.toStringHoraireDebut());
-	    	horaireFin.setText(cours.toStringHoraireFin());
-	    }
+		setCoursSelectionne(tableCours.getSelectionModel().getSelectedItem());
+		System.out.println(getCoursSelectionne());
+		Cours cours = getCoursSelectionne();
+		if (cours != null) {
+			reserverCours.setVisible(true);
+			intituleCours.setText(cours.getIntitule());
+			dateCours.setText(cours.toStringDate());
+			horaireDebut.setText(cours.toStringHoraireDebut());
+			horaireFin.setText(cours.toStringHoraireFin());
+		}
 	}
-	
+
 	@FXML 
 	void acheterCours() {
 		try {

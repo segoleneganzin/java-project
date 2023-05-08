@@ -24,7 +24,7 @@
          </image>
       </ImageView>
       <Button fx:id="coursRetourAcc" layoutX="21.0" layoutY="374.0" mnemonicParsing="false" onAction="#retourAcc" prefHeight="25.0" prefWidth="65.0" text="Retour" />
-      <TableView fx:id="tableCours" layoutX="52.0" layoutY="104.0" onMouseClicked="#selectionCours" prefHeight="200.0" prefWidth="412.0" visible="false">
+      <TableView fx:id="tableCours" layoutX="68.0" layoutY="105.0" onMouseClicked="#selectionCours" prefHeight="200.0" prefWidth="412.0" visible="false">
         <columns>
           <TableColumn fx:id="intitule" prefWidth="88.0" text="Intitulé" />
             <TableColumn fx:id="date" minWidth="0.0" prefWidth="193.0" text="Date" />
@@ -48,6 +48,11 @@
             <Label fx:id="horaireFin" layoutX="246.0" layoutY="152.0" text="Label" />
          </children>
       </Pane>
-      <Text layoutX="125.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tarif d'un cours : 20€" />
+      <Pane fx:id="tarif" layoutX="194.0" layoutY="311.0" prefHeight="32.0" prefWidth="160.0" visible="false">
+         <children>
+            <Text layoutX="16.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tarif d'un cours : " />
+            <Label fx:id="tarifCours" layoutX="108.0" layoutY="8.0" text="Label" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
