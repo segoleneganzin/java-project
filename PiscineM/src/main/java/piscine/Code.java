@@ -1,6 +1,7 @@
 package piscine;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -96,6 +97,16 @@ public class Code {
 		//		System.out.println(nbPlaces);
 		int solde = nbPlaces - nombreUtilisation;
 		return solde;
+	}
+	
+	public String toStringDateAchat() {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+	    return dateAchat.format(formatter);
+	}
+	
+	public String toStringDateEcheance() {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+	    return dateEcheance.format(formatter);
 	}
 
 	@Override
