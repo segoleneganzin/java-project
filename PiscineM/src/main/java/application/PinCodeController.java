@@ -1,9 +1,12 @@
 package application;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import dao.CodeDAO;
 import dao.OffreDAO;
+import dao.UtilisationDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,12 +15,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import piscine.Code;
+import piscine.Cours;
 import piscine.Main;
 import piscine.Offre;
+import piscine.Utilisation;
 
 public class PinCodeController {
 	private Parent root;
 	private String modalite;
+	private Cours leCours;
+	private Code code;
+	private Code nouveauCode;
 	@FXML private PasswordField pincode;
 	@FXML private Button pinToPaiement;
 	@FXML private Button valider;
@@ -26,10 +34,27 @@ public class PinCodeController {
 	public void setModalite(String modalite) {
 		this.modalite = modalite;
 	}
+	
+	public String getModalite() {
+		return modalite;
+	}
+
+	public void setLeCours(Cours leCours) {
+		this.leCours = leCours;
+	}
+	
+	public Cours getLeCours() {
+		return leCours;
+	}
 
 	//recupere les infos de la page des abonnements
 	public void setInfo(String modalite) {
 		setModalite(modalite);
+	}
+	
+
+	public void setInfoCours(Cours cours) {
+		setLeCours(cours);
 	}
 
 
@@ -40,11 +65,29 @@ public class PinCodeController {
 			String buttonLabel = clickedButton.getText();
 			if(event.getSource() == valider && pincode.getLength()==4) {
 				try {
-					Offre uneOffre = OffreDAO.getInstance().readModalite(modalite);
-					Code code = new Code(null, null, OffreDAO.getInstance().read(uneOffre.getIdOffre()));
-					code.setDateAchat(LocalDateTime.now());
-					CodeDAO.getInstance().create(code);
-					Code nouveauCode = CodeDAO.getInstance().read(code.getIdCode());
+					Offre uneOffre = OffreDAO.getInstance().readModalite(getModalite());
+					if (getModalite().equals("solo") || getModalite().equals("duo")) {
+						code = new Code(null, null, OffreDAO.getInstance().read(uneOffre.getIdOffre()));
+						code.setDateAchat(LocalDateTime.now());
+						CodeDAO.getInstance().create(code);
+						nouveauCode = CodeDAO.getInstance().read(code.getIdCode());
+					} else if (getModalite().equals("cours")) {
+						List<Cours> listeCours= new ArrayList<Cours>();
+						Code code = new Code(null, null, OffreDAO.getInstance().read(uneOffre.getIdOffre()), listeCours);
+						code.setDateAchat(LocalDateTime.now());
+						//ajoute le cours selectionne dans le "code", pour le read du code
+						code.getLesCours().add(getLeCours());
+						CodeDAO.getInstance().create(code);
+						//la date d'echeance est la date du cours
+						code.setDateEcheance(getLeCours().getHoraireDebut());
+						CodeDAO.getInstance().update(code);
+						nouveauCode = CodeDAO.getInstance().read(code.getIdCode());
+						//creer participation :
+						CodeDAO.getInstance().ajouterParticipation(getLeCours(), nouveauCode);
+						//creer utilisation a la date du cours :
+						Utilisation utilisation = new Utilisation(getLeCours().getHoraireDebut(), nouveauCode, getLeCours().getPiscine());
+						UtilisationDAO.getInstance().create(utilisation);
+					}
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("../ihm/AffichageCode.fxml"));
 					root = loader.load();
 					AffichageCodeController affichageCodeController = loader.getController();
@@ -78,5 +121,6 @@ public class PinCodeController {
 			e.printStackTrace();
 		}
 	}
+
 
 }
