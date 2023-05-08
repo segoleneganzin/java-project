@@ -126,30 +126,27 @@ public class CodeDAO extends DAO<Code> {
 		return code;
 	}
 
-	// UPDATE	JAMAIS UTILISE
+	// UPDATE	pour la date d'echeance qui correspond a la date du cours
 	public boolean update(Code obj) {
 		boolean succes = true;
-//		LocalDateTime dateAchat = obj.getDateAchat();
-//		LocalDateTime dateEcheance = obj.getDateEcheance();
-//		//		int solde = obj.getSolde();
-//		int idOffre = obj.getOffre().getIdOffre();
-//		String idCode = obj.getIdCode();
-//
-//		try {
-//			String requete = "UPDATE " + TABLE
-//					+ " SET dateAchat = ?, dateEcheance = ?, idOffre = ? WHERE "
-//					+ CLE_PRIMAIRE + " = ?";
-//			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
-//			pst.setObject(1, dateAchat);
-//			pst.setObject(2, dateEcheance);
-//			//			pst.setInt(3, solde);
-//			pst.setInt(3, idOffre);
-//			pst.setString(4, idCode);
-//			pst.executeUpdate();
-//		} catch (SQLException e) {
-//			succes = false;
-//			e.printStackTrace();
-//		}
+		LocalDateTime dateAchat = obj.getDateAchat();
+		LocalDateTime dateEcheance = obj.getDateEcheance();
+		int idOffre = obj.getOffre().getIdOffre();
+		String idCode = obj.getIdCode();
+		try {
+			String requete = "UPDATE " + TABLE
+					+ " SET dateAchat = ?, dateEcheance = ?, idOffre = ? WHERE "
+					+ CLE_PRIMAIRE + " = ?";
+			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			pst.setObject(1, dateAchat);
+			pst.setObject(2, dateEcheance);
+			pst.setInt(3, idOffre);
+			pst.setString(4, idCode);
+			pst.executeUpdate();
+		} catch (SQLException e) {
+			succes = false;
+			e.printStackTrace();
+		}
 		return succes;
 	}
 

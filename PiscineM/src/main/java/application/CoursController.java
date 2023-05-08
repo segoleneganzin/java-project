@@ -102,6 +102,9 @@ public class CoursController extends GeneralController{
 			//ajoute le cours selectionne dans le "code", pour le read du code
 			code.getLesCours().add(getCoursSelectionne());
 			CodeDAO.getInstance().create(code);
+			//la date d'echeance est la date du cours
+			code.setDateEcheance(getCoursSelectionne().getHoraireDebut());
+			CodeDAO.getInstance().update(code);
 			Code nouveauCode = CodeDAO.getInstance().read(code.getIdCode());
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("../ihm/AffichageCode.fxml"));
 			root = loader.load();

@@ -155,8 +155,8 @@ public class Cours {
 
 	@Override
 	public String toString() {
-		return "Cours [idCours=" + idCours + ", intitule=" + intitule + ", horaireDebut=" + horaireDebut
-				+ ", horaireFin=" + horaireFin + ", nombrePlacesInitiales=" + nombrePlacesInitiales
+		return "Cours [idCours=" + idCours + ", intitule=" + intitule + ", date : " + toStringDate() +", horaireDebut=" + toStringHoraireDebut()
+				+ ", horaireFin=" + toStringHoraireFin() + ", nombrePlacesInitiales=" + nombrePlacesInitiales
 				+ ", placesRestantes=" + this.getPlacesRestantes() + ", employe=" + employe + "]";
 	}
 
