@@ -1,13 +1,9 @@
 package application;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
-import dao.CodeDAO;
 import dao.CoursDAO;
 import dao.OffreDAO;
-import dao.UtilisationDAO;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,12 +17,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
-import piscine.Code;
 import piscine.Cours;
 import piscine.Main;
 import piscine.Offre;
 import piscine.Piscine;
-import piscine.Utilisation;
 
 
 public class CoursController extends GeneralController{
@@ -96,25 +90,11 @@ public class CoursController extends GeneralController{
 	void acheterCours() {
 		try {
 			Offre uneOffre = OffreDAO.getInstance().readModalite("cours");
-			List<Cours> listeCours= new ArrayList<Cours>();
-			Code code = new Code(null, null, OffreDAO.getInstance().read(uneOffre.getIdOffre()), listeCours);
-			code.setDateAchat(LocalDateTime.now());
-			//ajoute le cours selectionne dans le "code", pour le read du code
-			code.getLesCours().add(getCoursSelectionne());
-			CodeDAO.getInstance().create(code);
-			//la date d'echeance est la date du cours
-			code.setDateEcheance(getCoursSelectionne().getHoraireDebut());
-			CodeDAO.getInstance().update(code);
-			Code nouveauCode = CodeDAO.getInstance().read(code.getIdCode());
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("../ihm/AffichageCode.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../ihm/Paiement.fxml"));
 			root = loader.load();
-			//creer participation :
-			CodeDAO.getInstance().ajouterParticipation(getCoursSelectionne(), nouveauCode);
-			//creer utilisation a la date du cours :
-			Utilisation utilisation = new Utilisation(getCoursSelectionne().getHoraireDebut(), nouveauCode, getCoursSelectionne().getPiscine());
-			UtilisationDAO.getInstance().create(utilisation);
-			AffichageCodeController affichageCodeController = loader.getController();
-			affichageCodeController.setInfoCode(nouveauCode);
+			PaiementController paiementController = loader.getController();
+			paiementController.setInfo(uneOffre);
+			paiementController.setInfoCours(getCoursSelectionne());
 			Scene scene = new Scene(root);
 			Main.stage.setScene(scene);
 			Main.stage.show();

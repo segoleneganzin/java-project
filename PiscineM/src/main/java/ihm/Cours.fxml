@@ -48,5 +48,6 @@
             <Label fx:id="horaireFin" layoutX="246.0" layoutY="152.0" text="Label" />
          </children>
       </Pane>
+      <Text layoutX="125.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tarif d'un cours : 20€" />
    </children>
 </AnchorPane>
