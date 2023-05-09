@@ -80,7 +80,7 @@ public class SoldeController extends GeneralController{
 					codeInfosCoursContainer.setVisible(false);
 					codeInfosAboContainer.setVisible(false);
 					messageErreur.setVisible(true);
-					messageErreur.setText("Code expiré le "+echeance);
+					messageErreur.setText("Code expiré le "+ unCode.toStringDateEcheance());
 				}
 			} else {
 				codeInfosCoursContainer.setVisible(false);

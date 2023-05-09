@@ -36,10 +36,8 @@ public class PiscineDAO extends DAO<Piscine> {
 
 	// CREATE
 	public boolean create(Piscine piscine) {
-
 		boolean succes=true;
 		try {
-			
 			Adresse adresse = piscine.getAdresse();
 			
 			String requete = "INSERT INTO "+TABLE+" ("+NOM+", "+HORAIREOUV+", "+HORAIREFERM+", "+ADRESSE+") VALUES (?, ?, ?, ?)";

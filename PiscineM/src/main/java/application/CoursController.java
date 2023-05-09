@@ -1,6 +1,8 @@
 package application;
 
+import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import dao.CoursDAO;
 import dao.OffreDAO;
@@ -10,9 +12,9 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -23,7 +25,7 @@ import piscine.Offre;
 import piscine.Piscine;
 
 
-public class CoursController extends GeneralController{
+public class CoursController extends GeneralController implements Initializable{
 
 	private ObservableList<Cours> coursData = FXCollections.observableArrayList();
 	private Cours coursSelectionne;
@@ -34,7 +36,6 @@ public class CoursController extends GeneralController{
 	@FXML private TableColumn<Cours, String> date;
 	@FXML private TableColumn<Cours, String> heureDebut;
 	@FXML private TableColumn<Cours, String> heureFin;
-	@FXML private Button afficherCours;
 	@FXML private Label intituleCours;
 	@FXML private Label dateCours;
 	@FXML private Label horaireDebut;
@@ -48,12 +49,12 @@ public class CoursController extends GeneralController{
 		return coursData;
 	}
 
-	public void afficherCours(ActionEvent event) {
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
 		Offre uneOffre = OffreDAO.getInstance().readModalite("cours");
 		tarifCours.setText(String.valueOf(uneOffre.getTarif()) + "€");
 		tarif.setVisible(true);
 		tableCours.setVisible(true);
-		afficherCours.setVisible(false);
 		intitule.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIntitule()));
 		date.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().toStringDate()));
 		heureDebut.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().toStringHoraireDebut()));
@@ -64,6 +65,22 @@ public class CoursController extends GeneralController{
 		coursData.addAll(lesCours);
 		tableCours.setItems(coursData);
 	}
+//	public void afficherCours(ActionEvent event) {
+//		Offre uneOffre = OffreDAO.getInstance().readModalite("cours");
+//		tarifCours.setText(String.valueOf(uneOffre.getTarif()) + "€");
+//		tarif.setVisible(true);
+//		tableCours.setVisible(true);
+//		afficherCours.setVisible(false);
+//		intitule.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIntitule()));
+//		date.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().toStringDate()));
+//		heureDebut.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().toStringHoraireDebut()));
+//		heureFin.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().toStringHoraireFin()));
+//		CoursDAO coursDAO = CoursDAO.getInstance();
+//		List<Cours> lesCours = coursDAO.readAllCoursDispo(laPiscine);
+//		coursData.clear();
+//		coursData.addAll(lesCours);
+//		tableCours.setItems(coursData);
+//	}
 
 	public void fermerReservation(ActionEvent event) {
 		reserverCours.setVisible(false);
@@ -100,6 +117,8 @@ public class CoursController extends GeneralController{
 			e.printStackTrace();
 		}
 	}
+
+	
 
 }
 

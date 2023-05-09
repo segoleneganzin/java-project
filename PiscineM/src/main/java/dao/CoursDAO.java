@@ -155,12 +155,11 @@ public class CoursDAO extends DAO<Cours> {
 		return succes;		
 	}
 	
+	//selectionner les cours posterieurs a la date du jour, avec des places restantes
 	public List<Cours> readAllCoursDispo(Piscine piscine) {
 		List<Cours> lesCours = new ArrayList<Cours>();
 		try {
-//			String requete = "SELECT * FROM " + TABLE + " WHERE " + HORAIREDEBUT + " > NOW() AND " + PISCINE + " = " + piscine.getIdPiscine()";
-			//GETDATE
-			String requete = "SELECT * FROM " + TABLE + " WHERE "  + PISCINE + " = " + piscine.getIdPiscine();
+			String requete = "SELECT * FROM " + TABLE + " WHERE " + HORAIREDEBUT + " > GETDATE() AND " + PISCINE + " = " + piscine.getIdPiscine();
 			ResultSet rs = Connexion.executeQuery(requete);
 		while (rs.next()) {
 			int idCours = rs.getInt(CLE_PRIMAIRE);

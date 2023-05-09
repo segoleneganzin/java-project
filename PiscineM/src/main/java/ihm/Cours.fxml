@@ -24,7 +24,7 @@
          </image>
       </ImageView>
       <Button fx:id="coursRetourAcc" layoutX="21.0" layoutY="374.0" mnemonicParsing="false" onAction="#retourAcc" prefHeight="25.0" prefWidth="65.0" text="Retour" />
-      <TableView fx:id="tableCours" layoutX="68.0" layoutY="105.0" onMouseClicked="#selectionCours" prefHeight="200.0" prefWidth="412.0" visible="false">
+      <TableView fx:id="tableCours" layoutX="68.0" layoutY="105.0" onMouseClicked="#selectionCours" prefHeight="200.0" prefWidth="412.0">
         <columns>
           <TableColumn fx:id="intitule" prefWidth="88.0" text="Intitulé" />
             <TableColumn fx:id="date" minWidth="0.0" prefWidth="193.0" text="Date" />
@@ -32,7 +32,6 @@
             <TableColumn fx:id="heureFin" minWidth="0.0" prefWidth="71.0" text="Fin" />
         </columns>
       </TableView>
-      <Button fx:id="afficherCours" layoutX="167.0" layoutY="179.0" mnemonicParsing="false" onAction="#afficherCours" styleClass="boutonAcc" text="Afficher les cours" />
       <Pane fx:id="reserverCours" layoutX="13.0" layoutY="104.0" prefHeight="304.0" prefWidth="520.0" style="-fx-background-color: grey;" visible="false">
          <children>
             <Button layoutX="152.0" layoutY="239.0" mnemonicParsing="false" onAction="#acheterCours" styleClass="boutonAcc" text="Réserver et payer" />
