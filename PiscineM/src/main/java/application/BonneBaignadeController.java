@@ -7,7 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import piscine.Main;
 
-public class TransactionController {
+public class BonneBaignadeController {
 	@FXML
 	private void initialize() {
 		Thread thread = new Thread(() -> {

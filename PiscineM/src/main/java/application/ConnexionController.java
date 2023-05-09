@@ -14,7 +14,7 @@ import javafx.scene.control.TextField;
 import piscine.Administrateur;
 import piscine.Main;
 
-public class ConnexionController {
+public class ConnexionController extends GeneralController {
 	@FXML
 	private Label messageErreur;
 	@FXML

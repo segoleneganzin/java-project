@@ -18,7 +18,6 @@ public class CodeDAO extends DAO<Code> {
 	private static final String TABLE = "code";
 	private static final String ACHAT = "dateAchat";
 	private static final String ECHEANCE = "dateEcheance";
-	// private static final String SOLDE = "solde";
 	private static final String OFFRE = "idOffre";
 	private static final String PARTICIPE = "participe";
 	private static final String ID_CODE_PARTICIPE = "idCode";
@@ -126,30 +125,26 @@ public class CodeDAO extends DAO<Code> {
 		return code;
 	}
 
-	// UPDATE JAMAIS UTILISE
+	// UPDATE pour la date d'echeance qui correspond a la date du cours
 	public boolean update(Code obj) {
 		boolean succes = true;
-//		LocalDateTime dateAchat = obj.getDateAchat();
-//		LocalDateTime dateEcheance = obj.getDateEcheance();
-//		//		int solde = obj.getSolde();
-//		int idOffre = obj.getOffre().getIdOffre();
-//		String idCode = obj.getIdCode();
-//
-//		try {
-//			String requete = "UPDATE " + TABLE
-//					+ " SET dateAchat = ?, dateEcheance = ?, idOffre = ? WHERE "
-//					+ CLE_PRIMAIRE + " = ?";
-//			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
-//			pst.setObject(1, dateAchat);
-//			pst.setObject(2, dateEcheance);
-//			//			pst.setInt(3, solde);
-//			pst.setInt(3, idOffre);
-//			pst.setString(4, idCode);
-//			pst.executeUpdate();
-//		} catch (SQLException e) {
-//			succes = false;
-//			e.printStackTrace();
-//		}
+		LocalDateTime dateAchat = obj.getDateAchat();
+		LocalDateTime dateEcheance = obj.getDateEcheance();
+		int idOffre = obj.getOffre().getIdOffre();
+		String idCode = obj.getIdCode();
+		try {
+			String requete = "UPDATE " + TABLE + " SET dateAchat = ?, dateEcheance = ?, idOffre = ? WHERE "
+					+ CLE_PRIMAIRE + " = ?";
+			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			pst.setObject(1, dateAchat);
+			pst.setObject(2, dateEcheance);
+			pst.setInt(3, idOffre);
+			pst.setString(4, idCode);
+			pst.executeUpdate();
+		} catch (SQLException e) {
+			succes = false;
+			e.printStackTrace();
+		}
 		return succes;
 	}
 
@@ -171,7 +166,6 @@ public class CodeDAO extends DAO<Code> {
 
 	// Ajouter une participation a un cours
 	public boolean ajouterParticipation(Cours cours, Code code) {
-
 		boolean succes = true;
 		try {
 			String requete = "INSERT INTO " + PARTICIPE + " (" + ID_CODE_PARTICIPE + ", " + ID_COURS_PARTICIPE
@@ -186,6 +180,24 @@ public class CodeDAO extends DAO<Code> {
 			e.printStackTrace();
 		}
 		return succes;
+	}
+
+	public int getNombreParticipant(int cours) {
+		int nombreParticipant = 0;
+		try {
+			String requete = "SELECT COUNT (*) FROM " + PARTICIPE + " WHERE " + ID_COURS_PARTICIPE + " = ? ;";
+			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			pst.setInt(1, cours);
+			pst.execute();
+			ResultSet rs = pst.getResultSet();
+			if (rs.next()) {
+				nombreParticipant = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			System.out.println("code inexistant");
+			e.printStackTrace();
+		}
+		return nombreParticipant;
 	}
 
 }

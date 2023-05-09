@@ -1,43 +1,19 @@
 package application;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import piscine.Main;
+import javafx.scene.text.Text;
 
-public class AdminController {
-
+public class AdminController extends GeneralController {
 	@FXML
-	private Button retour;
-
+	private Text loginName;
 	@FXML
 	private Button connexion;
 
 	@FXML
-	void Retour() {
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource("../ihm/Accueil.fxml"));
-			Scene scene = new Scene(root);
-			Main.stage.setScene(scene);
-			Main.stage.show();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	@FXML
-	void AfficherPageConnexion() {
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource("../ihm/Admin.fxml"));
-			Scene scene = new Scene(root);
-			Main.stage.setScene(scene);
-			Main.stage.show();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
+	private void initialize() {
+		// TODO Recuperer le nom
+		loginName.setText("admin");
 	}
 
 }

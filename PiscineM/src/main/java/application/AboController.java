@@ -12,7 +12,7 @@ import javafx.scene.layout.Pane;
 import piscine.Main;
 import piscine.Offre;
 
-public class AboController {
+public class AboController extends GeneralController {
 	private Parent root;
 	@FXML
 	private int tarifAbo;

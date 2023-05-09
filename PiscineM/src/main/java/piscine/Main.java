@@ -16,7 +16,7 @@ public class Main extends Application {
 		Main.stage = racine;
 //        String pwd = System.getProperty("user.dir");
 //        System.out.println("Le répertoire courant est : " + pwd);
-		Parent root = FXMLLoader.load(getClass().getResource("../ihm/Accueil.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("../ihm/ChoixPiscine.fxml"));
 		// Configuration de la scène.
 		Scene scene = new Scene(root, 546, 439);
 		// Configuration de la fenêtre.

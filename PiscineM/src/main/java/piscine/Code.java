@@ -1,6 +1,7 @@
 package piscine;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,13 @@ public class Code {
 	private Offre offre; // cle etrangere qui fera le lien avec offre
 
 	private List<Cours> lesCours = new ArrayList<Cours>();
+
+	public Code(LocalDateTime dateAchat, LocalDateTime dateEcheance, Offre offre) {
+		super();
+		this.dateAchat = dateAchat;
+		this.dateEcheance = dateEcheance;
+		this.offre = offre;
+	}
 
 	public Code(LocalDateTime dateAchat, LocalDateTime dateEcheance, Offre offre, List<Cours> lesCours) {
 		super();
@@ -86,6 +94,16 @@ public class Code {
 		// System.out.println(nbPlaces);
 		int solde = nbPlaces - nombreUtilisation;
 		return solde;
+	}
+
+	public String toStringDateAchat() {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+		return dateAchat.format(formatter);
+	}
+
+	public String toStringDateEcheance() {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+		return dateEcheance.format(formatter);
 	}
 
 	@Override

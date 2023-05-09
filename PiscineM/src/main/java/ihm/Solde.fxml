@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -11,17 +13,18 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="439.0" prefWidth="546.0"
-	xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+	stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.1"
+	xmlns:fx="http://javafx.com/fxml/1"
 	fx:controller="application.SoldeController">
 	<children>
-		<ImageView fitHeight="99.0" fitWidth="112.0" layoutY="27.0">
+		<ImageView fitHeight="99.0" fitWidth="112.0" layoutY="5.0">
 			<image>
-				<Image url="@../../../Images/logo_remi.png" />
+				<Image url="@../Images/istockphoto-1269424855-612x612.jpg" />
 			</image>
 		</ImageView>
-		<Button fx:id="retour" layoutX="14.0" layoutY="383.0"
-			mnemonicParsing="false" onAction="#Retour" prefHeight="25.0"
-			prefWidth="70.0" text="Retour" />
+		<Button fx:id="soldeRetourAcc" layoutX="14.0" layoutY="383.0"
+			mnemonicParsing="false" onAction="#retourAcc" prefHeight="25.0"
+			prefWidth="70.0" styleClass="boutonRetour" text="Retour" />
 		<TextField fx:id="code" layoutX="74.0" layoutY="126.0"
 			prefHeight="35.0" prefWidth="292.0"
 			promptText="10 caractères maximum" />
@@ -35,10 +38,11 @@
 		</Text>
 		<Button layoutX="375.0" layoutY="126.0" mnemonicParsing="false"
 			onAction="#afficherCode" prefHeight="35.0" prefWidth="84.0"
-			text="Valider" />
-		<Label fx:id="messageErreur" layoutX="74.0" layoutY="161.0" />
-		<Pane fx:id="codeInfosContainer" layoutX="116.0" layoutY="194.0"
-			prefHeight="156.0" prefWidth="315.0" visible="false">
+			styleClass="boutonValider" text="Valider" />
+		<Label fx:id="messageErreur" layoutX="74.0" layoutY="161.0"
+			visible="false" />
+		<Pane fx:id="codeInfosAboContainer" layoutX="116.0"
+			layoutY="194.0" prefHeight="156.0" prefWidth="315.0" visible="false">
 			<children>
 				<Label layoutX="10.0" layoutY="14.0" text="Date d'achat :"
 					underline="true">
@@ -72,6 +76,42 @@
 					text="Label" />
 				<Label fx:id="solde" layoutX="213.0" layoutY="89.0"
 					prefHeight="17.0" prefWidth="50.0" text="Label" />
+			</children>
+		</Pane>
+		<Pane fx:id="codeInfosCoursContainer" layoutX="9.0"
+			layoutY="205.0" prefHeight="165.0" prefWidth="525.0" visible="false">
+			<children>
+				<Label layoutX="7.0" layoutY="33.0" text="Date d'achat :"
+					underline="true">
+					<font>
+						<Font size="14.0" />
+					</font>
+				</Label>
+				<Label fx:id="dateAchatCours" layoutX="101.0" layoutY="35.0"
+					text="Label" />
+				<TableView fx:id="tableCours" layoutX="7.0" layoutY="66.0"
+					prefHeight="99.0" prefWidth="512.0">
+					<columns>
+						<TableColumn fx:id="intitule" prefWidth="88.0"
+							text="Intitulé" />
+						<TableColumn fx:id="date" minWidth="0.0"
+							prefWidth="193.0" text="Date" />
+						<TableColumn fx:id="heureDebut" minWidth="0.0"
+							prefWidth="59.0" text="Debut" />
+						<TableColumn fx:id="heureFin" minWidth="0.0"
+							prefWidth="71.0" text="Fin" />
+						<TableColumn fx:id="piscine" minWidth="0.0"
+							prefWidth="98.0" text="Piscine" />
+					</columns>
+				</TableView>
+				<Label layoutX="7.0" layoutY="14.0"
+					text="Offre correspondante :" underline="true">
+					<font>
+						<Font size="14.0" />
+					</font>
+				</Label>
+				<Label fx:id="offreCours" layoutX="157.0" layoutY="16.0"
+					text="Label" />
 			</children>
 		</Pane>
 	</children>

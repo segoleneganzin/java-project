@@ -1,29 +1,23 @@
 package application;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import piscine.Main;
+import javafx.scene.control.Label;
+import piscine.Piscine;
 
-public class HorairesController {
+public class HorairesController extends GeneralController {
 
 	@FXML
-	private Button hortoacc;
-
+	private Label horaireOuv;
 	@FXML
-	void RetAcc(ActionEvent event) {
+	private Label horaireFerm;
 
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource("../ihm/Accueil.fxml"));
-			Scene scene = new Scene(root);
-			Main.stage.setScene(scene);
-			Main.stage.show();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	// recupere l'objet piscine de la classe mere et affiche les horaires presents
+	// dans la bd:
+	@FXML
+	public void setHoraires() {
+		Piscine laPiscine = GeneralController.getLaPiscine();
+		horaireOuv.setText(String.valueOf(laPiscine.getHoraireOuv()));
+		horaireFerm.setText(String.valueOf(laPiscine.getHoraireFerm()));
 	}
 
 }

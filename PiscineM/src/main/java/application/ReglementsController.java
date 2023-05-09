@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import piscine.Main;
 
-public class ReglementsController {
+public class ReglementsController extends GeneralController {
 
 	@FXML
 	private Button backhome;

@@ -1,27 +1,27 @@
 package application;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.time.LocalDateTime;
+import java.util.List;
 
 import dao.CodeDAO;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import piscine.Code;
-import piscine.Main;
+import piscine.Cours;
 
-public class SoldeController implements Initializable {
+public class SoldeController extends GeneralController {
 
 	@FXML
-	private Pane codeInfosContainer;
+	private Pane codeInfosAboContainer;
 	@FXML
-	private Button retour;
+	private Pane codeInfosCoursContainer;
 	@FXML
 	private TextField code;
 	@FXML
@@ -34,22 +34,26 @@ public class SoldeController implements Initializable {
 	private Label modaliteOffre;
 	@FXML
 	private Label solde;
-
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		// methode implementee
-	}
-
 	@FXML
-	public void Retour() {
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource("../ihm/Accueil.fxml"));
-			Scene scene = new Scene(root);
-			Main.stage.setScene(scene);
-			Main.stage.show();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	private Label offreCours;
+	@FXML
+	private Label dateAchatCours;
+	private ObservableList<Cours> coursData = FXCollections.observableArrayList();
+	@FXML
+	private TableView<Cours> tableCours;
+	@FXML
+	private TableColumn<Cours, String> intitule;
+	@FXML
+	private TableColumn<Cours, String> date;
+	@FXML
+	private TableColumn<Cours, String> heureDebut;
+	@FXML
+	private TableColumn<Cours, String> heureFin;
+	@FXML
+	private TableColumn<Cours, String> piscine;
+
+	public ObservableList<Cours> getCoursData() {
+		return coursData;
 	}
 
 	@FXML
@@ -59,12 +63,50 @@ public class SoldeController implements Initializable {
 			// rechercher le code dans la bd
 			Code unCode = CodeDAO.getInstance().read(idCode);
 			if (unCode != null) {
-				codeInfosContainer.setVisible(true);
-				dateAchat.setText(String.valueOf(unCode.getDateAchat()));
-				dateEcheance.setText(String.valueOf(unCode.getDateEcheance()));
-				modaliteOffre.setText(unCode.getOffre().getModalite());
-				solde.setText(String.valueOf(unCode.getSoldeCode()));
+				LocalDateTime echeance = unCode.getDateEcheance();
+				// test si la date d'echeance est posterieure a "aujourd'hui" :
+				if (echeance.isAfter(LocalDateTime.now())) {
+					if (unCode.getOffre().getModalite().equals("solo")
+							|| unCode.getOffre().getModalite().equals("duo")) {
+						codeInfosCoursContainer.setVisible(false);
+						messageErreur.setVisible(false);
+						codeInfosAboContainer.setVisible(true);
+						dateAchat.setText(String.valueOf(unCode.toStringDateAchat()));
+						dateEcheance.setText(String.valueOf(unCode.toStringDateEcheance()));
+						modaliteOffre.setText(unCode.getOffre().getModalite());
+						solde.setText(String.valueOf(unCode.getSoldeCode()));
+					} else if (unCode.getOffre().getModalite().equals("cours")) {
+						codeInfosCoursContainer.setVisible(true);
+						codeInfosAboContainer.setVisible(false);
+						offreCours.setText(String.valueOf(unCode.getOffre().getModalite()));
+						dateAchatCours.setText(String.valueOf(unCode.toStringDateAchat()));
+						// recuperation des cours (pour le moment toujours un seul mais le tableau
+						// permet de faire évoluer les offres) :
+						List<Cours> lesCours = unCode.getLesCours();
+						intitule.setCellValueFactory(
+								cellData -> new SimpleStringProperty(cellData.getValue().getIntitule()));
+						date.setCellValueFactory(
+								cellData -> new SimpleStringProperty(cellData.getValue().toStringDate()));
+						heureDebut.setCellValueFactory(
+								cellData -> new SimpleStringProperty(cellData.getValue().toStringHoraireDebut()));
+						heureFin.setCellValueFactory(
+								cellData -> new SimpleStringProperty(cellData.getValue().toStringHoraireFin()));
+						piscine.setCellValueFactory(
+								cellData -> new SimpleStringProperty(cellData.getValue().getPiscine().getNom()));
+						coursData.clear();
+						coursData.addAll(lesCours);
+						tableCours.setItems(coursData);
+					}
+				} else {
+					codeInfosCoursContainer.setVisible(false);
+					codeInfosAboContainer.setVisible(false);
+					messageErreur.setVisible(true);
+					messageErreur.setText("Code expiré le " + echeance);
+				}
 			} else {
+				codeInfosCoursContainer.setVisible(false);
+				codeInfosAboContainer.setVisible(false);
+				messageErreur.setVisible(true);
 				messageErreur.setText("Code inexistant, Veuillez réessayer !");
 			}
 		} catch (Exception e) {
