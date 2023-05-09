@@ -51,7 +51,7 @@ https://github.com/segoleneganzin/java-project
 Il faut importer le projet zippé « projet_Bureau_Java » dans l’IDE Java.
 
 ### Mise en place de la base de données :
-
+(en cours)
 
 Il faut importer le fichier zippé dans l'IDE Eclipse
 
