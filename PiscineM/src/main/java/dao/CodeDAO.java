@@ -61,34 +61,34 @@ public class CodeDAO extends DAO<Code> {
 	// CREATE
 	public boolean create(Code code) {
 		boolean succes = true;
-		boolean codeExists = false;
-		String generatedCode = "";
+		boolean codeExiste = false;
+		String codeGenere = "";
 		do {
-			generatedCode = generateRandomPassword();
+			codeGenere = generateRandomPassword();
 			try {
 				String checkQuery = "SELECT COUNT(*) FROM " + TABLE + " WHERE " + CLE_PRIMAIRE + " = ?";
 				PreparedStatement checkPst = Connexion.getInstance().prepareStatement(checkQuery);
-				checkPst.setString(1, generatedCode);
+				checkPst.setString(1, codeGenere);
 				ResultSet checkRs = checkPst.executeQuery();
 				checkRs.next();
 				int count = checkRs.getInt(1);
 				if (count > 0) {
-					codeExists = true;
+					codeExiste = true;
 				} else {
-					codeExists = false;
+					codeExiste = false;
 					break;
 				}
 			} catch (SQLException e) {
 				succes = false;
 				e.printStackTrace();
 			}
-		} while (codeExists);
+		} while (codeExiste);
 		try {
 			String insertQuery = "INSERT INTO " + TABLE + " (" + CLE_PRIMAIRE + ", " + ACHAT + ", " + ECHEANCE + ", "
 					+ OFFRE + ") VALUES (?, ?, ?, ?)";
 			PreparedStatement insertPst = Connexion.getInstance().prepareStatement(insertQuery);
 			LocalDateTime dureeDeValidite = dateEcheance(code.getOffre());
-			code.setIdCode(generatedCode);
+			code.setIdCode(codeGenere);
 			insertPst.setString(1, code.getIdCode());
 			insertPst.setObject(2, code.getDateAchat());
 			code.setDateEcheance(dureeDeValidite);
