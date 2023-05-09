@@ -7,6 +7,7 @@ Application bureau en Java dans le cadre du BTS Services informatiques aux organ
 Les piscines municipales de Vannes vont changer de logiciel afin de générer directement des codes permettant d'accéder aux bassins. <br>
 Ces codes pourront être achetés sur des bornes situées à la piscine, sans aucune inscription. <br>
 Nous ne traitons pas les problématiques de paiement en ligne, mais ce processus est simulé.  <br>
+
 La borne permettra de générer des codes pour obtenir :
     • une leçon individuelle de nage sur un des créneaux libres
     • un abonnement solo 10 entrées valable 10 mois
@@ -17,7 +18,9 @@ Les administrateurs authentifiés pourront définir :
     • le nombre de places
     • la durée de validité des titres de vente
 
+
 La configuration proposée est la plus générique/modulable possible.<br>
+
 N'importe qui pourra tester la validité d'un code et voir son contenu actuel.
 
 ## Langages et technologies utilisés
