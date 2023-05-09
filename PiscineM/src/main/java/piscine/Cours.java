@@ -16,7 +16,7 @@ public class Cours {
 	private Piscine piscine;  //cle etrangere
 //	private List<Code> lesCodes = new ArrayList<Code>();	//lien tables d'association "participe"
 
-	//constructeur sans idCours ni liste de codes :
+	//constructeur sans idCours :
 	public Cours(String intitule, LocalDateTime horaireDebut, LocalDateTime horaireFin, int nombrePlacesInitiales, Employe employe, Piscine piscine) {
 		super();
 		this.horaireFin = horaireFin;
@@ -27,7 +27,7 @@ public class Cours {
 		this.piscine = piscine;
 	}
 		
-	//constructeur sans codes 
+	//constructeur avec idCours : 
 	public Cours(int idCours, String intitule, LocalDateTime horaireDebut, LocalDateTime horaireFin, int nombrePlacesInitiales, Employe employe, Piscine piscine) {
 		super();
 		this.idCours = idCours;
@@ -39,22 +39,6 @@ public class Cours {
 		this.piscine = piscine;
 	}
 	
-	////Constructeur avec id et liste de cours, pour l'update 
-//	public Cours(int idCours, String intitule, LocalDateTime horaireDebut, LocalDateTime horaireFin, int nombrePlacesInitiales, int placesRestantes, Employe employe, Piscine piscine, List<Code> lesCodes) {
-//		super();
-//		this.idCours = idCours;
-//		this.horaireFin = horaireFin;
-//		this.horaireDebut = horaireDebut;
-//		this.intitule = intitule;
-//		this.nombrePlacesInitiales = nombrePlacesInitiales;
-//		this.placesRestantes = placesRestantes;
-//		this.employe = employe;
-//		this.piscine = piscine;
-//		this.setLesCodes(lesCodes);
-//	}
-	
-
-
 	public int getIdCours() {
 		return idCours;
 	}
@@ -128,14 +112,8 @@ public class Cours {
 		int nbPlacesRestantes = nbPlacesInitiales - nombreParticipant;
 		return nbPlacesRestantes;
 	}
-
-//	public List<Code> getLesCodes() {
-//		return lesCodes;
-//	}
-//
-//	public void setLesCodes(List<Code> lesCodes) {
-//		this.lesCodes = lesCodes;
-//	}
+	
+	//pour afficher les dates "joliment" :
 	public String toStringDate() {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE dd MMMM yyyy");
 	    return horaireDebut.format(formatter);
