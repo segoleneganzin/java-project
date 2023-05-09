@@ -61,25 +61,43 @@ public class CodeDAO extends DAO<Code> {
 	// CREATE
 	public boolean create(Code code) {
 		boolean succes = true;
-		String generatedCode = generateRandomPassword();
+		boolean codeExists = false;
+		String generatedCode = "";
+		do {
+			generatedCode = generateRandomPassword();
+			try {
+				String checkQuery = "SELECT COUNT(*) FROM " + TABLE + " WHERE " + CLE_PRIMAIRE + " = ?";
+				PreparedStatement checkPst = Connexion.getInstance().prepareStatement(checkQuery);
+				checkPst.setString(1, generatedCode);
+				ResultSet checkRs = checkPst.executeQuery();
+				checkRs.next();
+				int count = checkRs.getInt(1);
+				if (count > 0) {
+					codeExists = true;
+				} else {
+					codeExists = false;
+					break;
+				}
+			} catch (SQLException e) {
+				succes = false;
+				e.printStackTrace();
+			}
+		} while (codeExists);
 		try {
-			String requete = "INSERT INTO " + TABLE + " (" + CLE_PRIMAIRE + ", " + ACHAT + ", " + ECHEANCE + ", "
+			String insertQuery = "INSERT INTO " + TABLE + " (" + CLE_PRIMAIRE + ", " + ACHAT + ", " + ECHEANCE + ", "
 					+ OFFRE + ") VALUES (?, ?, ?, ?)";
-			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			PreparedStatement insertPst = Connexion.getInstance().prepareStatement(insertQuery);
 			LocalDateTime dureeDeValidite = dateEcheance(code.getOffre());
 			code.setIdCode(generatedCode);
-			pst.setString(1, code.getIdCode());
-			pst.setObject(2, code.getDateAchat());
+			insertPst.setString(1, code.getIdCode());
+			insertPst.setObject(2, code.getDateAchat());
 			code.setDateEcheance(dureeDeValidite);
-			pst.setObject(3, code.getDateEcheance());
-			// pst.setInt(4, code.getSolde());
-			pst.setInt(4, code.getOffre().getIdOffre());
-			pst.executeUpdate();
-
+			insertPst.setObject(3, code.getDateEcheance());
+			insertPst.setInt(4, code.getOffre().getIdOffre());
+			insertPst.executeUpdate();
 		} catch (SQLException e) {
 			succes = false;
 			e.printStackTrace();
-			// gerer les erreurs si clé etrangeres inexistantes
 			if (code.getOffre().getIdOffre() == -1) {
 				System.out.println("Offre inexistante");
 			}
