@@ -159,6 +159,7 @@ public class CoursDAO extends DAO<Cours> {
 		List<Cours> lesCours = new ArrayList<Cours>();
 		try {
 //			String requete = "SELECT * FROM " + TABLE + " WHERE " + HORAIREDEBUT + " > NOW() AND " + PISCINE + " = " + piscine.getIdPiscine()";
+			//GETDATE
 			String requete = "SELECT * FROM " + TABLE + " WHERE "  + PISCINE + " = " + piscine.getIdPiscine();
 			ResultSet rs = Connexion.executeQuery(requete);
 		while (rs.next()) {

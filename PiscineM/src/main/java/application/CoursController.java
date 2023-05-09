@@ -43,13 +43,6 @@ public class CoursController extends GeneralController{
 	@FXML Pane tarif;
 	Piscine laPiscine = GeneralController.getLaPiscine();
 
-	public Cours getCoursSelectionne() {
-		return coursSelectionne;
-	}
-
-	public void setCoursSelectionne(Cours coursSelectionne) {
-		this.coursSelectionne = coursSelectionne;
-	}
 
 	public ObservableList<Cours> getCoursData() {
 		return coursData;
@@ -79,9 +72,9 @@ public class CoursController extends GeneralController{
 	@FXML
 	void selectionCours() {
 		// Récupérer la ligne sélectionnée
-		setCoursSelectionne(tableCours.getSelectionModel().getSelectedItem());
-		System.out.println(getCoursSelectionne());
-		Cours cours = getCoursSelectionne();
+		coursSelectionne = tableCours.getSelectionModel().getSelectedItem();
+		System.out.println(coursSelectionne);
+		Cours cours = coursSelectionne;
 		if (cours != null) {
 			reserverCours.setVisible(true);
 			intituleCours.setText(cours.getIntitule());
@@ -99,7 +92,7 @@ public class CoursController extends GeneralController{
 			root = loader.load();
 			PaiementController paiementController = loader.getController();
 			paiementController.setInfo(uneOffre);
-			paiementController.setInfoCours(getCoursSelectionne());
+			paiementController.setInfoCours(coursSelectionne);
 			Scene scene = new Scene(root);
 			Main.stage.setScene(scene);
 			Main.stage.show();

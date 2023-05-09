@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="439.0" prefWidth="546.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AccueilController">
+<AnchorPane prefHeight="439.0" prefWidth="546.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AccueilController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="119.0" layoutY="27.0" prefHeight="36.0" prefWidth="406.0" styleClass="titrePage" text="Bienvenue aux piscines vannetaises">
          <font>
@@ -16,7 +16,7 @@
       </Label>
       <Button fx:id="admin" layoutX="185.0" layoutY="395.0" mnemonicParsing="false" onAction="#afficherAdmin" prefHeight="25.0" prefWidth="70.0" styleClass="boutonAccAdmin" text="Admin" />
       <Button fx:id="cours" layoutX="167.0" layoutY="245.0" mnemonicParsing="false" onAction="#acheterCours" prefHeight="54.0" prefWidth="216.0" styleClass="boutonAcc" text="Acheter un cours" />
-       <Button fx:id="solde" layoutX="167.0" layoutY="308.0" mnemonicParsing="false" onAction="#afficherSolde" prefHeight="54.0" prefWidth="216.0" styleClass="boutonAcc" text="Consulter Solde" />
+       <Button fx:id="solde" layoutX="167.0" layoutY="311.0" mnemonicParsing="false" onAction="#afficherSolde" prefHeight="54.0" prefWidth="216.0" styleClass="boutonAcc" text="Consulter Solde" />
       
       <Button fx:id="abo" layoutX="126.0" layoutY="180.0" mnemonicParsing="false" onAction="#achatAbo" prefHeight="54.0" prefWidth="298.0" styleClass="boutonAcc" text="Acheter un abonnement" />
       <ImageView fitHeight="85.0" fitWidth="110.0" preserveRatio="true" styleClass="logoEntete">
@@ -25,7 +25,7 @@
          </image>    
       </ImageView>
       <Button fx:id="horaires" layoutX="322.0" layoutY="110.0" mnemonicParsing="false" onAction="#afficherHoraires" prefHeight="54.0" prefWidth="177.0" styleClass="boutonAcc" text="Horaires" />
-      <Button fx:id="reglement" layoutX="57.0" layoutY="110.0" mnemonicParsing="false" onAction="#afficherReglement" prefHeight="54.0" prefWidth="177.0" styleClass="boutonAcc" text="Réglement" />
+      <Button fx:id="reglement" layoutX="57.0" layoutY="110.0" mnemonicParsing="false" onAction="#afficherReglement" prefHeight="54.0" prefWidth="177.0" styleClass="boutonAcc" text="Règlement" />
       <Button layoutX="268.0" layoutY="395.0" mnemonicParsing="false" onAction="#simulerEntree" styleClass="boutonAccEntree" text="Simuler entrée" />
    </children>
 </AnchorPane>
