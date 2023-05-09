@@ -25,7 +25,7 @@
          </image>    
       </ImageView>
       <Button fx:id="horaires" layoutX="322.0" layoutY="110.0" mnemonicParsing="false" onAction="#afficherHoraires" prefHeight="54.0" prefWidth="177.0" styleClass="boutonAcc" text="Horaires" />
-      <Button fx:id="reglement" layoutX="57.0" layoutY="110.0" mnemonicParsing="false" onAction="#afficherReglement" prefHeight="54.0" prefWidth="177.0" styleClass="boutonAcc" text="Réglement" />
+      <Button fx:id="reglement" layoutX="57.0" layoutY="110.0" mnemonicParsing="false" onAction="#afficherReglement" prefHeight="54.0" prefWidth="177.0" styleClass="boutonAcc" text="Règlement" />
       <Button layoutX="268.0" layoutY="395.0" mnemonicParsing="false" onAction="#simulerEntree" styleClass="boutonAccEntree" text="Simuler entrée" />
    </children>
 </AnchorPane>
