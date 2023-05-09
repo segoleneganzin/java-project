@@ -40,6 +40,18 @@ Version 1
 https://github.com/segoleneganzin/java-project
 
 ## Installation du projet :
+### Prérequis :
+<ul>
+  <li>Un IDE Java</li>
+  <li>JavaFX</li>
+  <li>Scene Builder</li>
+</ul>
+
+### Mise en place :
+Il faut importer le projet zippé « projet_Bureau_Java » dans l’IDE Java.
+
+### Mise en place de la base de données :
+
 
 Il faut importer le fichier zippé dans l'IDE Eclipse
 
