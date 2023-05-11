@@ -39,7 +39,6 @@ public class PiscineDAO extends DAO<Piscine> {
 		boolean succes=true;
 		try {
 			Adresse adresse = piscine.getAdresse();
-			
 			String requete = "INSERT INTO "+TABLE+" ("+NOM+", "+HORAIREOUV+", "+HORAIREFERM+", "+ADRESSE+") VALUES (?, ?, ?, ?)";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete, Statement.RETURN_GENERATED_KEYS);
 			pst.setString(1, piscine.getNom());
@@ -88,13 +87,11 @@ public class PiscineDAO extends DAO<Piscine> {
 	// UPDATE
 	public boolean update(Piscine obj) {
 		boolean succes=true;
-
 		String nomPiscine =obj.getNom();
 		String horaireFerm =obj.getHoraireFerm();
 		String horaireOuv = obj.getHoraireOuv();
 		int idAdresse = obj.getAdresse().getIdAdresse();
 		int id = obj.getIdPiscine();
-
 		try {
 			String requete = "UPDATE "+TABLE+" SET nom = ?, horaireOuv = ?, horaireFerm = ?, idAdresse = ? WHERE "+CLE_PRIMAIRE+" = ?";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete) ;
@@ -122,7 +119,6 @@ public class PiscineDAO extends DAO<Piscine> {
 			pst.executeUpdate() ;
 		} catch (SQLException e) {
 			succes = false;
-//			e.printStackTrace();
 			System.out.println("Attention la piscine est utilisée dans au moins une autre table (utilisation, cours, travail)");
 		} 
 		return succes;		

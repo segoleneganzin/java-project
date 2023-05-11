@@ -73,7 +73,6 @@ public class CodeDAO extends DAO<Code> {
 			pst.setObject(2, code.getDateAchat());
 			code.setDateEcheance(dureeDeValidite);
 			pst.setObject(3, code.getDateEcheance());
-			//			pst.setInt(4, code.getSolde());
 			pst.setInt(4, code.getOffre().getIdOffre());
 			pst.executeUpdate();
 

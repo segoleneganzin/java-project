@@ -163,8 +163,11 @@ public class EmployeDAO extends DAO<Employe> {
 			}
 			//on reccupere la liste des piscine ou l'employe travail :
 			List<Integer> lesPiscinesTravail = new ArrayList<Integer>();
-			requete = "SELECT * FROM " + TRAVAILLEPOUR + " WHERE " + ID_EMP_TRAVAILLEPOUR + "=" + id + ";";
-			ResultSet rs = Connexion.executeQuery(requete);
+			requete = "SELECT * FROM " + TRAVAILLEPOUR + " WHERE " + ID_EMP_TRAVAILLEPOUR + "= ?;";
+			PreparedStatement pst2 = Connexion.getInstance().prepareStatement(requete);
+			pst2.setInt(1, id);
+			pst2.execute();
+			ResultSet rs =pst.getResultSet();
 			while (rs.next()) {
 				lesPiscinesTravail.add(rs.getInt(ID_PISCINE));
 			}
@@ -202,9 +205,9 @@ public class EmployeDAO extends DAO<Employe> {
 			//delete all de travail et reinserer les bonnes lignes
 
 			requete = "DELETE FROM " + TRAVAILLEPOUR +  " WHERE idEmp = ?;";			
-				PreparedStatement pst2 = Connexion.getInstance().prepareStatement(requete);
-				pst2.setInt(1, id);
-				pst2.executeUpdate();		
+				PreparedStatement pst3 = Connexion.getInstance().prepareStatement(requete);
+				pst3.setInt(1, id);
+				pst3.executeUpdate();		
 			
 				List<Piscine> lesPiscinesAjoutees = new ArrayList<Piscine>();
 //				lesPiscinesAjoutees.add("recuperer la data des checkboxes");
@@ -212,10 +215,10 @@ public class EmployeDAO extends DAO<Employe> {
 				obj.setLesPiscines(lesPiscinesAjoutees);
 				String requete2 = "INSERT INTO " + TRAVAILLEPOUR + " (" + ID_EMP_TRAVAILLEPOUR + ", " + ID_PISCINE_TRAVAILLEPOUR+") VALUES (?, ?)";
 				for (Piscine piscine : obj.getLesPiscines()) {
-					PreparedStatement pst3 = Connexion.getInstance().prepareStatement(requete2);
-					pst3.setInt(1, id);
-					pst3.setInt(2, piscine.getIdPiscine());
-					pst3.executeUpdate();					
+					PreparedStatement pst4 = Connexion.getInstance().prepareStatement(requete2);
+					pst4.setInt(1, id);
+					pst4.setInt(2, piscine.getIdPiscine());
+					pst4.executeUpdate();					
 				}
 				
 			} catch (SQLException e) {

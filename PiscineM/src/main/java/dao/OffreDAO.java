@@ -95,7 +95,6 @@ public class OffreDAO extends DAO<Offre> {
 		try {
 			String requete = "UPDATE "+TABLE+" SET validite = ?, tarif = ?, nbPlaces = ?, modalite = ? WHERE "+CLE_PRIMAIRE+" = ?";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete) ;
-
 			pst.setInt(1,validite) ; 
 			pst.setInt(2,tarif) ; 
 			pst.setInt(3, nbPlace) ;
@@ -121,7 +120,6 @@ public class OffreDAO extends DAO<Offre> {
 			pst.executeUpdate() ;
 		} catch (SQLException e) {
 			succes = false;
-//			e.printStackTrace();
 			System.out.println("Attention l'offre est utilisée dans une autre table (code)");
 		} 
 		return succes;		

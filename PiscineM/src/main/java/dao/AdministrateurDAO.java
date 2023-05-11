@@ -45,10 +45,10 @@ public class AdministrateurDAO extends DAO<Administrateur> {
 			e.printStackTrace();
 			// gerer les erreurs si clé etrangeres inexistantes
 			System.out.println("Employé inexistant");
-//			if (administrateur.getIdEmp() ==-1) {
-//				//afficher un message d'erreur
-//				System.out.println("Employé inexistant");
-//			}
+			if (administrateur.getIdEmp() ==-1) {
+				//afficher un message d'erreur
+				System.out.println("Employé inexistant");
+			}
 		}
 		return succes;
 	}

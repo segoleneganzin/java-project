@@ -65,7 +65,7 @@ public class CoursDAO extends DAO<Cours> {
 		} catch (SQLException e) {
 			succes=false;
 			e.printStackTrace();
-			// TODO gerer les erreurs si clé etrangeres inexistantes
+			//gerer les erreurs si clé etrangeres inexistantes
 			if (cours.getEmploye().getIdEmp() == -1) {
 				System.out.println("Employe inexistant");
 			}
@@ -99,7 +99,7 @@ public class CoursDAO extends DAO<Cours> {
 		return cours;
 	}
 
-	// TODO UPDATE cours avec table d'association
+	// UPDATE
 	public boolean update(Cours obj) {
 		boolean succes=true;
 
@@ -123,8 +123,6 @@ public class CoursDAO extends DAO<Cours> {
 			pst.setInt(8, id) ;
 			pst.executeUpdate() ;
 			System.out.println(id);
-			
-		//Update des codes participants au cours :
 		
 			
 		} catch (SQLException e) {
@@ -159,8 +157,11 @@ public class CoursDAO extends DAO<Cours> {
 	public List<Cours> readAllCoursDispo(Piscine piscine) {
 		List<Cours> lesCours = new ArrayList<Cours>();
 		try {
-			String requete = "SELECT * FROM " + TABLE + " WHERE " + HORAIREDEBUT + " > GETDATE() AND " + PISCINE + " = " + piscine.getIdPiscine();
-			ResultSet rs = Connexion.executeQuery(requete);
+			String requete = "SELECT * FROM " + TABLE + " WHERE " + HORAIREDEBUT + " > GETDATE() AND " + PISCINE + " = ?;";
+			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			pst.setInt(1, piscine.getIdPiscine());
+			pst.execute();	
+			ResultSet rs =pst.getResultSet();
 		while (rs.next()) {
 			int idCours = rs.getInt(CLE_PRIMAIRE);
 			Cours cours = CoursDAO.getInstance().read(idCours);
