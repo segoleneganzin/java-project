@@ -1,20 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="439.0" prefWidth="546.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AdminController">
+<AnchorPane fx:id="afficheLogin" prefHeight="439.0" prefWidth="546.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AdminController">
    <children>
       <ImageView fitHeight="48.0" fitWidth="50.0" layoutX="14.0" layoutY="13.0">
          <image>
             <Image url="@../Images/Admin-Profile-Vector-PNG-Picture.png" />
          </image>
       </ImageView>
-      <Button fx:id="adminRetourAcc" layoutX="22.0" layoutY="383.0" mnemonicParsing="false" onAction="#retourAcc" prefHeight="25.0" prefWidth="67.0" text="Retour" />
       <Text layoutX="313.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Connecté en tant que :" wrappingWidth="130.13671875" />
-      <Text fx:id="loginName" layoutX="437.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="94.13671875" />
+      <TextField fx:id="nbEntreeSolo" layoutX="181.0" layoutY="131.0" />
+      <TextField fx:id="validiteSolo" layoutX="181.0" layoutY="162.0" />
+      <TextField fx:id="tarifSolo" layoutX="181.0" layoutY="196.0" />
+      <Button fx:id="updateSolo" layoutX="190.0" layoutY="226.0" mnemonicParsing="false" onAction="#updateAboSolo" prefHeight="60.0" prefWidth="130.0" text="Mettre à jour Abonnement SOLO" textAlignment="CENTER" wrapText="true" />
+      <TextField fx:id="nbEntreeDuo" layoutX="344.0" layoutY="130.0" />
+      <TextField fx:id="validiteDuo" layoutX="344.0" layoutY="161.0" />
+      <TextField fx:id="tarifDuo" layoutX="344.0" layoutY="195.0" />
+      <Button fx:id="updateDuo" layoutX="358.0" layoutY="226.0" mnemonicParsing="false" onAction="#updateAboDuo" prefHeight="60.0" prefWidth="122.0" text="Mettre à jour Abonnement DUO" textAlignment="CENTER" wrapText="true" />
+      <Button fx:id="adminRetourAcc" layoutX="22.0" layoutY="383.0" mnemonicParsing="false" onAction="#retourAcc" prefHeight="25.0" prefWidth="67.0" text="Retour" />
+      <Text layoutX="14.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre d'entrée :" wrappingWidth="130.13671875" />
+      <Text layoutX="14.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Durée de validité :" wrappingWidth="130.13671875" />
+      <Text layoutX="14.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tarif :" wrappingWidth="130.13671875" />
+      <Text layoutX="190.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Abonnement SOLO" textAlignment="CENTER" wrappingWidth="130.13671875" />
+      <Text layoutX="353.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Abonnement DUO" textAlignment="CENTER" wrappingWidth="130.13671875" />
+      <Text layoutX="17.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tarif actuel :" wrappingWidth="130.13671875" />
+      <Text layoutX="17.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Durée de validité actuelle :" wrappingWidth="149.0" />
+      <Text layoutX="17.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre d'entrée actuelle :" wrappingWidth="149.0" />
+      <Text fx:id="nbEntreeSoloAct" layoutX="183.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="149.0" />
+      <Text fx:id="validiteSoloAct" layoutX="183.0" layoutY="339.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="149.0" />
+      <Text fx:id="tarifSoloAct" layoutX="183.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="149.0" />
+      <Text fx:id="tarifDuoAct" layoutX="346.0" layoutY="369.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="149.0" />
+      <Text fx:id="validiteDuoAct" layoutX="346.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="149.0" />
+      <Text fx:id="nbEntreeDuoAct" layoutX="346.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="149.0" />
+      <Text fx:id="loginName" layoutX="436.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="admin" textAlignment="CENTER" wrappingWidth="95.0" />
+      <Button fx:id="majCours" layoutX="441.0" layoutY="375.0" mnemonicParsing="false" onAction="#goToMajCours" prefHeight="42.0" prefWidth="79.0" text="Mise à jours Cours" textAlignment="CENTER" wrapText="true" />
    </children>
 </AnchorPane>
