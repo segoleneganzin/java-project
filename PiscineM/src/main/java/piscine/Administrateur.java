@@ -3,6 +3,7 @@ package piscine;
 import java.time.LocalDate;
 import java.util.List;
 
+
 public class Administrateur extends Employe {
 	private String identifiant;
 	private String mdp;
@@ -11,6 +12,8 @@ public class Administrateur extends Employe {
 			Adresse adresse, List<Piscine> lesPiscines, String identifiant, String mdp) {
 		super(idEmp, nom, prenom, fonction, dateNaissance, adresse, lesPiscines);
 		this.identifiant = identifiant;
+//		String mdpHash = BCrypt.withDefaults().hashToString(12, mdp.toCharArray());
+//		this.mdp = mdpHash;
 		this.mdp = mdp;
 	}
 	
@@ -30,6 +33,7 @@ public class Administrateur extends Employe {
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
 	}
+
 
 	@Override
 	public String toString() {

@@ -22,5 +22,10 @@
 			<artifactId>javafx-fxml</artifactId>
 			<version>19</version>
 		</dependency>
+		<dependency>
+		    <groupId>at.favre.lib</groupId>
+		    <artifactId>bcrypt</artifactId>
+		    <version>0.10.2</version>
+		</dependency>
 	</dependencies>
 </project>
