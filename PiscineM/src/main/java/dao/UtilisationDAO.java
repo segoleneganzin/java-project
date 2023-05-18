@@ -43,15 +43,13 @@ public class UtilisationDAO  extends DAO<Utilisation> {
 		} catch (SQLException e) {
 			succes = false;
 			e.printStackTrace();
-			// TODO gerer les erreurs si clé etrangeres inexistantes
 			// vérifier que le code existe sinon message d'erreur
 			if (utilisation.getCode().getIdCode() == "no") {
-				//afficher un message d'erreur
+				System.out.println("code inexistant");
 			}
 			// vérifier que la piscine existe sinon message d'erreur
 			if (utilisation.getPiscine().getIdPiscine() == -1) {
-//				PiscineDAO.getInstance().create(piscine);
-				//afficher un message d'erreur
+				System.out.println("piscine inexistante");
 			}
 			
 			
@@ -75,14 +73,13 @@ public class UtilisationDAO  extends DAO<Utilisation> {
 			utilisation = new Utilisation(dateUtilisation, code, idPiscine);
 		} catch (SQLException e) {
 			e.printStackTrace();
+			System.out.println("Utilisation inexistante");
 		}
 		return utilisation;
 	}
 
-	//TODO BONUS gérer les "session" : demander validation si scanner 2 fois très proche
-
 	@Override
-	//TODO BONUS Cette fonction ne sera jamais utilisé, il faut gérer une erreur si cela est tenté
+	//Cette fonction ne sera jamais utilisée
 	public boolean update(Utilisation obj) {
 		boolean succes = true;
 		LocalDateTime dateUtilisation = obj.getDateUtilisation();
@@ -98,7 +95,6 @@ public class UtilisationDAO  extends DAO<Utilisation> {
 			pst.setObject(2, idCode);
 			pst.setInt(3, idPiscine);
 			pst.executeUpdate();
-			//			System.out.println(idCode);
 		} catch (SQLException e) {
 			succes = false;
 			e.printStackTrace();
@@ -125,6 +121,7 @@ public class UtilisationDAO  extends DAO<Utilisation> {
 	}
 
 	
+	//calcul le nombre d'utilisation pour ensuite pouvoir calculer le solde
 	public int getNombreUtilisation(String code) {
 		int nombreUtilisation = 0;
 		try {
@@ -141,6 +138,22 @@ public class UtilisationDAO  extends DAO<Utilisation> {
 			e.printStackTrace();
 		}
 		return nombreUtilisation;
+	}
+	
+	public boolean deleteUtilisationCode(Code code) {
+		boolean succes = true;
+		try {
+			String idCode = code.getIdCode();
+			String requete = "DELETE FROM " + TABLE + " WHERE " + CODE + " = ? ;";
+			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			pst.setString(1, idCode);
+			pst.executeUpdate();
+		} catch (SQLException e) {
+			succes = false;
+			e.printStackTrace();
+		}
+		return succes;
+		
 	}
 
 	@Override

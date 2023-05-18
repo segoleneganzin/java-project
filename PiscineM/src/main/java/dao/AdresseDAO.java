@@ -47,7 +47,6 @@ public class AdresseDAO extends DAO<Adresse> {
 			if (rs.next()) {
 				adresse.setIdAdresse(rs.getInt(1));
 			}
-
 		} catch (SQLException e) {
 			succes=false;
 			e.printStackTrace();
@@ -71,7 +70,8 @@ public class AdresseDAO extends DAO<Adresse> {
 			int codePostal = rs.getInt(CODEPOSTAL);
 			adresse = new Adresse(id, numVoie, rue, ville, codePostal);
 		} catch (SQLException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			System.out.println("Adresse inexistant");
 		}
 		return adresse;
 	}

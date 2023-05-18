@@ -10,7 +10,6 @@ import java.util.List;
 import com.microsoft.sqlserver.jdbc.SQLServerDataSource;
 
 
-
 public class Connexion {
 
 	private static Connection connect = null;

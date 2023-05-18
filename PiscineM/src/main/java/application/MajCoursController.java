@@ -18,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import piscine.Cours;
 import piscine.Main;
@@ -25,75 +26,66 @@ import piscine.Offre;
 import piscine.Piscine;
 
 
-public class CoursController extends GeneralController implements Initializable{
+public class MajCoursController extends GeneralController implements Initializable{
 
 	private ObservableList<Cours> coursData = FXCollections.observableArrayList();
 	private Cours coursSelectionne;
-	private Parent root;
-	@FXML private Label tarifCours;
+	@FXML private TextField tarifCours;
 	@FXML private TableView<Cours> tableCours;
 	@FXML private TableColumn<Cours, String> intitule;
 	@FXML private TableColumn<Cours, String> date;
 	@FXML private TableColumn<Cours, String> heureDebut;
 	@FXML private TableColumn<Cours, String> heureFin;
+	@FXML private TableColumn<Cours, String> piscine;
 	@FXML private Label intituleCours;
 	@FXML private Label dateCours;
 	@FXML private Label horaireDebut;
 	@FXML private Label horaireFin;
-	@FXML Pane reserverCours;
-	@FXML Pane tarif;
+	@FXML private Label tarifCoursAct;
+	@FXML Pane modifierCours;
+	@FXML Pane creerCours;
 	Piscine laPiscine = GeneralController.getLaPiscine();
-
 
 	public ObservableList<Cours> getCoursData() {
 		return coursData;
 	}
 
-	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		Offre uneOffre = OffreDAO.getInstance().readModalite("cours");
-		tarifCours.setText(String.valueOf(uneOffre.getTarif()) + "€");
-		tarif.setVisible(true);
+		tarifCoursAct.setText(String.valueOf(uneOffre.getTarif()) + "€");
 		tableCours.setVisible(true);
 		intitule.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIntitule()));
 		date.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().toStringDate()));
 		heureDebut.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().toStringHoraireDebut()));
 		heureFin.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().toStringHoraireFin()));
+		piscine.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getPiscine().getNom()));
 		CoursDAO coursDAO = CoursDAO.getInstance();
-		List<Cours> lesCours = coursDAO.readAllCoursDispo(laPiscine);
+		List<Cours> lesCours = coursDAO.readAllCours();
 		coursData.clear();
 		coursData.addAll(lesCours);
 		tableCours.setItems(coursData);
 	}
-//	public void afficherCours(ActionEvent event) {
-//		Offre uneOffre = OffreDAO.getInstance().readModalite("cours");
-//		tarifCours.setText(String.valueOf(uneOffre.getTarif()) + "€");
-//		tarif.setVisible(true);
-//		tableCours.setVisible(true);
-//		afficherCours.setVisible(false);
-//		intitule.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIntitule()));
-//		date.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().toStringDate()));
-//		heureDebut.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().toStringHoraireDebut()));
-//		heureFin.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().toStringHoraireFin()));
-//		CoursDAO coursDAO = CoursDAO.getInstance();
-//		List<Cours> lesCours = coursDAO.readAllCoursDispo(laPiscine);
-//		coursData.clear();
-//		coursData.addAll(lesCours);
-//		tableCours.setItems(coursData);
-//	}
 
-	public void fermerReservation(ActionEvent event) {
-		reserverCours.setVisible(false);
+	void modifierTarif(ActionEvent event) {
+//		int tarif;
+//		if (tarifCours.getText().isEmpty()) {
+//			tarif= Integer.parseInt(tarifCoursAct.getText());
+//		} else {
+//			tarif= Integer.parseInt(tarifCours.getText());
+//		}
+//		Offre majOffreCours = OffreDAO.getInstance().readModalite("cours");
+//		majOffreCours.setTarif(tarif);
+//		OffreDAO.getInstance().update(majOffreCours);
+		System.out.println("modifier le tarif");
 	}
-
+	
 	@FXML
 	void selectionCours() {
-		// Recuperer la ligne selectionnee
-		coursSelectionne = tableCours.getSelectionModel().getSelectedItem();
-		System.out.println(coursSelectionne);
-		Cours cours = coursSelectionne;
+		// Récupérer la ligne sélectionnée
+		Cours cours = tableCours.getSelectionModel().getSelectedItem();
 		if (cours != null) {
-			reserverCours.setVisible(true);
+			tableCours.setVisible(false);
+			modifierCours.setVisible(true);
 			intituleCours.setText(cours.getIntitule());
 			dateCours.setText(cours.toStringDate());
 			horaireDebut.setText(cours.toStringHoraireDebut());
@@ -102,14 +94,39 @@ public class CoursController extends GeneralController implements Initializable{
 	}
 
 	@FXML 
-	void acheterCours() {
+	void supprimerCours(ActionEvent event) {
 		try {
-			Offre uneOffre = OffreDAO.getInstance().readModalite("cours");
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("../ihm/Paiement.fxml"));
-			root = loader.load();
-			PaiementController paiementController = loader.getController();
-			paiementController.setInfo(uneOffre);
-			paiementController.setInfoCours(coursSelectionne);
+			CoursDAO.getInstance().delete(coursSelectionne);
+			tableCours.setVisible(true);
+			modifierCours.setVisible(false);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	void ajouterCours(ActionEvent event) {
+		System.out.println("ajouter un cours");
+//		try {
+//			creerCours.setVisible(true);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+	}
+	
+	void creerCours(ActionEvent event) {
+		System.out.println("créer un cours");
+	}
+	
+	public void fermerModification(ActionEvent event) {
+		tableCours.setVisible(true);
+		modifierCours.setVisible(false);
+		creerCours.setVisible(false);
+	}
+	
+	@FXML
+	void retourGestionOffres(ActionEvent event) {
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("../ihm/Accueil.fxml"));
 			Scene scene = new Scene(root);
 			Main.stage.setScene(scene);
 			Main.stage.show();
@@ -117,8 +134,6 @@ public class CoursController extends GeneralController implements Initializable{
 			e.printStackTrace();
 		}
 	}
-
-	
 
 }
 

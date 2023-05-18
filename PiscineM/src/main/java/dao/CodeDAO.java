@@ -13,6 +13,10 @@ import piscine.Code;
 import piscine.Cours;
 import piscine.Offre;
 
+/**
+ * Gestion de la connexion a la table code et a la table d'association participe
+ * Les operations effectuees sur participe : comptage et ajout
+ */
 
 public class CodeDAO extends DAO<Code> {
 	private static final String CLE_PRIMAIRE = "idCode";
@@ -23,8 +27,6 @@ public class CodeDAO extends DAO<Code> {
 	private static final String PARTICIPE = "participe";
 	private static final String ID_CODE_PARTICIPE = "idCode";
 	private static final String ID_COURS_PARTICIPE = "idCours";
-
-	
 
 	private static CodeDAO instance = null;
 
@@ -40,7 +42,7 @@ public class CodeDAO extends DAO<Code> {
 	}
 
 	// Méthode pour générer un mot de passe alphanumérique aléatoire d'une longueur 10
-	public static String generateRandomPassword(){
+	public static String generateRandomCode(){
 		// Gamme ASCII – alphanumérique (0-9, a-z, A-Z)
 		final String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 		SecureRandom random = new SecureRandom();
@@ -63,7 +65,12 @@ public class CodeDAO extends DAO<Code> {
 	// CREATE
 	public boolean create(Code code) {
 		boolean succes = true;
-		String generatedCode = generateRandomPassword();
+		String generatedCode = generateRandomCode();
+		if (this.read(generatedCode)!=null) {
+			while(this.read(generatedCode)!=null) {
+				generatedCode = generateRandomCode();
+			}
+		}
 		try {
 			String requete = "INSERT INTO " + TABLE + " (" + CLE_PRIMAIRE + ", " + ACHAT + ", " + ECHEANCE + ", " + OFFRE + ") VALUES (?, ?, ?, ?)";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
@@ -73,7 +80,6 @@ public class CodeDAO extends DAO<Code> {
 			pst.setObject(2, code.getDateAchat());
 			code.setDateEcheance(dureeDeValidite);
 			pst.setObject(3, code.getDateEcheance());
-			//			pst.setInt(4, code.getSolde());
 			pst.setInt(4, code.getOffre().getIdOffre());
 			pst.executeUpdate();
 
@@ -89,7 +95,7 @@ public class CodeDAO extends DAO<Code> {
 	}
 
 	// READ
-	//Obligatoire en int avant d'override en string
+	//nécessaire en int avant d'override en string
 	public Code read(int id) {
 		return null;
 	}
@@ -105,7 +111,6 @@ public class CodeDAO extends DAO<Code> {
 			rs.next();
 			LocalDateTime dateAchat = rs.getTimestamp(ACHAT).toLocalDateTime();
 			LocalDateTime dateEcheance = rs.getTimestamp(ECHEANCE).toLocalDateTime();
-			//			int solde = rs.getInt(SOLDE);
 			Offre idOffre = OffreDAO.getInstance().read(rs.getInt(OFFRE));
 			List<Cours> lesCours = new ArrayList<Cours>();
 			requete = "SELECT * FROM " + PARTICIPE + " WHERE " + ID_CODE_PARTICIPE + "= ? ;";
@@ -121,12 +126,12 @@ public class CodeDAO extends DAO<Code> {
 			code = new Code(id, dateAchat, dateEcheance, idOffre, lesCours);
 			
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("code généré disponible");
 		}
 		return code;
 	}
 
-	// UPDATE	pour la date d'echeance qui correspond a la date du cours
+	// UPDATE	utilisé pour la date d'echeance d'un cours qui correspond a la date du cours
 	public boolean update(Code obj) {
 		boolean succes = true;
 		LocalDateTime dateAchat = obj.getDateAchat();
@@ -166,7 +171,7 @@ public class CodeDAO extends DAO<Code> {
 		return succes;
 	}
 	
-	//Ajouter une participation a un cours
+	//Ajouter une participation a un cours (table d'association participe)
 	public boolean ajouterParticipation(Cours cours, Code code) {
 		boolean succes=true;
 		try {			
@@ -200,10 +205,4 @@ public class CodeDAO extends DAO<Code> {
 		}
 		return nombreParticipant;
 	}
-	
-	
-
-
-
-
 }

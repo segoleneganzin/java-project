@@ -17,9 +17,7 @@ public class PiscineDAO extends DAO<Piscine> {
 	private static final String HORAIREOUV = "horaireOuv";
 	private static final String HORAIREFERM = "horaireFerm";
 	private static final String ADRESSE = "idAdresse";
-
-
-
+	
 	private static PiscineDAO instance=null;
 
 	public static PiscineDAO getInstance(){
@@ -36,12 +34,9 @@ public class PiscineDAO extends DAO<Piscine> {
 
 	// CREATE
 	public boolean create(Piscine piscine) {
-
 		boolean succes=true;
 		try {
-			
 			Adresse adresse = piscine.getAdresse();
-			
 			String requete = "INSERT INTO "+TABLE+" ("+NOM+", "+HORAIREOUV+", "+HORAIREFERM+", "+ADRESSE+") VALUES (?, ?, ?, ?)";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete, Statement.RETURN_GENERATED_KEYS);
 			pst.setString(1, piscine.getNom());
@@ -53,13 +48,11 @@ public class PiscineDAO extends DAO<Piscine> {
 			if (rs.next()) {
 				piscine.setIdPiscine(rs.getInt(1));
 			}
-
 		} catch (SQLException e) {
 			succes=false;
-			e.printStackTrace();
+//			e.printStackTrace();
 			// gerer les erreurs si clé etrangeres inexistantes
-			if (piscine.getAdresse().getIdAdresse() ==-1) {
-				//afficher un message d'erreur
+			if (piscine.getAdresse().getIdAdresse()==-1) {
 				System.out.println("Adresse inexistante");
 			}
 		}
@@ -83,6 +76,7 @@ public class PiscineDAO extends DAO<Piscine> {
 			piscine = new Piscine(id, nomPiscine, horaireOuv, horaireFerm, adresse);
 		} catch (SQLException e) {
 			e.printStackTrace();
+			System.out.println("Piscine inexistante");
 		}
 		return piscine;
 	}
@@ -90,13 +84,11 @@ public class PiscineDAO extends DAO<Piscine> {
 	// UPDATE
 	public boolean update(Piscine obj) {
 		boolean succes=true;
-
 		String nomPiscine =obj.getNom();
 		String horaireFerm =obj.getHoraireFerm();
 		String horaireOuv = obj.getHoraireOuv();
 		int idAdresse = obj.getAdresse().getIdAdresse();
 		int id = obj.getIdPiscine();
-
 		try {
 			String requete = "UPDATE "+TABLE+" SET nom = ?, horaireOuv = ?, horaireFerm = ?, idAdresse = ? WHERE "+CLE_PRIMAIRE+" = ?";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete) ;
@@ -124,7 +116,6 @@ public class PiscineDAO extends DAO<Piscine> {
 			pst.executeUpdate() ;
 		} catch (SQLException e) {
 			succes = false;
-//			e.printStackTrace();
 			System.out.println("Attention la piscine est utilisée dans au moins une autre table (utilisation, cours, travail)");
 		} 
 		return succes;		

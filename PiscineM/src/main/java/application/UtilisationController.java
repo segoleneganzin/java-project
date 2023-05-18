@@ -37,8 +37,14 @@ public class UtilisationController extends GeneralController{
 				LocalDateTime echeance = unCode.getDateEcheance();
 				//test si la date d'echeance est posterieure a "aujourd'hui" :
 				if (echeance.isAfter(LocalDateTime.now())) {
+					//regarder si c'est un cours
+					if (modalite.equals("cours")) {
+						messageValide.setVisible(false);
+						messageErreur.setVisible(true);
+						messageErreur.setText("Votre code n'est valable que pour un cours");
+					}
 					//regarde si l'abonnement est solo et si il reste des entrees
-					if (modalite.equals("solo") && solde>1) {	
+					else if (modalite.equals("solo") && solde>1) {	
 						messageErreur.setVisible(false);
 						Utilisation utilisation = new Utilisation(LocalDateTime.now(), unCode, piscine);
 						UtilisationDAO.getInstance().create(utilisation);
@@ -66,7 +72,7 @@ public class UtilisationController extends GeneralController{
 				} else {
 					messageValide.setVisible(false);
 					messageErreur.setVisible(true);
-					messageErreur.setText("Votre abonnement a expiré le "+echeance);
+					messageErreur.setText("Votre abonnement a expiré le "+ unCode.toStringDateEcheance());
 				}
 
 			} 

@@ -20,6 +20,7 @@ public class GeneralController {
 		GeneralController.laPiscine = laPiscine;
 	}
 
+	
 	//fonction de retour a la page d'accueil
 	//stockee ici pour ne pas la repeter dans tous les controller
 	@FXML
