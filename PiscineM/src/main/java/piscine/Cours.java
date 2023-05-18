@@ -7,14 +7,13 @@ import dao.CodeDAO;
 
 
 public class Cours {
-	private int idCours;
+	private int idCours = -1;
 	private String intitule;
 	private LocalDateTime horaireDebut;
 	private LocalDateTime horaireFin;
 	private int nombrePlacesInitiales;
 	private Employe employe;	//cle etrangere
 	private Piscine piscine;  //cle etrangere
-//	private List<Code> lesCodes = new ArrayList<Code>();	//lien tables d'association "participe"
 
 	//constructeur sans idCours :
 	public Cours(String intitule, LocalDateTime horaireDebut, LocalDateTime horaireFin, int nombrePlacesInitiales, Employe employe, Piscine piscine) {

@@ -60,6 +60,7 @@ public class SoldeController extends GeneralController{
 						solde.setText(String.valueOf(unCode.getSoldeCode()));
 					} 
 					else if(unCode.getOffre().getModalite().equals("cours")) {
+						//TODO si cours supprimé alors afficher un message approprié
 						codeInfosCoursContainer.setVisible(true);
 						codeInfosAboContainer.setVisible(false);
 						offreCours.setText(String.valueOf(unCode.getOffre().getModalite()));

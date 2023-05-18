@@ -1,6 +1,5 @@
 package dao;
 
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,10 +12,13 @@ import piscine.Cours;
 import piscine.Employe;
 import piscine.Piscine;
 
+/**
+ *Connexion a la table cours et a la table d'association participe afin de supprimer l'entree dans cette derniere si on supprime le cours
+ */
+
 public class CoursDAO extends DAO<Cours> {
 	private static final String CLE_PRIMAIRE = "idCours";
 	private static final String TABLE = "cours";
-	
 	private static final String INTITULE = "intitule";
 	private static final String HORAIREDEBUT = "horaireDebut";
 	private static final String HORAIREFIN = "horaireFin";
@@ -42,12 +44,10 @@ public class CoursDAO extends DAO<Cours> {
 
 	// CREATE
 	public boolean create(Cours cours) {
-
 		boolean succes=true;
 		try {
 			Employe employe = cours.getEmploye();
 			Piscine piscine = cours.getPiscine();
-			
 			String requete = "INSERT INTO "+TABLE+" ("+INTITULE+", "+HORAIREDEBUT+", "+HORAIREFIN+", "+NBPLACESINI+", "+EMPLOYE +", " + PISCINE + ") VALUES (?, ?, ?, ?, ?, ?)";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete, Statement.RETURN_GENERATED_KEYS);
 			pst.setString(1, cours.getIntitule());
@@ -94,7 +94,8 @@ public class CoursDAO extends DAO<Cours> {
 			Piscine piscine = PiscineDAO.getInstance().read(rs.getInt(PISCINE));
 			cours = new Cours(id, intitule, horairedebut, horairefin, nbplacesini, employe, piscine);
 		} catch (SQLException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			System.out.println("Cours inexistant");
 		}
 		return cours;
 	}
@@ -142,6 +143,9 @@ public class CoursDAO extends DAO<Cours> {
 			pst.setInt(1, id);
 			pst.executeUpdate();	
 			
+			//TODO delete l'utilisation reliee
+			
+			
 			requete = "DELETE FROM "+TABLE+" WHERE "+CLE_PRIMAIRE+" = ?";
 			PreparedStatement pst2 = Connexion.getInstance().prepareStatement(requete) ;
 			pst2.setInt(1, id) ;
@@ -174,7 +178,4 @@ public class CoursDAO extends DAO<Cours> {
 	    }
 		return lesCours;	
 	}
-
-
-	
 }

@@ -73,6 +73,7 @@ public class UtilisationDAO  extends DAO<Utilisation> {
 			utilisation = new Utilisation(dateUtilisation, code, idPiscine);
 		} catch (SQLException e) {
 			e.printStackTrace();
+			System.out.println("Utilisation inexistante");
 		}
 		return utilisation;
 	}

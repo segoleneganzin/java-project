@@ -13,15 +13,6 @@ public class Administrateur extends Employe {
 		this.identifiant = identifiant;
 		this.mdp = mdp;
 	}
-
-//	public Employe getEmploye() {
-//		return employe;
-//	}
-	
-	//Jamais utilisé 
-//	public void setEmploye(Employe employe) {
-//		this.employe = employe;
-//	}
 	
 	public String getIdentifiant() {
 		return identifiant;

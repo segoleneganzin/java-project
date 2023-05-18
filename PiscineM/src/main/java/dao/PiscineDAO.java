@@ -17,9 +17,7 @@ public class PiscineDAO extends DAO<Piscine> {
 	private static final String HORAIREOUV = "horaireOuv";
 	private static final String HORAIREFERM = "horaireFerm";
 	private static final String ADRESSE = "idAdresse";
-
-
-
+	
 	private static PiscineDAO instance=null;
 
 	public static PiscineDAO getInstance(){
@@ -50,13 +48,11 @@ public class PiscineDAO extends DAO<Piscine> {
 			if (rs.next()) {
 				piscine.setIdPiscine(rs.getInt(1));
 			}
-
 		} catch (SQLException e) {
 			succes=false;
-			e.printStackTrace();
+//			e.printStackTrace();
 			// gerer les erreurs si clé etrangeres inexistantes
-			if (piscine.getAdresse().getIdAdresse() ==-1) {
-				//afficher un message d'erreur
+			if (piscine.getAdresse().getIdAdresse()==-1) {
 				System.out.println("Adresse inexistante");
 			}
 		}
@@ -80,6 +76,7 @@ public class PiscineDAO extends DAO<Piscine> {
 			piscine = new Piscine(id, nomPiscine, horaireOuv, horaireFerm, adresse);
 		} catch (SQLException e) {
 			e.printStackTrace();
+			System.out.println("Piscine inexistante");
 		}
 		return piscine;
 	}

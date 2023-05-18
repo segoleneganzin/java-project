@@ -5,14 +5,11 @@
 // - en ajouter
 package dao;
 
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
 import piscine.Offre;
-
 
 public class OffreDAO extends DAO<Offre> {
 	private static final String CLE_PRIMAIRE = "idOffre";
@@ -21,7 +18,6 @@ public class OffreDAO extends DAO<Offre> {
 	private static final String TARIF = "tarif";
 	private static final String NBPLACE = "nbPlaces";
 	private static final String MODALITE = "modalite";	//solo/duo/cours
-
 
 	private static OffreDAO instance=null;
 
@@ -76,7 +72,8 @@ public class OffreDAO extends DAO<Offre> {
 			String modalite = rs.getString(MODALITE);
 			offre = new Offre(id, validite, tarif, nbplace, modalite);
 		} catch (SQLException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			System.out.println("Offre inexistante");
 		}
 		return offre;
 	}
@@ -84,14 +81,11 @@ public class OffreDAO extends DAO<Offre> {
 	//UPDATE
 	public boolean update(Offre obj) {
 		boolean succes=true;
-
 		int id = obj.getIdOffre();
 		int validite =obj.getValidite();
 		int tarif =obj.getTarif();
 		int nbPlace = obj.getNbPlaces();
 		String modalite = obj.getModalite();
-
-
 		try {
 			String requete = "UPDATE "+TABLE+" SET validite = ?, tarif = ?, nbPlaces = ?, modalite = ? WHERE "+CLE_PRIMAIRE+" = ?";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete) ;
@@ -100,7 +94,6 @@ public class OffreDAO extends DAO<Offre> {
 			pst.setInt(3, nbPlace) ;
 			pst.setString(4,modalite);
 			pst.setInt(5, id) ;
-
 			pst.executeUpdate() ;
 		} catch (SQLException e) {
 			succes = false;
@@ -144,7 +137,4 @@ public class OffreDAO extends DAO<Offre> {
 		}
 		return offre;
 	}
-
-
-
 }

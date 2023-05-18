@@ -13,7 +13,6 @@ public class Code {
 	private LocalDateTime dateAchat;
 	private LocalDateTime dateEcheance;
 	private Offre offre; // cle etrangere qui fera le lien avec offre
-
 	private List<Cours> lesCours= new ArrayList<Cours>();
 	
 	public Code(LocalDateTime dateAchat, LocalDateTime dateEcheance, Offre offre) {
@@ -89,12 +88,9 @@ public class Code {
 	//consulter le solde du code
 	public int getSoldeCode() {
 		String idCode = this.getIdCode();
-		//		System.out.println(idCode);
 		int nombreUtilisation = UtilisationDAO.getInstance().getNombreUtilisation(idCode);
-		//		System.out.println(nombreUtilisation);
 		Offre offre = this.getOffre();
 		int nbPlaces = offre.getNbPlaces();
-		//		System.out.println(nbPlaces);
 		int solde = nbPlaces - nombreUtilisation;
 		return solde;
 	}

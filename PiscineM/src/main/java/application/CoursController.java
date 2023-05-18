@@ -88,7 +88,7 @@ public class CoursController extends GeneralController implements Initializable{
 
 	@FXML
 	void selectionCours() {
-		// Récupérer la ligne sélectionnée
+		// Recuperer la ligne selectionnee
 		coursSelectionne = tableCours.getSelectionModel().getSelectedItem();
 		System.out.println(coursSelectionne);
 		Cours cours = coursSelectionne;
