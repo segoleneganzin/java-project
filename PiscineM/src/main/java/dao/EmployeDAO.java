@@ -61,13 +61,6 @@ public class EmployeDAO extends DAO<Employe> {
 			if (rs.next()) {
 				employe.setIdEmp(rs.getInt(1));
 			}
-			// vérifier pour chaque piscine de la liste de piscines dans l'objet employé qu'elle existe
-			for (Piscine piscine : employe.getLesPiscines()) {
-				if (piscine.getIdPiscine()==-1) {
-//					PiscineDAO.getInstance().create(piscine);   //pas tres securise
-					System.out.println("Piscine inexistante : " + piscine);
-				}
-			}
 			// Boucle pour sur la liste de piscines dans l'objet employé et insertion dans TRAVAILPOUR des id uniquement
 			int idEmp = employe.getIdEmp();
 			requete = "INSERT INTO " + TRAVAILLEPOUR + " (" + ID_EMP_TRAVAILLEPOUR + ", " + ID_PISCINE_TRAVAILLEPOUR+") VALUES (?, ?)";
@@ -80,6 +73,13 @@ public class EmployeDAO extends DAO<Employe> {
 		} catch (SQLException e) {
 			succes = false;
 			e.printStackTrace();
+			// vérifier pour chaque piscine de la liste de piscines dans l'objet employé qu'elle existe
+			for (Piscine piscine : employe.getLesPiscines()) {
+				if (piscine.getIdPiscine()==-1) {
+					//PiscineDAO.getInstance().create(piscine);   //pas tres securise
+					System.out.println("Piscine inexistante : " + piscine);
+				}
+			}
 			// gerer les erreurs si clé etrangeres inexistantes
 			if (employe.getAdresse().getIdAdresse() ==-1) {
 				System.out.println("Adresse inexistante");
@@ -177,7 +177,7 @@ public class EmployeDAO extends DAO<Employe> {
 		}
 		return succes;
 	}
-	
+
 	//update de la table d'association : ajout d'une piscine travaille pour
 	public boolean addPiscineTravaille(Employe emp, Piscine pis) {
 		boolean succes = true;

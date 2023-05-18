@@ -9,10 +9,11 @@ public class Administrateur extends Employe {
 
 	public Administrateur(int idEmp, String nom, String prenom, String fonction, LocalDate dateNaissance,
 			Adresse adresse, List<Piscine> lesPiscines, String identifiant, String mdp) {
-		super(idEmp, mdp, mdp, mdp, dateNaissance, adresse, lesPiscines);
+		super(idEmp, nom, prenom, fonction, dateNaissance, adresse, lesPiscines);
 		this.identifiant = identifiant;
 		this.mdp = mdp;
 	}
+	
 	
 	public String getIdentifiant() {
 		return identifiant;

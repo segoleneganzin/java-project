@@ -28,6 +28,7 @@ public class SoldeController extends GeneralController{
 	@FXML private Label solde;
 	@FXML private Label offreCours;
 	@FXML private Label dateAchatCours;
+	@FXML private Label coursAlerte;
 	private ObservableList<Cours> coursData = FXCollections.observableArrayList();
 	@FXML private TableView<Cours> tableCours;
 	@FXML private TableColumn<Cours, String> intitule;
@@ -60,13 +61,22 @@ public class SoldeController extends GeneralController{
 						solde.setText(String.valueOf(unCode.getSoldeCode()));
 					} 
 					else if(unCode.getOffre().getModalite().equals("cours")) {
-						//TODO si cours supprimé alors afficher un message approprié
+						//recuperation des cours (pour le moment toujours un seul mais le tableau permet de faire évoluer les offres) :
+						List<Cours> lesCours = unCode.getLesCours();
+						//test si le cours a ete supprime
+						int compteurCoursSupprimes = 0;
+						if (lesCours.size()==0) {
+							compteurCoursSupprimes += 1;
+						}
+						if(compteurCoursSupprimes>0) {
+							coursAlerte.setVisible(true);
+							tableCours.setVisible(false);
+						}
 						codeInfosCoursContainer.setVisible(true);
 						codeInfosAboContainer.setVisible(false);
 						offreCours.setText(String.valueOf(unCode.getOffre().getModalite()));
 						dateAchatCours.setText(String.valueOf(unCode.toStringDateAchat()));
-						//recuperation des cours (pour le moment toujours un seul mais le tableau permet de faire évoluer les offres) :
-						List<Cours> lesCours = unCode.getLesCours();
+						
 						intitule.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIntitule()));
 						date.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().toStringDate()));
 						heureDebut.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().toStringHoraireDebut()));

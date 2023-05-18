@@ -79,7 +79,7 @@ public class UtilisationDAO  extends DAO<Utilisation> {
 	}
 
 	@Override
-	//Cette fonction ne sera jamais utilisé
+	//Cette fonction ne sera jamais utilisée
 	public boolean update(Utilisation obj) {
 		boolean succes = true;
 		LocalDateTime dateUtilisation = obj.getDateUtilisation();
@@ -138,6 +138,22 @@ public class UtilisationDAO  extends DAO<Utilisation> {
 			e.printStackTrace();
 		}
 		return nombreUtilisation;
+	}
+	
+	public boolean deleteUtilisationCode(Code code) {
+		boolean succes = true;
+		try {
+			String idCode = code.getIdCode();
+			String requete = "DELETE FROM " + TABLE + " WHERE " + CODE + " = ? ;";
+			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			pst.setString(1, idCode);
+			pst.executeUpdate();
+		} catch (SQLException e) {
+			succes = false;
+			e.printStackTrace();
+		}
+		return succes;
+		
 	}
 
 	@Override
