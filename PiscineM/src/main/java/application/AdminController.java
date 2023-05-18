@@ -100,6 +100,7 @@ public class AdminController extends GeneralController {
 		this.initialize();
 	}
 	@FXML
+	//non utilise pour le moment
 	private void goToMajCours() {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("../ihm/UpdateCours.fxml"));

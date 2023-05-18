@@ -140,13 +140,13 @@ public class CoursDAO extends DAO<Cours> {
 			for (Code code : lesCodesParticipes) {
 				UtilisationDAO.getInstance().deleteUtilisationCode(code);
 			}
-			
+
 			//supprime les lignes de la table participe si un cours est supprime
 			String requete = "DELETE FROM " + PARTICIPE +  " WHERE " + ID_COURS_PARTICIPE +" = ?;";			
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
 			pst.setInt(1, idCours);
 			pst.executeUpdate();	
-			
+
 			//supprime le cours
 			requete = "DELETE FROM "+TABLE+" WHERE "+CLE_PRIMAIRE+" = ?";
 			pst = Connexion.getInstance().prepareStatement(requete) ;
@@ -181,6 +181,23 @@ public class CoursDAO extends DAO<Cours> {
 		return lesCours;	
 	}
 
+	public List<Cours> readAllCours() {
+		List<Cours> lesCours = new ArrayList<Cours>();
+		try {
+			String requete = "SELECT * FROM " + TABLE + " WHERE " + HORAIREDEBUT + " > GETDATE();";
+			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			pst.execute();	
+			ResultSet rs =pst.getResultSet();
+			while (rs.next()) {
+				int idCours = rs.getInt(CLE_PRIMAIRE);
+				Cours cours = CoursDAO.getInstance().read(idCours);
+				lesCours.add(cours);
+			}} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		return lesCours;	
+	}
+
 	//recuperer tous les codes participants a un cours
 	public List<Code> readAllCodeParticipe(Cours cours) {
 		List<Code> lesCodes = new ArrayList<Code>();
@@ -201,7 +218,7 @@ public class CoursDAO extends DAO<Cours> {
 			}
 		return lesCodes;
 	}
-	
+
 	public boolean coursExiste(Cours cours) {
 		return (read(cours.getIdCours())!=null);
 	}
