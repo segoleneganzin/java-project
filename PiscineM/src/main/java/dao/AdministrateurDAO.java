@@ -39,7 +39,6 @@ public class AdministrateurDAO extends DAO<Administrateur> {
 //				EmployeDAO.getInstance().create(employe);
 //				administrateur.setIdEmp(employe.getIdEmp());
 //			}
-			//hachage du mot de passe
 			String requete = "INSERT INTO " + TABLE + " (" + CLE_PRIMAIRE + ", " + IDENTIFIANT + ", " + MDP + ") VALUES (?, ?, ?)";
 			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
 			pst.setInt(1, administrateur.getIdEmp());
