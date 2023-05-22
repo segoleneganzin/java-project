@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import piscine.Adresse;
 import piscine.Piscine;
@@ -119,5 +121,22 @@ public class PiscineDAO extends DAO<Piscine> {
 			System.out.println("Attention la piscine est utilisée dans au moins une autre table (utilisation, cours, travail)");
 		} 
 		return succes;		
+	}
+	
+	public List<Piscine> readAllPiscines() {
+		List<Piscine> lesPiscines = new ArrayList<Piscine>();
+		try {
+			String requete = "SELECT * FROM " + TABLE + ";";
+			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			pst.execute();	
+			ResultSet rs =pst.getResultSet();
+			while (rs.next()) {
+				int idPiscine = rs.getInt(CLE_PRIMAIRE);
+				Piscine piscine = this.read(idPiscine);
+				lesPiscines.add(piscine);
+			}} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		return lesPiscines;	
 	}
 }

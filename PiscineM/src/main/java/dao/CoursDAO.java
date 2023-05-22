@@ -190,7 +190,7 @@ public class CoursDAO extends DAO<Cours> {
 			ResultSet rs =pst.getResultSet();
 			while (rs.next()) {
 				int idCours = rs.getInt(CLE_PRIMAIRE);
-				Cours cours = CoursDAO.getInstance().read(idCours);
+				Cours cours = this.read(idCours);
 				lesCours.add(cours);
 			}} catch (SQLException e) {
 				e.printStackTrace();

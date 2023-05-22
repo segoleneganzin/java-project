@@ -90,7 +90,6 @@ public class CoursController extends GeneralController implements Initializable{
 	void selectionCours() {
 		// Recuperer la ligne selectionnee
 		coursSelectionne = tableCours.getSelectionModel().getSelectedItem();
-		System.out.println(coursSelectionne);
 		Cours cours = coursSelectionne;
 		if (cours != null) {
 			reserverCours.setVisible(true);

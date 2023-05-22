@@ -4,7 +4,7 @@ public class TestDAO {
 
 	public static void main(String[] args) {
 		
-		//////////////////////////////////////////////////////////TEST OFFRE (ok)
+//_____________________________________________________________________________________OFFRE 
 		//Creation d'une entree catalogue(offre) :		
 //					Offre offre = new Offre(20,200,30,"test");
 //					OffreDAO.getInstance().create(offre);
@@ -24,7 +24,7 @@ public class TestDAO {
 //					OffreDAO.getInstance().delete(offre);
 
 
-		//////////////////////////////////////////////////////////TEST ADRESSE	(ok)
+//_____________________________________________________________________________________ADRESSE
 //		Creation adresse :
 //					Adresse adresse = new Adresse("15","rue Truc","Lorient", 56600);
 //					AdresseDAO.getInstance().create(adresse);
@@ -44,7 +44,7 @@ public class TestDAO {
 //					AdresseDAO.getInstance().delete(adresse);
 
 
-		//////////////////////////////////////////////////////////TEST COURS 	(ok)
+//_____________________________________________________________________________________COURS
 //		Creation cours :		
 //					Cours cours = new Cours("Test2", null, null, 10, EmployeDAO.getInstance().read(1), PiscineDAO.getInstance().read(2));
 //					cours.setHoraireDebut(LocalDateTime.of(2023, Month.SEPTEMBER, 29, 19, 30, 40));
@@ -66,7 +66,7 @@ public class TestDAO {
 //					CoursDAO.getInstance().delete(cours);
 
 
-		//////////////////////////////////////////////////////////TEST PISCINE	(ok)
+//_____________________________________________________________________________________PISCINE
 //		Creation piscine :
 //					Piscine p1 = new Piscine("ptest", "9h00", "20h00", AdresseDAO.getInstance().read(1));
 //					PiscineDAO.getInstance().create(p1);
@@ -85,7 +85,7 @@ public class TestDAO {
 //					PiscineDAO.getInstance().delete(p2);
 		
 
-		//////////////////////////////////////////////////////////TEST EMPLOYE	(ok)
+//_____________________________________________________________________________________EMPLOYE
 //		Creation d'un employe :
 //				Piscine pis = PiscineDAO.getInstance().read(2);
 //				Piscine pis2 = PiscineDAO.getInstance().read(1);
@@ -116,7 +116,7 @@ public class TestDAO {
 
 
 
-//////////////////////////////////////////////////////////TEST CODE	(ok)
+//_____________________________________________________________________________________CODE
 //		Creation d'un code :
 //				Code code = new Code(null, null, OffreDAO.getInstance().read(9));
 //				code.setDateAchat(LocalDateTime.now());
@@ -135,14 +135,14 @@ public class TestDAO {
 
 // 		System.out.println(code);
 		
-/////////////////////////////////////////////////////////////Test du calcul du solde d'un code (ok)
+//		Test du calcul du solde d'un code 
 // 		read d'un code
 // 				Code code = CodeDAO.getInstance().read("To9re9m5sT");
 // 				Code code = CodeDAO.getInstance().read("6Wg4gQog9x");
 // 				System.out.println(code.getSoldeCode());
 // 				System.out.println(code);
 
-//////////////////////////////////////////////////////////TEST ADMINISTRATEUR	(ok)
+//_____________________________________________________________________________________ADMINISTRATEUR
 // 		Création d'un administrateur :
 //				Piscine pis = PiscineDAO.getInstance().read(2);
 ////				Piscine pis2 = PiscineDAO.getInstance().read(1);
@@ -166,15 +166,16 @@ public class TestDAO {
 
 
 
-		//////////////////////////////////////////////////////////TEST UTILISATION
+//_____________________________________________________________________________________UTILISATION
 //		Creation d'une utilisation :
 //				Utilisation utilisation = new Utilisation(LocalDateTime.now(), CodeDAO.getInstance().read("BHzxvDG5x3"), PiscineDAO.getInstance().read(1));
 //				UtilisationDAO.getInstance().create(utilisation);
 //				System.out.println(utilisation);
 
 //		read d'une utilisation //TODO gérer le format de date pour le read utilisation
-//				Utilisation utilisation = UtilisationDAO.getInstance().read(LocalDateTime.parse("2023-05-18T16:24:46.883") , "BHzxvDG5x3");
+//				Utilisation utilisation = UtilisationDAO.getInstance().read(LocalDateTime.parse("2023-07-28T16:00") , "hdJPernEfy");
 //				System.out.println(utilisation);
+//		System.out.println(UtilisationDAO.getInstance().read(LocalDateTime.parse("2023-09-20T10:10"),"eb5de67b-ab0a-49a5-8bd6-621c8397c4fb"));
 
 //		update d'une utilisation : jamais utilisé
 

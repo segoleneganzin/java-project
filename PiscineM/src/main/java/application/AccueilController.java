@@ -99,7 +99,7 @@ public class AccueilController extends GeneralController{
 	@FXML
 	void simulerEntree(ActionEvent event) {
 		try {
-			root = FXMLLoader.load(getClass().getResource("../ihm/SimulationEntree.fxml"));
+			root = FXMLLoader.load(getClass().getResource("../ihm/Utilisation.fxml"));
 			Scene scene = new Scene(root);
 			Main.stage.setScene(scene);
 			Main.stage.show();
