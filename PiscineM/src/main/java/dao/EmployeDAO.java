@@ -241,4 +241,23 @@ public class EmployeDAO extends DAO<Employe> {
 		}
 		return succes;
 	}
+
+	public List<Employe> readAllProf(Piscine piscine) {
+		List<Employe> lesEmployesProf = new ArrayList<Employe>();
+		try {
+			String requete = "SELECT * FROM " + TABLE + " JOIN " + TRAVAILLEPOUR + " ON " + TABLE +"." + CLE_PRIMAIRE + " = " + TRAVAILLEPOUR +"." + CLE_PRIMAIRE + " WHERE " + FONCTION + " = ? AND " + ID_PISCINE_TRAVAILLEPOUR + " = ?;";
+			PreparedStatement pst = Connexion.getInstance().prepareStatement(requete);
+			pst.setString(1, "professeur");
+			pst.setInt(2, piscine.getIdPiscine());
+			pst.execute();			
+			ResultSet rs =pst.getResultSet();
+			while (rs.next()) {
+				int idEmp = rs.getInt(CLE_PRIMAIRE);
+				Employe employe = this.read(idEmp);
+				lesEmployesProf.add(employe);
+			}} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		return lesEmployesProf;
+	}
 }

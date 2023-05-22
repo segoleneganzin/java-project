@@ -1,9 +1,5 @@
 package dao;
 
-import java.time.LocalDateTime;
-
-import piscine.Utilisation;
-
 public class TestDAO {
 
 	public static void main(String[] args) {
