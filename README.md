@@ -4,21 +4,26 @@ Application bureau en Java dans le cadre du BTS Services informatiques aux organ
 
 ## Thématique fictive :
 
-Les piscines municipales de Vannes vont changer de logiciel afin de générer directement des codes permettant d'accéder aux bassins. 
-Ces codes pourront être achetés sur des bornes situées à la piscine, sans aucune inscription. 
-Nous ne traitons pas les problématiques de paiement en ligne, mais ce processus est simulé.  
+Les piscines municipales de Vannes vont changer de logiciel afin de générer directement des codes permettant d'accéder aux bassins. <br>
+Ces codes pourront être achetés sur des bornes situées à la piscine, sans aucune inscription. <br>
+Nous ne traitons pas les problématiques de paiement en ligne, mais ce processus est simulé.  <br>
 La borne permettra de générer des codes pour obtenir :
-    • une leçon individuelle de nage sur un des créneaux libres
-    • un abonnement solo 10 entrées valable 10 mois
-    • un abonnement duo 10 entrées valable 1 an
+<ul>
+    <li>une leçon individuelle de nage sur un des créneaux libres</li> 
+    <li>un abonnement solo 10 entrées valable 10 mois</li> 
+    <li>un abonnement duo 10 entrées valable 1 an</li> 
+</ul>
+    
     
 Les administrateurs authentifiés pourront définir :
-    • le tarif
-    • le nombre de places
-    • la durée de validité des titres de vente
+<ul>
+    <li>le tarif</li> 
+    <li>le nombre de places</li> 
+    <li>la durée de validité des titres de vente</li> 
+</ul>
 
-La configuration proposée est la plus générique/modulable possible.
-N'importe qui pourra tester la validité d'un code et voir son contenu actuel.
+La configuration proposée est la plus générique/modulable possible.<br>
+N'importe qui pourra tester la validité d'un code et voir son contenu actuel.<br>
 
 ## Langages et technologies utilisés
 
